@@ -51,6 +51,20 @@ en:
           email_outro: Check the <a href="%{conflicts_path}">Verifications's conflicts list</a> and contact the participant to verify their details and solve the issue.
           email_subject: Failed verification attempt against a managed participant
           notification_title: The participant <a href="%{resource_path}">%{resource_title}</a> has tried to verify themself with the data of the managed participant <a href="%{managed_user_path}">%{managed_user_name}</a>.
+    initiatives:
+      create_initiative:
+        select_initiative_type:
+          verification_required: Verify your account to promote this initiative
+      modal:
+        not_authorized:
+          authorizations_page: View authorizations
+          close: Close
+          explanation: You need to be verified in order to create a new initiative.
+          title: Authorization required
+    resources:
+      initiatives_type:
+        actions:
+          create: Create
     meetings:
       directory:
         meetings:
