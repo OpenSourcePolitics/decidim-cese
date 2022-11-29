@@ -9,7 +9,6 @@ module UpdateInitiativeAnswerExtends
       current_user,
       attributes
     )
-    byebug
     notify_initiative_is_extended if @notify_extended
     notify_initiative_is_answered if @notify_answered
     broadcast(:ok, initiative)
