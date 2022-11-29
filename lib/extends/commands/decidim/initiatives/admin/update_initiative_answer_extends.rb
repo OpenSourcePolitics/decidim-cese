@@ -31,7 +31,7 @@ module UpdateInitiativeAnswerExtends
       attrs[:signature_end_date] = form.signature_end_date
 
       if initiative.published? && form.signature_end_date != initiative.signature_end_date &&
-        form.signature_end_date > initiative.signature_end_date
+         form.signature_end_date > initiative.signature_end_date
         @notify_extended = true
       end
     end
