@@ -20,7 +20,7 @@ if defined?(Decidim::Initiatives)
     config.default_signature_time_period_length = 12.months
 
     # Components enabled for a new initiative
-    config.default_components = [Decidim::Blog]
+    config.default_components = [:blogs]
 
     # Print functionality enabled. Allows the user to get
     # a printed version of the initiative from the administration
