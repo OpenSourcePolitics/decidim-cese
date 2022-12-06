@@ -956,12 +956,9 @@ DEPENDENCIES
   decidim!
   decidim-dev!
   decidim-initiatives!
-<<<<<<< HEAD
-=======
   decidim-spam_detection!
   decidim-term_customizer!
   deface
->>>>>>> develop
   dotenv-rails
   faker (~> 2.14)
   fog-aws
