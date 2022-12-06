@@ -6,6 +6,7 @@ DECIDIM_VERSION = "release/0.27-stable"
 ruby RUBY_VERSION
 
 gem "decidim", git: "https://github.com/decidim/decidim.git", branch: DECIDIM_VERSION
+gem "decidim-initiatives", git: "https://github.com/decidim/decidim.git", branch: DECIDIM_VERSION
 
 ## Block gems /!\ Required comment for : $ rake app:upgrade
 # gem "acts_as_textcaptcha", "~> 4.5.1"
