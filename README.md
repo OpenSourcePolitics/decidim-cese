@@ -1,4 +1,4 @@
-https://github.com/OpenSourcePolitics/decidim-cese/actions/workflows/tests.yml/badge.svg
+![Continuous Integration](https://github.com/OpenSourcePolitics/decidim-cese/actions/workflows/tests.yml/badge.svg)
 
 # Decidim app by OSP
 
