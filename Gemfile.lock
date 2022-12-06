@@ -1,4 +1,18 @@
 GIT
+  remote: https://github.com/OpenSourcePolitics/decidim-spam_detection.git
+  revision: 964a091ff49cb066a430610cbfbe61886d06f401
+  specs:
+    decidim-spam_detection (2.0.1)
+      decidim-core (~> 0.26)
+
+GIT
+  remote: https://github.com/OpenSourcePolitics/omniauth-france_connect
+  revision: 4665875c94d45a71dac163889e0eedd21b2ba41d
+  specs:
+    omniauth-france_connect (0.1.0)
+      omniauth_openid_connect (~> 0.4.0)
+
+GIT
   remote: https://github.com/decidim/decidim.git
   revision: 1cd44173cebd0a65dd33eb03233afeb7acf08534
   branch: release/0.27-stable
@@ -182,6 +196,15 @@ GIT
       decidim-core (= 0.27.1)
 
 GIT
+  remote: https://github.com/mainio/decidim-module-term_customizer.git
+  revision: 211c3e2e96f96a1d32310d98e364df66d3f38f69
+  branch: develop
+  specs:
+    decidim-term_customizer (0.27.0)
+      decidim-admin (~> 0.27.0.rc2)
+      decidim-core (~> 0.27.0.rc2)
+
+GIT
   remote: https://github.com/sgruhier/foundation_rails_helper.git
   revision: bc33600db7a2d16ce3cdc1f8369d0d7e7c4245b5
   specs:
@@ -263,7 +286,9 @@ GEM
       activerecord (>= 3.0)
     addressable (2.8.1)
       public_suffix (>= 2.0.2, < 6.0)
+    aes_key_wrap (1.1.0)
     ast (2.4.2)
+    attr_required (1.0.1)
     axe-core-api (4.5.0)
       dumb_delegator
       virtus
@@ -285,6 +310,7 @@ GEM
       html_tokenizer (~> 0.0.6)
       parser (>= 2.4)
       smart_properties
+    bindata (2.4.14)
     bindex (0.8.1)
     bootsnap (1.13.0)
       msgpack (~> 1.2)
@@ -352,6 +378,12 @@ GEM
     declarative-builder (0.1.0)
       declarative-option (< 0.2.0)
     declarative-option (0.1.0)
+    deface (1.9.0)
+      actionview (>= 5.2)
+      nokogiri (>= 1.6)
+      polyglot
+      railties (>= 5.2)
+      rainbow (>= 2.1.0)
     descendants_tracker (0.0.4)
       thread_safe (~> 0.3, >= 0.3.1)
     devise (4.8.1)
@@ -407,6 +439,8 @@ GEM
     faraday (2.7.0)
       faraday-net_http (>= 2.0, < 3.1)
       ruby2_keywords (>= 0.0.4)
+    faraday-follow_redirects (0.3.0)
+      faraday (>= 1, < 3)
     faraday-net_http (3.0.2)
     ffi (1.15.5)
     file_validators (3.0.0)
@@ -455,6 +489,7 @@ GEM
       nokogiri (>= 1.4)
     html_tokenizer (0.0.7)
     htmlentities (4.3.4)
+    httpclient (2.8.3)
     i18n (1.12.0)
       concurrent-ruby (~> 1.0)
     i18n-tasks (0.9.37)
@@ -477,6 +512,12 @@ GEM
     invisible_captcha (0.13.0)
       rails (>= 3.2.0)
     json (2.6.2)
+    json-jwt (1.16.1)
+      activesupport (>= 4.2)
+      aes_key_wrap
+      bindata
+      faraday (~> 2.0)
+      faraday-follow_redirects
     jwt (2.5.0)
     kaminari (1.2.2)
       activesupport (>= 4.1.0)
@@ -588,6 +629,21 @@ GEM
     omniauth-twitter (1.4.0)
       omniauth-oauth (~> 1.1)
       rack
+    omniauth_openid_connect (0.4.0)
+      addressable (~> 2.5)
+      omniauth (>= 1.9, < 3)
+      openid_connect (~> 1.1)
+    openid_connect (1.4.2)
+      activemodel
+      attr_required (>= 1.0.0)
+      json-jwt (>= 1.15.0)
+      net-smtp
+      rack-oauth2 (~> 1.21)
+      swd (~> 1.3)
+      tzinfo
+      validate_email
+      validate_url
+      webfinger (~> 1.2)
     origami (2.1.0)
       colorize (~> 0.7)
     orm_adapter (0.5.0)
@@ -606,6 +662,7 @@ GEM
     pg_search (2.3.6)
       activerecord (>= 5.2)
       activesupport (>= 5.2)
+    polyglot (0.3.5)
     premailer (1.18.0)
       addressable
       css_parser (>= 1.12.0)
@@ -624,6 +681,12 @@ GEM
       rack (>= 1.0, < 3)
     rack-cors (1.1.1)
       rack (>= 2.0.0)
+    rack-oauth2 (1.21.3)
+      activesupport
+      attr_required
+      httpclient
+      json-jwt (>= 1.11.0)
+      rack (>= 2.1.0)
     rack-protection (3.0.3)
       rack
     rack-proxy (0.7.4)
@@ -802,6 +865,10 @@ GEM
       activesupport (>= 5.2)
       sprockets (>= 3.0.0)
     ssrf_filter (1.1.1)
+    swd (1.3.0)
+      activesupport (>= 3)
+      attr_required (>= 0.0.5)
+      httpclient (>= 2.4)
     sys-filesystem (1.4.3)
       ffi (~> 1.1)
     temple (0.9.1)
@@ -819,6 +886,12 @@ GEM
     valid_email2 (2.3.1)
       activemodel (>= 3.2)
       mail (~> 2.5)
+    validate_email (0.1.6)
+      activemodel (>= 3.0)
+      mail (>= 2.2.5)
+    validate_url (1.0.15)
+      activemodel (>= 3.0.0)
+      public_suffix
     version_gem (1.1.1)
     virtus (2.0.0)
       axiom-types (~> 0.1)
@@ -839,6 +912,9 @@ GEM
       activemodel (>= 6.0.0)
       bindex (>= 0.4.0)
       railties (>= 6.0.0)
+    webfinger (1.2.0)
+      activesupport
+      httpclient (>= 2.4)
     webmock (3.18.1)
       addressable (>= 2.8.0)
       crack (>= 0.3.2)
@@ -880,6 +956,12 @@ DEPENDENCIES
   decidim!
   decidim-dev!
   decidim-initiatives!
+<<<<<<< HEAD
+=======
+  decidim-spam_detection!
+  decidim-term_customizer!
+  deface
+>>>>>>> develop
   dotenv-rails
   faker (~> 2.14)
   fog-aws
@@ -888,6 +970,7 @@ DEPENDENCIES
   listen (~> 3.1)
   lograge
   newrelic_rpm
+  omniauth-france_connect!
   parallel_tests (~> 3.7)
   passenger
   puma (>= 5.6.2)

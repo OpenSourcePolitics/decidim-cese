@@ -39,6 +39,12 @@ en:
           email_outro: You have received this notification because you are participating in "%{participatory_space_title}"
           email_subject: Your vote is still pending in %{participatory_space_title}
           notification_title: The vote on budget <a href="%{resource_path}">%{resource_title}</a> is still waiting for your confirmation in %{participatory_space_title}
+      initiatives:
+        initiative_answered:
+          email_intro: The initiative "%{resource_title}" has been answered.
+          email_outro: You have received this notification because you are following the initiative "%{resource_title}".
+          email_subject: Initiative "%{resource_title}" has been answered
+          notification_title: The initiative <a href="%{resource_path}">%{resource_title}</a> has been answered.
       users:
         user_officialized:
           email_intro: Participant %{name} (%{nickname}) has been officialized.
@@ -51,6 +57,20 @@ en:
           email_outro: Check the <a href="%{conflicts_path}">Verifications's conflicts list</a> and contact the participant to verify their details and solve the issue.
           email_subject: Failed verification attempt against a managed participant
           notification_title: The participant <a href="%{resource_path}">%{resource_title}</a> has tried to verify themself with the data of the managed participant <a href="%{managed_user_path}">%{managed_user_name}</a>.
+    initiatives:
+      create_initiative:
+        select_initiative_type:
+          verification_required: Verify your account to promote this initiative
+      modal:
+        not_authorized:
+          authorizations_page: View authorizations
+          close: Close
+          explanation: You need to be verified in order to create a new initiative.
+          title: Authorization required
+    resources:
+      initiatives_type:
+        actions:
+          create: Create
     meetings:
       directory:
         meetings:
@@ -126,6 +146,20 @@ en:
           actions:
             osp_authorization_handler: Verify with the identity verification form
             osp_authorization_workflow: Verify with the identity verification form
+      sms:
+        authorizations:
+          edit:
+            confirm_destroy: Confirm
+            resend: Reset verification code
+            send: Confirm
+            title: Introduce the verification code you received
+            verification_code: Verification code
+          new:
+            instructions: Enter your phone number and the verification code sent by SMS. This method allows us to ensure that you have voted only once.
+            instructions_helper: "<ul><li>Must contain only numbers</li><li>Must start with 0</li><li>Must contain 10 digits</li><li>Must not be used by another account on this platform</li></ul>"
+            mobile_phone_number: Mobile phone number
+            send: Send me an SMS
+            title: Verify your identity with the SMS verification method
   faker:
     address:
       country_code:
@@ -154,3 +188,5 @@ en:
         account: Account
         conversations: Conversations
         notifications: Notifications
+  sms_verification_workflow:
+    message: 'Hello, here is the code to authenticate yourself on the CESE initiatives platform: %{code}'
