@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 # This migration comes from decidim_initiatives (originally 20191107134847)
 
 class AddScopesToInitiativesVotes < ActiveRecord::Migration[5.2]
