@@ -10,7 +10,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_12_06_145779) do
+ActiveRecord::Schema.define(version: 2022_11_24_140209) do
+
   # These are extensions that must be enabled in order to support this database
   enable_extension "ltree"
   enable_extension "pg_trgm"
@@ -839,7 +840,6 @@ ActiveRecord::Schema.define(version: 2022_12_06_145779) do
     t.integer "decidim_scope_id"
     t.index ["decidim_author_id"], name: "index_decidim_initiatives_votes_on_decidim_author_id"
     t.index ["decidim_initiative_id"], name: "index_decidim_initiatives_votes_on_decidim_initiative_id"
-    t.index ["hash_id"], name: "index_decidim_initiatives_votes_on_hash_id"
   end
 
   create_table "decidim_meetings_agenda_items", force: :cascade do |t|
