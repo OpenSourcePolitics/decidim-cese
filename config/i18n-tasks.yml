@@ -60,6 +60,7 @@ search:
     - "*.jpeg"
     - "*.odt"
     - "*.docx"
+    - "*.deface"
 
   ## Alternatively, the only files or `File.fnmatch patterns` to search in `paths`:
   ## If specified, this settings takes priority over `exclude`, but `exclude` still applies.
@@ -86,6 +87,7 @@ ignore_missing:
  - decidim.devise.shared.omniauth_buttons.or
  - devise.shared.links.sign_in_with_provider
  - layouts.decidim.header.user_menu
+ - decidim.initiatives.initiatives.index_header.new_initiative
 
 # Consider these keys used:
 ignore_unused:
@@ -108,3 +110,7 @@ ignore_unused:
   - decidim.system.organizations.omniauth_settings.publik.*
   - decidim.verifications.authorizations.create.*
   - decidim.verifications.authorizations.first_login.actions.*
+  - decidim.events.initiatives.initiative_answered.*
+  - decidim.initiatives.create_initiative.select_initiative_type.*
+  - decidim.resources.initiatives_type.actions.create
+

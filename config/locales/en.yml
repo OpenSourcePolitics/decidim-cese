@@ -67,10 +67,6 @@ en:
           close: Close
           explanation: You need to be verified in order to create a new initiative.
           title: Authorization required
-    resources:
-      initiatives_type:
-        actions:
-          create: Create
     meetings:
       directory:
         meetings:
@@ -107,6 +103,10 @@ en:
       withdraw:
         errors:
           has_supports: This proposal can not be withdrawn because it already has supports.
+    resources:
+      initiatives_type:
+        actions:
+          create: Create
     scopes:
       global: Global
       picker:
