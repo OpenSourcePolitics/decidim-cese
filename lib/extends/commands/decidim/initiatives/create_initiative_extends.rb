@@ -25,18 +25,24 @@ module CreateInitiativeExtends
     end
 
     def create_comment_permission?
-      ENV.fetch("AH_INITIATIVES_COMMENT", nil).presence
+      comments_authorization_handler
     end
 
     def create_comment_permission_for(initiative)
       form = Decidim::Admin::PermissionsForm.from_params(ah_comment_hash)
-                                            .with_context(current_organization: current_organization)
+                                            .with_context(current_organization: initiative.organization)
 
       Decidim::Admin::UpdateResourcePermissions.call(form, initiative)
     end
 
     def ah_comment_hash
-      { "component_permissions" => { "permissions" => { "comment" => { "authorization_handlers" => [ENV.fetch("AH_INITIATIVES_COMMENT", "")] } } } }
+      { "component_permissions" => { "permissions" => { "comment" => { "authorization_handlers" => [comments_authorization_handler] } } } }
+    end
+
+    private
+
+    def comments_authorization_handler
+      @comments_authorization_handler ||= Rails.application.secrets.dig(:decidim, :initiatives, :permissions, :comments, :authorization_handler)
     end
   end
 end
