@@ -67,10 +67,6 @@ fr:
           close: Fermer
           explanation: Vous devez avoir vérifié votre compte pour signer la pétition
           title: Vérification requise
-    resources:
-      initiatives_type:
-        actions:
-          create: Créer
     meetings:
       directory:
         meetings:
@@ -107,6 +103,10 @@ fr:
       withdraw:
         errors:
           has_supports: Cette proposition ne peut pas être retirée car elle dispose déjà de supports.
+    resources:
+      initiatives_type:
+        actions:
+          create: Créer
     scopes:
       global: Portée générale
       picker:

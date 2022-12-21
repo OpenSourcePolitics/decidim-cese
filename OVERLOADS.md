@@ -1,5 +1,14 @@
 # Overrides
 
+## Admin Password Strong
+Disable ask for new password when login as admin (only for development mode)
+* `config/environments/development.rb:58`
+
+## Update Create initiative command flow
+Create a specific permission for comments on each initiative creation. Only active if ENV var `AH_INITIATIVES_COMMENT` defined and not empty
+
+* `lib/extends/commends/decidim/initiatives/create_initiative_extends.rb`
+
 ## Load decidim-awesome assets only if dependencie is present
 * `app/views/layouts/decidim/_head.html.erb:33`
 

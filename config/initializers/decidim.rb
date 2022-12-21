@@ -24,6 +24,12 @@ Decidim.configure do |config|
     }
   }
 
+  if defined?(Decidim::Initiatives) && defined?(Decidim::Initiatives.do_not_require_authorization)
+    Decidim::Initiatives.minimum_committee_members = 1
+    Decidim::Initiatives.do_not_require_authorization = true
+    Decidim::Initiatives.print_enabled = false
+  end
+
   # Custom resource reference generator method
   # config.resource_reference_generator = lambda do |resource, feature|
   #   # Implement your custom method to generate resources references
