@@ -1,4 +1,12 @@
 GIT
+  remote: https://github.com/OpenSourcePolitics/decidim-module-extended_socio_demographic_authorization_handler.git
+  revision: 51be28cac256bc25c176e8a203aae7a00a9626bd
+  branch: cese
+  specs:
+    decidim-extended_socio_demographic_authorization_handler (0.26.1)
+      decidim-core (~> 0.27)
+
+GIT
   remote: https://github.com/OpenSourcePolitics/decidim-spam_detection.git
   revision: 964a091ff49cb066a430610cbfbe61886d06f401
   specs:
@@ -955,6 +963,7 @@ DEPENDENCIES
   dalli
   decidim!
   decidim-dev!
+  decidim-extended_socio_demographic_authorization_handler!
   decidim-initiatives!
   decidim-spam_detection!
   decidim-term_customizer!
