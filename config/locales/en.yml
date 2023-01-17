@@ -58,6 +58,12 @@ en:
           email_subject: Failed verification attempt against a managed participant
           notification_title: The participant <a href="%{resource_path}">%{resource_title}</a> has tried to verify themself with the data of the managed participant <a href="%{managed_user_path}">%{managed_user_name}</a>.
     initiatives:
+      admin:
+        content_blocks:
+          highlighted_initiatives:
+            order:
+              most_popular: Most popular
+              random: Randomly
       create_initiative:
         select_initiative_type:
           verification_required: Verify your account to promote this initiative
