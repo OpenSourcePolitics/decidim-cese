@@ -13,3 +13,5 @@ require "extends/queries/decidim/initiatives/organization_prioritized_initiative
 require "extends/cells/decidim/initiatives/content_blocks/highlighted_initiatives_settings_form_cell_extends"
 require "extends/commands/decidim/initiatives/admin/publish_initiative_extends"
 require "extends/commands/decidim/initiatives/admin/unpublish_initiative_extends"
+require "extends/middleware/decidim/decidim_awesome/current_config_extends"
+require "extends/helpers/decidim/decidim_awesome/admin/config_constraints_helpers_extends"
