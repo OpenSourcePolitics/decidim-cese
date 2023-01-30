@@ -88,6 +88,9 @@ ignore_missing:
  - devise.shared.links.sign_in_with_provider
  - layouts.decidim.header.user_menu
  - decidim.initiatives.initiatives.index_header.new_initiative
+ - decidim.initiatives.admin.content_blocks.highlighted_initiatives.order.*
+ - decidim.initiatives.create_initiative.fill_data.*
+ - decidim.initiatives.form.*
 
 # Consider these keys used:
 ignore_unused:
