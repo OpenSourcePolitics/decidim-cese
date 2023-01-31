@@ -42,5 +42,11 @@ module DevelopmentApp
     config.after_initialize do
       require "extends/controllers/decidim/devise/sessions_controller_extends"
     end
+
+    ActiveSupport.on_load(:active_record) do
+      include ActiveStorage::Reflection::ActiveRecordExtensions
+      ActiveRecord::Reflection.singleton_class.prepend(ActiveStorage::Reflection::ReflectionExtension)
+      include ActiveStorage::Attached::Model
+    end
   end
 end
