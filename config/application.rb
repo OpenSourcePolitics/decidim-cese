@@ -40,13 +40,8 @@ module DevelopmentApp
     # the framework and any gems in your application.
 
     config.after_initialize do
+      require "extends/forms/decidim/initiatives/initiative_form_extends"
       require "extends/controllers/decidim/devise/sessions_controller_extends"
-    end
-
-    ActiveSupport.on_load(:active_record) do
-      include ActiveStorage::Reflection::ActiveRecordExtensions
-      ActiveRecord::Reflection.singleton_class.prepend(ActiveStorage::Reflection::ReflectionExtension)
-      include ActiveStorage::Attached::Model
     end
   end
 end
