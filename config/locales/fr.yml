@@ -189,4 +189,4 @@ fr:
         conversations: Conversations
         notifications: Notifications
   sms_verification_workflow:
-    message: Bonjour, %{code} est le code pour vous authentifier sur la plateforme de pétitions du CESE.
+    message: Bonjour, %{code} est le code pour vous authentifier sur la plateforme de petitions du CESE.
