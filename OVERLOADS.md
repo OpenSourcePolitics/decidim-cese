@@ -1,5 +1,10 @@
 # Overrides
 
+
+## Update France Connect with requirements
+* `app/views/decidim/devise/passwords/new.html.erb`
+* `app/views/decidim/shared/_login_modal.html.erb`
+
 ## Admin Password Strong
 Disable ask for new password when login as admin (only for development mode)
 * `config/environments/development.rb:58`
