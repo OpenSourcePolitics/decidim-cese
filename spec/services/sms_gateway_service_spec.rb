@@ -1,7 +1,10 @@
-require 'spec_helper'
+# frozen_string_literal: true
+
+require "spec_helper"
 
 describe SMSGatewayService do
-  let(:subject) { described_class.new(mobile_phone_number, code) }
+  subject { described_class.new(mobile_phone_number, code) }
+
   let(:mobile_phone_number) { "0600000000" }
   let(:code) { "0123456" }
 
@@ -19,15 +22,16 @@ describe SMSGatewayService do
     before do
       allow(Rails.application.secrets).to receive(:dig).with(:decidim, :verifications, :sms_gateway_service, :username).and_return(api_username)
       allow(Rails.application.secrets).to receive(:dig).with(:decidim, :verifications, :sms_gateway_service, :password).and_return(api_password)
-      stub_request(:get, api_url).
-        with(
+      stub_request(:get, api_url)
+        .with(
           headers: {
-            'Accept'=>'*/*',
-            'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
-            'Host'=>'ssl.etoilediese.fr',
-            'User-Agent'=>'Ruby'
-          }).
-        to_return(status: 200, body: response_body, headers: {})
+            "Accept" => "*/*",
+            "Accept-Encoding" => "gzip;q=1.0,deflate;q=0.6,identity;q=0.3",
+            "Host" => "ssl.etoilediese.fr",
+            "User-Agent" => "Ruby"
+          }
+        )
+        .to_return(status: 200, body: response_body, headers: {})
     end
 
     it "send request to external service" do
@@ -48,6 +52,7 @@ describe SMSGatewayService do
       before do
         allow(I18n).to receive(:t).with("sms_verification_workflow.message", code: code).and_return("Hello, here is the code to authenticate yourself on pétitions: 0123456")
       end
+
       it "rescue error and returns false" do
         expect(subject.deliver_code).to be_falsey
       end
