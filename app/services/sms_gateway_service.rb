@@ -22,18 +22,24 @@ class SMSGatewayService
     https = Net::HTTP.new(url.host, url.port)
     https.use_ssl = true
     response = https.get(url)
-    response = response.read_body
+    res_body = response.read_body
+    raise ArgumentError, res_body if res_body.include?("Echec")
 
     Rails.logger.info("#########################################################")
     Rails.logger.info("SMS Verification code delivered to #{mobile_phone_number}")
-    Rails.logger.info("SMS Verification API response #{response}")
+    Rails.logger.info("SMS Verification API response #{res_body}")
     Rails.logger.info("#########################################################")
 
     true
   rescue URI::InvalidURIError => e
     Rails.logger.error("[SMSGatewayService] - Error #{e.message}")
-    Rails.logger.error("[SMSGatewayService] - Ensure env variable 'SMS_GATEWAY_USERNAME' and 'SMS_GATEWAY_PASSWORD' are defined")
     Rails.logger.error("[SMSGatewayService] - Ensure there is no special chars in I18n translation : 'sms_verification_workflow.message'")
+
+    false
+  rescue ArgumentError => e
+    Rails.logger.error("[SMSGatewayService] - Error '#{e.message}'")
+    Rails.logger.error("[SMSGatewayService] - Ensure env variable 'SMS_GATEWAY_USERNAME' and 'SMS_GATEWAY_PASSWORD' are defined")
+
     false
   end
 end
