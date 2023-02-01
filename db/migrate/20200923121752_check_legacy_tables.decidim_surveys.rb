@@ -2,7 +2,6 @@
 
 # This migration comes from decidim_surveys (originally 20200609090533)
 
-# rubocop:disable Rails/Output
 # rubocop:disable Style/GuardClause
 class CheckLegacyTables < ActiveRecord::Migration[5.2]
   class Answer < ApplicationRecord
@@ -112,4 +111,3 @@ class CheckLegacyTables < ActiveRecord::Migration[5.2]
   end
 end
 # rubocop:enable Style/GuardClause
-# rubocop:enable Rails/Output

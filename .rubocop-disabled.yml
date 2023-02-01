@@ -9,3 +9,13 @@ Naming/MemoizedInstanceVariableName:
 
 RSpec/VerifiedDoubleReference:
   Enabled: false
+
+Naming/VariableNumber:
+  Enabled: false
+
+Rails/BulkChangeTable:
+  Enabled: false
+
+Lint/SafeNavigationChain:
+  Exclude:
+    - lib/tasks/migrate.rake
