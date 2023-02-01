@@ -55,9 +55,7 @@ module CreateInitiativeExtends
         scoped_type: scoped_type,
         area: area,
         signature_type: form.signature_type,
-        signature_end_date: signature_end_date,
-        state: "created",
-        hashtag: form.hashtag
+        signature_end_date: signature_end_date
       )
     end
   end
