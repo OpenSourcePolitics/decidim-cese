@@ -8,7 +8,11 @@ module AccountControllerExtends
     Decidim::DestroyAccount.call(current_user, @form) do
       on(:ok) do
         sign_out(current_user)
-        destroy_france_connect_session(session["omniauth.france_connect.end_session_uri"]) if active_france_connect_session?
+        if active_france_connect_session?
+          destroy_france_connect_session(session["omniauth.france_connect.end_session_uri"])
+        else
+          redirect_to decidim.root_path
+        end
         flash[:notice] = t("account.destroy.success", scope: "decidim")
       end
 
