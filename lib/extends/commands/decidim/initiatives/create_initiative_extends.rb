@@ -44,6 +44,22 @@ module CreateInitiativeExtends
     def comments_authorization_handler
       @comments_authorization_handler ||= Rails.application.secrets.dig(:decidim, :initiatives, :permissions, :comments, :authorization_handler)
     end
+
+    def build_initiative
+      Decidim::Initiative.new(
+        organization: form.current_organization,
+        title: { current_locale => form.title },
+        description: { current_locale => form.description },
+        author: current_user,
+        decidim_user_group_id: form.decidim_user_group_id,
+        scoped_type: scoped_type,
+        area: area,
+        signature_type: form.signature_type,
+        signature_end_date: signature_end_date,
+        state: "created",
+        hashtag: form.hashtag
+      )
+    end
   end
 end
 
