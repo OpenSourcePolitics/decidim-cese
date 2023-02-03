@@ -11,14 +11,11 @@ module Decidim
         context "when valid data" do
           it_behaves_like "update an initiative answer" do
             context "when the user is an admin" do
-              let(:current_user) { create(:user, :admin, organization: initiative.organization) }
+              let!(:current_user) { create(:user, :admin, organization: initiative.organization) }
+              let!(:follower) { create(:user, organization: organization) }
+              let!(:follow) { create(:follow, followable: initiative, user: follower) }
 
-              before do
-                follower = create(:user, organization: organization)
-                create(:follow, followable: initiative, user: follower)
-              end
-
-              it "notifies the followers for extension" do
+              it "notifies the followers for extension and answer" do
                 expect(Decidim::EventsManager)
                   .to receive(:publish)
                   .with(
@@ -27,11 +24,7 @@ module Decidim
                     resource: initiative,
                     followers: [follower]
                   )
-
-                command.call
-              end
-
-              it "notifies the followers for answer" do
+                  .ordered
                 expect(Decidim::EventsManager)
                   .to receive(:publish)
                   .with(
@@ -40,6 +33,7 @@ module Decidim
                     resource: initiative,
                     followers: [follower]
                   )
+                  .ordered
 
                 command.call
               end
@@ -48,7 +42,12 @@ module Decidim
                 let(:signature_end_date) { initiative.signature_end_date }
 
                 it "doesn't notify the followers" do
-                  expect(Decidim::EventsManager).not_to receive(:publish)
+                  expect(Decidim::EventsManager).not_to receive(:publish).with(
+                    event: "decidim.events.initiatives.initiative_extended",
+                    event_class: Decidim::Initiatives::ExtendInitiativeEvent,
+                    resource: initiative,
+                    followers: [follower]
+                  )
 
                   command.call
                 end

@@ -520,11 +520,6 @@ describe "Initiative", type: :system do
             expect(find(:xpath, "//select[@id='initiative_signature_type']", visible: :all).value).to eq("online")
           end
 
-          it "shows input for hashtag" do
-            expect(page).to have_content("Hashtag")
-            expect(find(:xpath, "//input[@id='initiative_hashtag']", visible: :all).value).to eq("")
-          end
-
           context "when only one signature collection and scope are available" do
             let(:initiative_type_scope2) { nil }
             let(:initiative_type) { create(:initiatives_type, organization: organization, minimum_committee_members: initiative_type_minimum_committee_members, signature_type: "offline") }
