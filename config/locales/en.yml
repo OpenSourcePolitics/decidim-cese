@@ -32,6 +32,10 @@ en:
         name: Identity Verification Form
       osp_authorization_workflow:
         name: Authorization procedure
+    devise:
+      sessions:
+        new:
+          sign_in_disabled: Sign in disabled
     events:
       budgets:
         pending_order:
@@ -87,6 +91,13 @@ en:
         update:
           invalid: There was a problem updating the meeting.
           success: You have updated the meeting successfully.
+    omniauth:
+      france_connect:
+        external:
+          link: https://franceconnect.gouv.fr/
+          text: What is FranceConnect ?
+        forgot_password:
+          ok_text: Warning, this password is the one of your local account and in no case the one of the account you use through FranceConnect. It will only be used when you log in with your email address rather than via FranceConnect.
     proposals:
       create:
         error: There was a problem saving
@@ -120,6 +131,11 @@ en:
         change: Change
         choose: Choose
         currently_selected: Currently selected
+    shared:
+      login_modal:
+        close_modal: Close modal
+        please_sign_in: Please sign in
+        sign_up: Sign up
     system:
       organizations:
         omniauth_settings:
@@ -166,6 +182,17 @@ en:
             mobile_phone_number: Mobile phone number
             send: Send me an SMS
             title: Verify your identity with the SMS verification method
+  devise:
+    passwords:
+      new:
+        forgot_your_password: Forgot your password
+        send_me_reset_password_instructions: Send me reset password instructions
+    sessions:
+      new:
+        sign_in: Log in
+    shared:
+      links:
+        forgot_your_password: Forgot your password
   faker:
     address:
       country_code:
