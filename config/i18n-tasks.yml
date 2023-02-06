@@ -91,6 +91,9 @@ ignore_missing:
  - decidim.initiatives.admin.content_blocks.highlighted_initiatives.order.*
  - decidim.initiatives.create_initiative.fill_data.*
  - decidim.initiatives.form.*
+ - layouts.decidim.header.user_menu
+ - decidim.devise.shared.omniauth_buttons.or
+ - devise.shared.links.sign_in_with_provider
 
 # Consider these keys used:
 ignore_unused:
