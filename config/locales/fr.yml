@@ -32,6 +32,10 @@ fr:
         name: Formulaire de vérification d'identité
       osp_authorization_workflow:
         name: Procédure d'autorisation
+    devise:
+      sessions:
+        new:
+          sign_in_disabled: Vous pouvez accéder avec un compte externe
     events:
       budgets:
         pending_order:
@@ -90,6 +94,13 @@ fr:
       destroy_draft:
         error: Des erreurs sont survenues lors de la suppression du brouillon de la proposition.
         success: Le brouillon de la proposition a bien été supprimé.
+      omniauth:
+        france_connect:
+          external:
+            link: https://franceconnect.gouv.fr/
+            text: Qu'est-ce-que FranceConnect ?
+          forgot_password:
+            ok_text: Attention, ce mot de passe est celui de votre compte local et en aucun cas celui du compte que vous utilisez au travers de FranceConnect. Il vous servira uniquement lorsque vous vous connecterez avec votre adresse mail plutôt que via FranceConnect.
       proposals:
         compare:
           no_similars_found: Bien joué ! Aucune proposition similaire n'a été trouvée
@@ -116,6 +127,11 @@ fr:
         change: Modifier
         choose: Sélectionner
         currently_selected: Sélectionné
+    shared:
+      login_modal:
+        close_modal: Fermer
+        please_sign_in: Veuillez vous connecter
+        sign_up: Créer un compte
     system:
       organizations:
         omniauth_settings:
@@ -162,6 +178,17 @@ fr:
             mobile_phone_number: Votre numéro de téléphone mobile
             send: Envoyer un SMS
             title: Vérifier votre identité avec la méthode de vérification par SMS
+  devise:
+    passwords:
+      new:
+        forgot_your_password: Mot de passe oublié ?
+        send_me_reset_password_instructions: Envoyez-moi les instructions de réinitialisation du mot de passe
+    sessions:
+      new:
+        sign_in: S'identifier
+    shared:
+      links:
+        forgot_your_password: Mot de passe oublié ?
   faker:
     address:
       country_code:
@@ -191,4 +218,4 @@ fr:
         conversations: Conversations
         notifications: Notifications
   sms_verification_workflow:
-    message: Bonjour, %{code} est le code pour vous authentifier sur la plateforme de pétitions du CESE.
+    message: Bonjour, %{code} est le code pour vous authentifier sur la plateforme de petitions du CESE.
