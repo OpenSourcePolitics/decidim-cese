@@ -63,6 +63,8 @@ fr:
           notification_title: Le participant <a href="%{resource_path}">%{resource_title}</a> a tenté de se faire vérifier avec les données de l'utilisateur représenté <a href="%{managed_user_path}">%{managed_user_name}</a>.
     initiatives:
       create_initiative:
+        fill_data:
+          decidim_user_group_id_help: Il est impossible de changer l'auteur de la pétition après la création
         select_initiative_type:
           verification_required: Vérifiez votre compte pour signer la pétition
       modal:

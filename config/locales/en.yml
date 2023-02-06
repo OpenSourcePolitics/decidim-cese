@@ -69,6 +69,8 @@ en:
               most_popular: Most popular
               random: Randomly
       create_initiative:
+        fill_data:
+          decidim_user_group_id_help: It's not possible to change initiative authorship after creation
         select_initiative_type:
           verification_required: Verify your account to promote this initiative
       modal:

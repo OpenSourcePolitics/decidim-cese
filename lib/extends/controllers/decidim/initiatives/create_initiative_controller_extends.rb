@@ -1,45 +1,51 @@
 # frozen_string_literal: true
 
 module CreateInitiativeControllerExtends
-  def show
-    send("#{step}_step", initiative: session_initiative)
-  end
+  extend ActiveSupport::Concern
 
-  def update
-    enforce_permission_to :create, :initiative, { initiative_type: initiative_type_from_params }
-    send("#{step}_step", params)
-  end
+  included do
+    helper Decidim::Initiatives::CreateInitiativeHelper
 
-  private
-
-  def show_similar_initiatives_step(parameters)
-    @form = build_form(Decidim::Initiatives::PreviousForm, parameters)
-    unless @form.valid?
-      redirect_to previous_wizard_path(validate_form: true)
-      return
+    def show
+      send("#{step}_step", initiative: session_initiative)
     end
 
-    if similar_initiatives.empty?
-      @form = build_form(Decidim::Initiatives::InitiativeForm, parameters)
-      redirect_to wizard_path(:fill_data)
+    def update
+      enforce_permission_to :create, :initiative, { initiative_type: initiative_type_from_params }
+      send("#{step}_step", params)
     end
 
-    render_wizard unless performed?
-  end
+    private
 
-  def previous_form_step(parameters)
-    @form = build_form(Decidim::Initiatives::PreviousForm, parameters)
+    def show_similar_initiatives_step(parameters)
+      @form = build_form(Decidim::Initiatives::PreviousForm, parameters)
+      unless @form.valid?
+        redirect_to previous_wizard_path(validate_form: true)
+        return
+      end
 
-    enforce_permission_to :create, :initiative, { initiative_type: initiative_type }
+      if similar_initiatives.empty?
+        @form = build_form(Decidim::Initiatives::InitiativeForm, parameters)
+        redirect_to wizard_path(:fill_data)
+      end
 
-    render_wizard
-  end
+      render_wizard unless performed?
+    end
 
-  def initiative_type_from_params
-    Decidim::InitiativesType.find_by(id: params["initiative"]["type_id"])
+    def previous_form_step(parameters)
+      @form = build_form(Decidim::Initiatives::PreviousForm, parameters)
+
+      enforce_permission_to :create, :initiative, { initiative_type: initiative_type }
+
+      render_wizard
+    end
+
+    def initiative_type_from_params
+      Decidim::InitiativesType.find_by(id: params["initiative"]["type_id"])
+    end
   end
 end
 
 Decidim::Initiatives::CreateInitiativeController.class_eval do
-  prepend(CreateInitiativeControllerExtends)
+  include(CreateInitiativeControllerExtends)
 end

@@ -4,6 +4,8 @@ module InitiativesControllerExtends
   extend ActiveSupport::Concern
 
   included do
+    helper Decidim::Initiatives::CreateInitiativeHelper
+
     helper_method :available_initiative_types
   end
 end
