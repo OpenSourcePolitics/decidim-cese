@@ -32,6 +32,13 @@ en:
         name: Identity Verification Form
       osp_authorization_workflow:
         name: Authorization procedure
+    blogs:
+      blogs_mailer:
+        initiative_link:
+          check_post_details: Check Post Details
+        notify_post:
+          body: "%{author} has published a new post in the initiative %{title} named %{post_title}."
+          subject: New post published in the initiative %{title}
     devise:
       sessions:
         new:
@@ -73,6 +80,10 @@ en:
           decidim_user_group_id_help: It's not possible to change initiative authorship after creation
         select_initiative_type:
           verification_required: Verify your account to promote this initiative
+      initiatives_mailer:
+        answer_body_for: There is a new answer for the initiative "%{title}".
+        answer_for: An initiative that you are following has been answered
+        new_answer_message: The answer to this initiative is "%{answer}".
       modal:
         not_authorized:
           authorizations_page: View authorizations
