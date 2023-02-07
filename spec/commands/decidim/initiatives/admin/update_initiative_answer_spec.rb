@@ -38,6 +38,15 @@ module Decidim
                 command.call
               end
 
+              it "sends an email to the followers" do
+                expect(Decidim::Initiatives::InitiativesMailer)
+                  .to receive(:notify_answer)
+                  .with(initiative, follower)
+                  .and_call_original
+
+                command.call
+              end
+
               context "when the signature end time is not modified" do
                 let(:signature_end_date) { initiative.signature_end_date }
 

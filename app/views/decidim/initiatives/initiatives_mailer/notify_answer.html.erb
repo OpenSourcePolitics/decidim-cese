@@ -1,0 +1,9 @@
+<%= decidim_sanitize @body %>
+
+<div class="row">
+  <p>
+    <%= t("decidim.initiatives.initiatives_mailer.new_answer_message", answer: @answer) %>
+  </p>
+</div>
+<br><br>
+<%= render partial: "initiative_link" %>

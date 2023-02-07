@@ -11,6 +11,12 @@ module UpdateInitiativeAnswerExtends
     )
     notify_initiative_is_extended if @notify_extended
     notify_initiative_is_answered if @notify_answered
+
+    initiative.followers.each do |follower|
+      Decidim::Initiatives::InitiativesMailer
+        .notify_answer(initiative, follower)
+        .deliver_later
+    end
     broadcast(:ok, initiative)
   rescue ActiveRecord::RecordInvalid
     broadcast(:invalid, initiative)
