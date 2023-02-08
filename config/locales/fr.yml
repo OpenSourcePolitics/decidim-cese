@@ -37,8 +37,8 @@ fr:
         initiative_link:
           check_post_details: Voir les détails de l'article
         notify_post:
-          body: "%{author} a publié un nouvel article dans l'initiative %{title} intitulé %{post_title}."
-          subject: Nouvel article publié dans l'initiative %{title}
+          body: "%{author} a publié un nouvel article dans la pétition %{title} intitulé %{post_title}."
+          subject: Nouvel article publié dans la pétition %{title}
     devise:
       sessions:
         new:
@@ -76,8 +76,8 @@ fr:
           verification_required: Vérifiez votre compte pour signer la pétition
       initiatives_mailer:
         answer_body_for: Il y a une nouvelle réponse pour la pétition "%{title}".
-        answer_for: Une initiative que vous suivez a reçu une réponse
-        new_answer_message: La réponse à cette nouvelle initiative est "%{answer}".
+        answer_for: Une pétition que vous suivez a reçu une réponse
+        new_answer_message: La réponse à cette pétition est "%{answer}".
       modal:
         not_authorized:
           authorizations_page: Voir les vérifications
