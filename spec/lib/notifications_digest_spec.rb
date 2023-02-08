@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "spec_helper"
 require "notifications_digest"
 
@@ -19,7 +21,7 @@ describe NotificationsDigest do
       expect(Decidim::EmailNotificationsDigestGeneratorJob).to have_received(:perform_later).exactly(4)
     end
 
-    context "frequency is weekly" do
+    context "and frequency is weekly" do
       let(:frequency) { :weekly }
 
       it "executes DigestGeneratorJob on weekly users" do
@@ -29,7 +31,7 @@ describe NotificationsDigest do
       end
     end
 
-    context "frequency is not in list" do
+    context "and frequency is not in list" do
       let(:frequency) { :unknown }
 
       it "executes DigestGeneratorJob on weekly users" do

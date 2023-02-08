@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module NotificationsDigest
   def self.notifications_digest(frequency)
     return unless [:daily, :weekly].include?(frequency)
