@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/OpenSourcePolitics/decidim-module-blog_author_petition.git
-  revision: 52540df6747342e135ff189bbfb51029af968f66
+  revision: 67bca52f4d362a57d2ffe3d31ca4295a4d82762e
   branch: main
   specs:
     decidim-blog_author_petition (0.1)
