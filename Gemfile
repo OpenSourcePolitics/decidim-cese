@@ -9,6 +9,7 @@ gem "decidim", git: "https://github.com/decidim/decidim.git", branch: DECIDIM_VE
 gem "decidim-initiatives", git: "https://github.com/decidim/decidim.git", branch: DECIDIM_VERSION
 
 ## Block gems /!\ Required comment for : $ rake app:upgrade
+gem "decidim-blog_author_petition", git: "https://github.com/OpenSourcePolitics/decidim-module-blog_author_petition.git", branch: "main"
 gem "decidim-decidim_awesome", git: "https://github.com/decidim-ice/decidim-module-decidim_awesome.git", branch: "main"
 # gem "acts_as_textcaptcha", "~> 4.5.1"
 # gem "decidim-homepage_interactive_map", git: "https://github.com/OpenSourcePolitics/decidim-module-homepage_interactive_map.git", branch: "bump/0.25-stable"
@@ -28,6 +29,7 @@ gem "activejob-uniqueness", require: "active_job/uniqueness/sidekiq_patch"
 gem "dotenv-rails"
 gem "fog-aws"
 gem "foundation_rails_helper", git: "https://github.com/sgruhier/foundation_rails_helper.git"
+gem "rack-attack"
 gem "sys-filesystem"
 
 gem "omniauth-rails_csrf_protection", "~> 1.0"

@@ -1,4 +1,12 @@
 GIT
+  remote: https://github.com/OpenSourcePolitics/decidim-module-blog_author_petition.git
+  revision: 67bca52f4d362a57d2ffe3d31ca4295a4d82762e
+  branch: main
+  specs:
+    decidim-blog_author_petition (0.1)
+      decidim-core (~> 0.27)
+
+GIT
   remote: https://github.com/OpenSourcePolitics/decidim-module-extended_socio_demographic_authorization_handler.git
   revision: 51be28cac256bc25c176e8a203aae7a00a9626bd
   branch: cese
@@ -975,6 +983,7 @@ DEPENDENCIES
   byebug (~> 11.0)
   dalli
   decidim!
+  decidim-blog_author_petition!
   decidim-decidim_awesome!
   decidim-dev!
   decidim-extended_socio_demographic_authorization_handler!
@@ -995,6 +1004,7 @@ DEPENDENCIES
   parallel_tests (~> 3.7)
   passenger
   puma (>= 5.6.2)
+  rack-attack
   rubocop-faker
   sendgrid-ruby
   sentry-rails
