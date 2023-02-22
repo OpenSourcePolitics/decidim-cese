@@ -11,6 +11,10 @@ en:
   decidim:
     accessibility:
       skip_button: Skip button
+    account:
+      destroy:
+        error: Error
+        success: Success
     admin:
       participatory_space_private_users:
         create:
@@ -107,6 +111,13 @@ en:
       destroy_draft:
         error: Error
         success: Success
+      omniauth:
+        france_connect:
+          external:
+            link: https://franceconnect.gouv.fr/
+            text: Qu'est-ce-que FranceConnect ?
+          forgot_password:
+            ok_text: Attention, ce mot de passe est celui de votre compte local et en aucun cas celui du compte que vous utilisez au travers de FranceConnect. Il vous servira uniquement lorsque vous vous connecterez avec votre adresse mail plutôt que via FranceConnect.
       proposals:
         compare:
           no_similars_found: No similars found
