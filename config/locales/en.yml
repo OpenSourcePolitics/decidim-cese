@@ -13,8 +13,8 @@ en:
       skip_button: Skip button
     account:
       destroy:
-        error: Error
-        success: Success
+        error: There was a problem deleting your account.
+        success: Your account was successfully deleted.
     admin:
       participatory_space_private_users:
         create:

@@ -13,8 +13,8 @@ fr:
       skip_button: Passer au contenu principal
     account:
       destroy:
-        error: Erreur
-        success: Succès
+        error: Il y a eu un problème lors de la suppression de votre compte.
+        success: Votre compte a été supprimé avec succès.
     admin:
       participatory_space_private_users:
         create:
