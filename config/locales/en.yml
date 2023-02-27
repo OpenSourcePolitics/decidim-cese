@@ -11,6 +11,10 @@ en:
   decidim:
     accessibility:
       skip_button: Skip button
+    account:
+      destroy:
+        error: There was a problem deleting your account.
+        success: Your account was successfully deleted.
     admin:
       participatory_space_private_users:
         create:
