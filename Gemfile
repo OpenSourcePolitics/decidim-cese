@@ -2,12 +2,14 @@
 
 source "https://rubygems.org"
 
-DECIDIM_VERSION = "release/0.27-stable"
+DECIDIM_VERSION = "0.27.1"
 ruby RUBY_VERSION
 
-gem "decidim", git: "https://github.com/decidim/decidim.git", branch: DECIDIM_VERSION
-gem "decidim-initiatives", git: "https://github.com/decidim/decidim.git", branch: DECIDIM_VERSION
+gem "decidim", DECIDIM_VERSION
+gem "decidim-initiatives", DECIDIM_VERSION
 
+gem "decidim-transparent_trash"
+gem "deface"
 ## Block gems /!\ Required comment for : $ rake app:upgrade
 gem "decidim-blog_author_petition", git: "https://github.com/OpenSourcePolitics/decidim-module-blog_author_petition.git", branch: "main"
 gem "decidim-decidim_awesome", git: "https://github.com/decidim-ice/decidim-module-decidim_awesome.git", branch: "main"
@@ -44,7 +46,7 @@ group :development, :test do
   gem "byebug", "~> 11.0", platform: :mri
 
   gem "brakeman", "~> 5.2"
-  gem "decidim-dev", git: "https://github.com/decidim/decidim.git", branch: DECIDIM_VERSION
+  gem "decidim-dev", DECIDIM_VERSION
   gem "parallel_tests", "~> 3.7"
 end
 
