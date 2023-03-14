@@ -22,8 +22,8 @@
       <b><%= t "decidim.initiatives.print.signature" %></b>
     </p>
     <div class="images_signature">
-      <img src="data:image/png;base64,<%= ENV["IMG_SIGNATURE"] %>", width="250"/>
-      <img src="data:image/png;base64,<%= ENV["IMG_CACHET"] %>", width="200"/>
+      <%= signature_image_tag %>
+      <%= cachet_image_tag %>
     </div>
   </div>
 
