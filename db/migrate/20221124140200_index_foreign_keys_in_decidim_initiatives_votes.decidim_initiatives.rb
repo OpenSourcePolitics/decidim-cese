@@ -3,7 +3,7 @@
 
 class IndexForeignKeysInDecidimInitiativesVotes < ActiveRecord::Migration[5.2]
   def change
-    add_index :decidim_initiatives_votes, :decidim_user_group_id
-    add_index :decidim_initiatives_votes, :hash_id
+    add_index :decidim_initiatives_votes, :decidim_user_group_id, if_not_exists: true
+    add_index :decidim_initiatives_votes, :hash_id, if_not_exists: true
   end
 end
