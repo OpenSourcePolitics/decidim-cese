@@ -387,7 +387,7 @@ GEM
     decidim-templates (0.27.1)
       decidim-core (= 0.27.1)
       decidim-forms (= 0.27.1)
-    decidim-transparent_trash (0.0.1)
+    decidim-transparent_trash (0.0.2)
     decidim-verifications (0.27.1)
       decidim-core (= 0.27.1)
     declarative-builder (0.1.0)
