@@ -35,6 +35,11 @@ module Decidim
                class_name: "Decidim::InitiativesTypeScope",
                inverse_of: :initiatives
 
+    belongs_to :status,
+               foreign_key: "decidim_status_id",
+               class_name: "Decidim::Status",
+               optional: true
+
     delegate :type, :scope, :scope_name, :supports_required, to: :scoped_type, allow_nil: true
     delegate :attachments_enabled?, :promoting_committee_enabled?, :custom_signature_end_date_enabled?, :area_enabled?, to: :type
     delegate :name, to: :area, prefix: true, allow_nil: true
@@ -132,6 +137,13 @@ module Decidim
       joins(:scoped_type).references(:decidim_scopes).where(conditions.join(" OR "), *clean_scope_ids.map(&:to_i))
     }
 
+    scope :with_any_status, lambda { |*original_status_ids|
+      status_ids = original_status_ids.map { |id| id.to_s.split("_") }.flatten.uniq
+      return self if status_ids.include?("all")
+
+      where(decidim_status_id: status_ids)
+    }
+
     scope :authored_by, lambda { |author|
       co_authoring_initiative_ids = Decidim::InitiativesCommitteeMember.where(
         decidim_users_id: author
@@ -164,7 +176,7 @@ module Decidim
     end
 
     def self.ransackable_scopes(_auth_object = nil)
-      [:with_any_state, :with_any_type, :with_any_scope, :with_any_area]
+      [:with_any_state, :with_any_status, :with_any_type, :with_any_scope, :with_any_area]
     end
 
     delegate :document_number_authorization_handler, :promoting_committee_enabled?, to: :type
