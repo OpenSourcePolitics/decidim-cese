@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_11_24_140209) do
+ActiveRecord::Schema.define(version: 2023_03_15_135662) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "ltree"
@@ -763,12 +763,14 @@ ActiveRecord::Schema.define(version: 2022_11_24_140209) do
     t.bigint "decidim_area_id"
     t.integer "comments_count", default: 0, null: false
     t.integer "follows_count", default: 0, null: false
+    t.bigint "decidim_status_id"
     t.index "md5((description)::text)", name: "decidim_initiatives_description_search"
     t.index ["answered_at"], name: "index_decidim_initiatives_on_answered_at"
     t.index ["comments_count"], name: "index_decidim_initiatives_on_comments_count"
     t.index ["decidim_area_id"], name: "index_decidim_initiatives_on_decidim_area_id"
     t.index ["decidim_author_id", "decidim_author_type"], name: "index_decidim_initiatives_on_decidim_author"
     t.index ["decidim_organization_id"], name: "index_decidim_initiatives_on_decidim_organization_id"
+    t.index ["decidim_status_id"], name: "index_decidim_initiatives_on_decidim_status_id"
     t.index ["decidim_user_group_id"], name: "index_decidim_initiatives_on_decidim_user_group_id"
     t.index ["first_progress_notification_at"], name: "index_decidim_initiatives_on_first_progress_notification_at"
     t.index ["follows_count"], name: "index_decidim_initiatives_on_follows_count"
@@ -840,6 +842,7 @@ ActiveRecord::Schema.define(version: 2022_11_24_140209) do
     t.integer "decidim_scope_id"
     t.index ["decidim_author_id"], name: "index_decidim_initiatives_votes_on_decidim_author_id"
     t.index ["decidim_initiative_id"], name: "index_decidim_initiatives_votes_on_decidim_initiative_id"
+    t.index ["hash_id"], name: "index_decidim_initiatives_votes_on_hash_id"
   end
 
   create_table "decidim_meetings_agenda_items", force: :cascade do |t|
@@ -1646,6 +1649,14 @@ ActiveRecord::Schema.define(version: 2022_11_24_140209) do
     t.index ["topic_id"], name: "index_decidim_static_pages_on_topic_id"
   end
 
+  create_table "decidim_statuses", force: :cascade do |t|
+    t.jsonb "name"
+    t.bigint "decidim_organization_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["decidim_organization_id"], name: "index_decidim_statuses_on_decidim_organization_id"
+  end
+
   create_table "decidim_surveys_surveys", id: :serial, force: :cascade do |t|
     t.integer "decidim_component_id"
     t.datetime "created_at", null: false
@@ -1936,6 +1947,7 @@ ActiveRecord::Schema.define(version: 2022_11_24_140209) do
   add_foreign_key "decidim_scopes", "decidim_scope_types", column: "scope_type_id"
   add_foreign_key "decidim_scopes", "decidim_scopes", column: "parent_id"
   add_foreign_key "decidim_static_pages", "decidim_organizations"
+  add_foreign_key "decidim_statuses", "decidim_organizations"
   add_foreign_key "decidim_term_customizer_constraints", "decidim_organizations"
   add_foreign_key "decidim_term_customizer_constraints", "decidim_term_customizer_translation_sets", column: "translation_set_id"
   add_foreign_key "decidim_term_customizer_translations", "decidim_term_customizer_translation_sets", column: "translation_set_id"
