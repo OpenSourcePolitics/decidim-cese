@@ -19,3 +19,7 @@ Rails/BulkChangeTable:
 Lint/SafeNavigationChain:
   Exclude:
     - lib/tasks/migrate.rake
+
+Rails/UniqueValidationWithoutIndex:
+  Exclude:
+    - app/models/decidim/initiative.rb
