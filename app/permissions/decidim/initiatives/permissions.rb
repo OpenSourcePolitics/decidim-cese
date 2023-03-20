@@ -97,10 +97,10 @@ module Decidim
 
       def creation_enabled?
         Decidim::Initiatives.creation_enabled && (
-        Decidim::Initiatives.do_not_require_authorization ||
-            UserAuthorizations.for(user).any? ||
-            Decidim::UserGroups::ManageableUserGroups.for(user).verified.any?
-      )
+          Decidim::Initiatives.do_not_require_authorization ||
+            Decidim::Initiatives::UserAuthorizations.for(user).any? ||
+            Decidim::UserGroups::ManageableUserGroups.for(user).verified.any?) &&
+          authorized?(:create, permissions_holder: initiative_type)
       end
 
       def request_membership?
