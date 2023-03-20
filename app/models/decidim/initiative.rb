@@ -25,6 +25,8 @@ module Decidim
     include Decidim::HasArea
     include Decidim::FilterableResource
 
+    TRANSPARENT_STATES = %w(invalidated illegal).freeze
+
     translatable_fields :title, :description, :answer
 
     belongs_to :organization,
@@ -67,7 +69,7 @@ module Decidim
              as: :participatory_space
 
     enum signature_type: { online: 0, offline: 1, any: 2 }, _suffix: true
-    enum state: { created: 0, validating: 1, discarded: 2, published: 3, rejected: 4, accepted: 5 }
+    enum state: { created: 0, validating: 1, discarded: 2, published: 3, rejected: 4, accepted: 5, invalidated: 6, illegal: 7}
 
     validates :title, :description, :state, :signature_type, presence: true
     validates :hashtag,
@@ -85,6 +87,8 @@ module Decidim
     }
     scope :published, -> { where.not(published_at: nil) }
     scope :with_state, ->(state) { where(state: state) if state.present? }
+    scope :transparent, -> { where(state: TRANSPARENT_STATES) }
+    scope :not_transparent, -> { where.not(state: TRANSPARENT_STATES) }
 
     scope_search_multi :with_any_state, [:accepted, :rejected, :answered, :open, :closed]
 
@@ -191,8 +195,9 @@ module Decidim
     end
 
     # Public: Whether the object's comments are visible or not.
+    # Initiatives invalidated and illegal are not commentable
     def commentable?
-      type.comments_enabled?
+      type.comments_enabled? && !invalidated? && !illegal?
     end
 
     # Public: Check if an initiative has been created by an individual person.
@@ -210,17 +215,20 @@ module Decidim
       !closed?
     end
 
+
     # Public: Checks if an initiative is closed. An initiative is closed when
     # at least one of the following conditions is true:
     #
     # * It has been discarded.
     # * It has been rejected.
     # * It has been accepted.
+    # * It has been invalidated.
+    # * It has been illegal.
     # * Signature collection period has finished.
     #
     # Returns a Boolean
     def closed?
-      discarded? || rejected? || accepted? || !votes_enabled?
+      discarded? || rejected? || accepted? || invalidated? || illegal? || !votes_enabled?
     end
 
     # Public: Returns the author name. If it has been created by an organization it will
@@ -279,11 +287,39 @@ module Decidim
       )
     end
 
+    # Public: Publishes this initiative as invalidated
+    #
+    # Returns true if the record was properly saved, false otherwise.
+    def invalidate!
+      return false if published?
+
+      update(
+        published_at: Time.current,
+        state: "invalidated",
+        signature_start_date: nil,
+        signature_end_date: nil
+      )
+    end
+
+    # Public: Publishes this initiative as illegal
+    #
+    # Returns true if the record was properly saved, false otherwise.
+    def illegal!
+      return false if published?
+
+      update(
+        published_at: Time.current,
+        state: "illegal",
+        signature_start_date: nil,
+        signature_end_date: nil
+      )
+    end
+
     # Public: Unpublishes this initiative
     #
     # Returns true if the record was properly saved, false otherwise.
     def unpublish!
-      return false unless published?
+      return false unless published? || invalidated? || illegal?
 
       update(published_at: nil, state: "discarded")
     end
