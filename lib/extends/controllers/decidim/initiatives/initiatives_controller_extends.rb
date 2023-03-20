@@ -5,6 +5,7 @@ module InitiativesControllerExtends
 
   included do
     helper Decidim::Initiatives::CreateInitiativeHelper
+    helper Decidim::Initiatives::InitiativePrintHelper
 
     helper_method :available_initiative_types
 
@@ -24,6 +25,10 @@ module InitiativesControllerExtends
 
     def default_filter_status_params
       %w(all) + current_organization.statuses.pluck(:id).map(&:to_s)
+    end
+
+    def print
+      enforce_permission_to :print, :initiative, initiative: current_initiative
     end
   end
 end

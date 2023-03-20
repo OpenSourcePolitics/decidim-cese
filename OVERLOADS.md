@@ -60,3 +60,10 @@ de6d804 - fix multipart object tagging (#40) (#41), 2021-12-24
 
 * `lib/tasks/restore_dump.rake`
 705e0ad - Run rubocop, 2021-12-01
+
+## Add recepisse
+* `app/controllers/decidim/initiatives/initiatives_controller.rb`
+* `app/permissions/decidim/initiatives/permissions.rb`
+* `app/views/decidim/initiatives/initiatives/print.html.erb`
+* `app/views/decidim/initiatives/initiatives/show.html.erb`
+* `app/permissions/decidim/initiatives/permissions.rb`
