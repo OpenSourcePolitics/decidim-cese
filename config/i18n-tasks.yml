@@ -94,6 +94,11 @@ ignore_missing:
  - layouts.decidim.header.user_menu
  - decidim.devise.shared.omniauth_buttons.or
  - devise.shared.links.sign_in_with_provider
+ - decidim.initiatives.initiatives.print.print
+ - decidim.initiatives.initiatives.show.{any_vote_method,offline_method,edit,send_to_technical_validation,confirm,follow_description}
+ - decidim.proposals.omniauth.france_connect.external.{link,text}
+ - decidim.proposals.omniauth.france_connect.forgot_password.ok_text
+
 
 # Consider these keys used:
 ignore_unused:
