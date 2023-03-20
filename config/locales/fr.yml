@@ -82,14 +82,9 @@ fr:
           title: Vérification requise
       print:
         date: Fait à Paris, le %{date}
-        end: "Le présent récépissé ne préjuge en rien de la recevabilité de la pétition, étudiée par le Bureau lorsque celle-ci réunit
-                     les conditions de saisine du Conseil économique, social et environnemental."
+        end: Le présent récépissé ne préjuge en rien de la recevabilité de la pétition, étudiée par le Bureau lorsque celle-ci réunit les conditions de saisine du Conseil économique, social et environnemental.
         signature: Le Secrétaire général du CESE
-        start: "Le Conseil économique social et environnemental atteste la réception et la mise en ligne de la
-                pétition intitulée « <b> %{title}</b> », déposée par <b>%{name}</b>, identifié(e) comme mandataire unique. <br/>
-                La pétition est mise en ligne sur la plateforme de pétitions du CESE le %{publication_date}. <br/>
-                Conformément au décret n°2022-886 du 14 juin 2022, ce récépissé ouvre le délai d’un an pour recueillir des signatures.
-                La pétition sera clôturée le %{end_date}, à 23h59."
+        start: Le Conseil économique social et environnemental atteste la réception et la mise en ligne de la pétition intitulée « <b> %{title}</b> », déposée par <b>%{name}</b>, identifié(e) comme mandataire unique. <br/> La pétition est mise en ligne sur la plateforme de pétitions du CESE le %{publication_date}. <br/> Conformément au décret n°2022-886 du 14 juin 2022, ce récépissé ouvre le délai d’un an pour recueillir des signatures. La pétition sera clôturée le %{end_date}, à 23h59.
     meetings:
       directory:
         meetings:

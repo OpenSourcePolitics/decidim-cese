@@ -119,4 +119,6 @@ ignore_unused:
   - decidim.events.initiatives.initiative_answered.*
   - decidim.initiatives.create_initiative.select_initiative_type.*
   - decidim.resources.initiatives_type.actions.create
+  - decidim.proposals.omniauth.france_connect.external.{link,text}
+  - decidim.proposals.omniauth.france_connect.forgot_password.ok_text
 
