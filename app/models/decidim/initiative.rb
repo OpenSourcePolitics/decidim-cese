@@ -69,7 +69,7 @@ module Decidim
              as: :participatory_space
 
     enum signature_type: { online: 0, offline: 1, any: 2 }, _suffix: true
-    enum state: { created: 0, validating: 1, discarded: 2, published: 3, rejected: 4, accepted: 5, invalidated: 6, illegal: 7}
+    enum state: { created: 0, validating: 1, discarded: 2, published: 3, rejected: 4, accepted: 5, invalidated: 6, illegal: 7 }
 
     validates :title, :description, :state, :signature_type, presence: true
     validates :hashtag,
@@ -214,7 +214,6 @@ module Decidim
     def open?
       !closed?
     end
-
 
     # Public: Checks if an initiative is closed. An initiative is closed when
     # at least one of the following conditions is true:
