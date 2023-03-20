@@ -13,9 +13,7 @@ namespace :decidim do
       logger.info("#{rails_migrations.down.count} migrations seems to be missing...")
       logger.info("#{rails_migrations.not_found.count} migrations registered but not found in current project, must be compared with previous migrations folder.")
 
-      if rails_migrations.down.blank?
-        logger.info("All migrations seems to be 'up', end of task")
-      end
+      logger.info("All migrations seems to be 'up', end of task") if rails_migrations.down.blank?
 
       rails_migrations.display_status!
 
@@ -205,9 +203,7 @@ class MigrationsFixer
 
   # Ensure osp_app path exists
   def validate_osp_app_path
-    unless File.directory?(osp_app_path)
-      @logger.fatal("Directory '#{osp_app_path}' not found, aborting task...")
-    end
+    @logger.fatal("Directory '#{osp_app_path}' not found, aborting task...") unless File.directory?(osp_app_path)
   end
 
   # Ensure migrations path exists

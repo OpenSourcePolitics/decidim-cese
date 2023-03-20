@@ -9,6 +9,7 @@ module InitiativesControllerExtends
     helper_method :available_initiative_types
 
     private
+
     def default_filter_params
       {
         search_text_cont: "",

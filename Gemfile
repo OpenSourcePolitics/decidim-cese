@@ -39,8 +39,8 @@ gem "omniauth-rails_csrf_protection", "~> 1.0"
 gem "bootsnap", "~> 1.4"
 gem "puma", ">= 5.6.2"
 
-gem "faker", "~> 2.14"
 gem "deface"
+gem "faker", "~> 2.14"
 
 group :development, :test do
   gem "byebug", "~> 11.0", platform: :mri

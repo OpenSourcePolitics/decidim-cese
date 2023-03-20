@@ -20,7 +20,7 @@ namespace :import do
 
       unless current_organization
         puts "Organization does not exist"
-        return
+        nil
       end
     end
 
@@ -32,7 +32,7 @@ namespace :import do
 
       unless current_user
         puts "Admin does not exist"
-        return
+        nil
       end
     end
 
@@ -44,7 +44,7 @@ namespace :import do
 
       unless current_process
         puts "Process does not exist"
-        return
+        nil
       end
     end
 
@@ -56,7 +56,7 @@ namespace :import do
 
       if File.extname(@file) != ".csv"
         puts "You must pass a CSV file"
-        return
+        nil
       end
     end
 
@@ -65,7 +65,7 @@ namespace :import do
         Help:
         Usage: rake import:user FILE='<filename.csv>' ORG=<organization_id> ADMIN=<admin_id> PROCESS=<process_id>
       HEREDOC
-      return
+      nil
     end
 
     def check_csv(file)
@@ -75,7 +75,7 @@ namespace :import do
 
         puts "Something went wrong, empty field(s) on line #{$INPUT_LINE_NUMBER}"
         puts row.inspect
-        return
+        exit 1
       end
     end
 
