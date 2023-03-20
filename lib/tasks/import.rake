@@ -15,48 +15,48 @@ namespace :import do
     def validate_org
       if @org.class != Integer
         puts "You must pass an organization id as an integer"
-        exit 1
+        return
       end
 
       unless current_organization
         puts "Organization does not exist"
-        exit 1
+        return
       end
     end
 
     def validate_admin
       if @admin.class != Integer
         puts "You must pass an admin id as an integer"
-        exit 1
+        return
       end
 
       unless current_user
         puts "Admin does not exist"
-        exit 1
+        return
       end
     end
 
     def validate_process
       if @process.class != Integer
         puts "You must pass a process id as an integer"
-        exit 1
+        return
       end
 
       unless current_process
         puts "Process does not exist"
-        exit 1
+        return
       end
     end
 
     def validate_file
       unless File.exist?(@file)
         puts "File does not exist, be sure to pass a full path."
-        exit 1
+        return
       end
 
       if File.extname(@file) != ".csv"
         puts "You must pass a CSV file"
-        exit 1
+        return
       end
     end
 
@@ -65,7 +65,7 @@ namespace :import do
         Help:
         Usage: rake import:user FILE='<filename.csv>' ORG=<organization_id> ADMIN=<admin_id> PROCESS=<process_id>
       HEREDOC
-      exit 0
+      return
     end
 
     def check_csv(file)
@@ -75,7 +75,7 @@ namespace :import do
 
         puts "Something went wrong, empty field(s) on line #{$INPUT_LINE_NUMBER}"
         puts row.inspect
-        exit 1
+        return
       end
     end
 
@@ -134,7 +134,7 @@ namespace :import do
           Rails.logger.debug user.errors.full_messages if user.invalid?
           Rails.logger.debug form.errors.full_messages if form.invalid?
           Rails.logger.debug { "Failed to register user with id: #{id}, first_name: #{first_name}, last_name: #{last_name} !!" }
-          # exit 1
+          # return
         end
       end
     end
@@ -166,7 +166,7 @@ namespace :import do
           Rails.logger.debug I18n.t("participatory_space_private_users.create.error", scope: "decidim.admin")
           Rails.logger.debug form.errors.full_messages if form.invalid?
           Rails.logger.debug { "Failed to register user with id: #{id}, first_name: #{first_name}, last_name: #{last_name}, email: #{email} !!" }
-          # exit 1
+          # return
         end
       end
     end
