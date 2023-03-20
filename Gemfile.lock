@@ -620,6 +620,8 @@ GEM
     nio4r (2.5.8)
     nokogiri (1.13.10-arm64-darwin)
       racc (~> 1.4)
+    nokogiri (1.13.10-x86_64-darwin)
+      racc (~> 1.4)
     nokogiri (1.13.10-x86_64-linux)
       racc (~> 1.4)
     oauth (1.1.0)
@@ -994,7 +996,7 @@ DEPENDENCIES
   decidim-dev (= 0.27.1)
   decidim-extended_socio_demographic_authorization_handler!
   decidim-initiative_status!
-  decidim-initiatives!
+  decidim-initiatives (= 0.27.1)
   decidim-term_customizer!
   decidim-transparent_trash
   deface
