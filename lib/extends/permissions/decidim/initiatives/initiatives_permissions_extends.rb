@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module PermissionsExtends
+module InitiativesPermissionsExtends
   private
 
   def creation_enabled?
@@ -13,5 +13,5 @@ module PermissionsExtends
 end
 
 Decidim::Initiatives::Permissions.class_eval do
-  prepend(PermissionsExtends)
+  prepend(InitiativesPermissionsExtends)
 end

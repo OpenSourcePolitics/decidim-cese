@@ -15,6 +15,14 @@ GIT
       decidim-core (~> 0.27)
 
 GIT
+  remote: https://github.com/OpenSourcePolitics/decidim-module-initiative_status.git
+  revision: eae4e5440fc84adac72097afb6e06ec172795dd4
+  branch: main
+  specs:
+    decidim-initiative_status (0.1)
+      decidim-core (~> 0.27)
+
+GIT
   remote: https://github.com/OpenSourcePolitics/omniauth-france_connect
   revision: 14a53ad31928c8a83742360cfbdb90938d0a057e
   specs:
@@ -612,6 +620,8 @@ GEM
     nio4r (2.5.8)
     nokogiri (1.13.10-arm64-darwin)
       racc (~> 1.4)
+    nokogiri (1.13.10-x86_64-darwin)
+      racc (~> 1.4)
     nokogiri (1.13.10-x86_64-linux)
       racc (~> 1.4)
     oauth (1.1.0)
@@ -967,7 +977,11 @@ GEM
     zeitwerk (2.6.7)
 
 PLATFORMS
+  arm64-darwin-21
   arm64-darwin-22
+  x86_64-darwin-19
+  x86_64-darwin-20
+  x86_64-darwin-21
   x86_64-linux
 
 DEPENDENCIES
@@ -981,6 +995,7 @@ DEPENDENCIES
   decidim-decidim_awesome!
   decidim-dev (= 0.27.1)
   decidim-extended_socio_demographic_authorization_handler!
+  decidim-initiative_status!
   decidim-initiatives (= 0.27.1)
   decidim-term_customizer!
   decidim-transparent_trash

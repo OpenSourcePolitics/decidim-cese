@@ -12,6 +12,7 @@ gem "decidim-transparent_trash"
 ## Block gems /!\ Required comment for : $ rake app:upgrade
 gem "decidim-blog_author_petition", git: "https://github.com/OpenSourcePolitics/decidim-module-blog_author_petition.git", branch: "main"
 gem "decidim-decidim_awesome", git: "https://github.com/decidim-ice/decidim-module-decidim_awesome.git", branch: "main"
+gem "decidim-initiative_status", git: "https://github.com/OpenSourcePolitics/decidim-module-initiative_status.git", branch: "main"
 # gem "acts_as_textcaptcha", "~> 4.5.1"
 # gem "decidim-homepage_interactive_map", git: "https://github.com/OpenSourcePolitics/decidim-module-homepage_interactive_map.git", branch: "bump/0.25-stable"
 # gem "decidim-phone_authorization_handler", git: "https://github.com/OpenSourcePolitics/decidim-module_phone_authorization_handler", branch: "bump/0.25-stable"
@@ -36,9 +37,9 @@ gem "sys-filesystem"
 gem "omniauth-rails_csrf_protection", "~> 1.0"
 
 gem "bootsnap", "~> 1.4"
-gem "deface"
 gem "puma", ">= 5.6.2"
 
+gem "deface"
 gem "faker", "~> 2.14"
 
 group :development, :test do
