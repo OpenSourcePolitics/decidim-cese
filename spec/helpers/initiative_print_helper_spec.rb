@@ -121,6 +121,12 @@ module Decidim
           end
         end
       end
+
+      describe "#can_print?" do
+        it "is true" do
+          expect(can_print?).to be_truthy
+        end
+      end
     end
   end
 end

@@ -4,6 +4,11 @@ module Decidim
   module Initiatives
     module InitiativePrintHelper
       include Decidim::TranslatableAttributes
+
+      def can_print?
+        current_initiative.published? && has_authorship_or_admin?(current_initiative, current_user)
+      end
+
       def i18n_options
         {
           name: author_name,
@@ -35,6 +40,10 @@ module Decidim
         return current_initiative.author.name unless authorization
 
         "#{authorization.metadata["first_name"]} #{authorization.metadata["last_name"]}"
+      end
+
+      def has_authorship_or_admin?(initiative, user)
+        initiative.has_authorship?(user) || current_user.admin?
       end
     end
   end
