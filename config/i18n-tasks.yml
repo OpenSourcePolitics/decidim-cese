@@ -98,7 +98,7 @@ ignore_missing:
  - decidim.initiatives.initiatives.show.{any_vote_method,offline_method,edit,send_to_technical_validation,confirm,follow_description}
  - decidim.proposals.omniauth.france_connect.external.{link,text}
  - decidim.proposals.omniauth.france_connect.forgot_password.ok_text
-
+ - decidim.initiatives.initiatives.show.illegal.{title,description}
 
 # Consider these keys used:
 ignore_unused:
