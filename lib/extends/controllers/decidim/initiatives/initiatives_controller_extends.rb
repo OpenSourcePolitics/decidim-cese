@@ -9,6 +9,10 @@ module InitiativesControllerExtends
 
     helper_method :available_initiative_types
 
+    def print
+      enforce_permission_to :print, :initiative, initiative: current_initiative
+    end
+
     private
 
     def default_filter_params
@@ -25,10 +29,6 @@ module InitiativesControllerExtends
 
     def default_filter_status_params
       %w(all) + current_organization.statuses.pluck(:id).map(&:to_s)
-    end
-
-    def print
-      enforce_permission_to :print, :initiative, initiative: current_initiative
     end
   end
 end
