@@ -142,6 +142,31 @@ describe "Initiative", type: :system do
         expect(page).to have_css(".comments")
         expect(page).to have_content("0 Comments")
       end
+
+      context "when initiative state is illegal" do
+        let(:state) { :illegal }
+
+        before do
+          relogin_as initiative.author
+          visit decidim_initiatives.initiative_path(initiative)
+        end
+
+        it_behaves_like "initiative does not show signatures"
+
+        it "does not show content" do
+          within "main" do
+            expect(page).not_to have_content(translated(initiative.title, locale: :en))
+            expect(page).not_to have_content(ActionView::Base.full_sanitizer.sanitize(translated(initiative.description, locale: :en), tags: []))
+            expect(page).to have_content("Title content moderated")
+            expect(page).to have_content("Description content moderated")
+          end
+        end
+
+        it "displays initiative moderated title in title tab" do
+          expect(page).not_to have_title("#{translated(initiative.title)} - #{translated(initiative.title)} - #{organization.name}")
+          expect(page).to have_title("Title content moderated - Title content moderated - #{organization.name}")
+        end
+      end
     end
   end
 end
