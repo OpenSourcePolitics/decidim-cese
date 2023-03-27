@@ -13,7 +13,6 @@ describe "Initiative", type: :system do
   before do
     switch_to_host(organization.host)
     login_as(user, scope: :user)
-
   end
 
   context "when the initiative does not exist" do
