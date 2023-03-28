@@ -15,7 +15,7 @@
     <br/>
     <br/>
     <p class="date">
-      <%== I18n.t("decidim.initiatives.print.date", **{ date: current_initiative.published_at.to_date }) %>
+      <%== I18n.t("decidim.initiatives.print.date", **{ date: current_initiative.published_at.to_date.strftime("%d/%m/%Y") }) %>
     </p>
     <br/>
     <p class="signature">
