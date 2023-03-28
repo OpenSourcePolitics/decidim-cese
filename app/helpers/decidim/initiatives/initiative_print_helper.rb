@@ -8,8 +8,8 @@ module Decidim
         {
           name: author_name,
           title: translated_attribute(current_initiative.title),
-          publication_date: current_initiative.published_at.to_date,
-          end_date: current_initiative.signature_end_date
+          publication_date: current_initiative.published_at.to_date.strftime("%d/%m/%Y"),
+          end_date: current_initiative.signature_end_date.strftime("%d/%m/%Y")
         }
       end
 
