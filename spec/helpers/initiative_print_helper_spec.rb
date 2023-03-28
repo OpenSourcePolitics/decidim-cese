@@ -30,8 +30,8 @@ module Decidim
             expect(helper.i18n_options).to eq({
                                                 name: "John Doe",
                                                 title: initiative.title["en"],
-                                                publication_date: initiative.published_at.to_date,
-                                                end_date: initiative.signature_end_date
+                                                publication_date: initiative.published_at.to_date.strftime("%d/%m/%Y"),
+                                                end_date: initiative.signature_end_date.strftime("%d/%m/%Y")
                                               })
           end
         end
@@ -45,8 +45,8 @@ module Decidim
             expect(helper.i18n_options).to eq({
                                                 name: user.name,
                                                 title: initiative.title["en"],
-                                                publication_date: initiative.published_at.to_date,
-                                                end_date: initiative.signature_end_date
+                                                publication_date: initiative.published_at.to_date.strftime("%d/%m/%Y"),
+                                                end_date: initiative.signature_end_date.strftime("%d/%m/%Y")
                                               })
           end
         end
