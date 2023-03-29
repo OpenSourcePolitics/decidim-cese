@@ -23,6 +23,13 @@ GIT
       decidim-core (~> 0.27)
 
 GIT
+  remote: https://github.com/OpenSourcePolitics/decidim-module-transparent_trash.git
+  revision: 6e443678a0aecdc9d852dfa48dc103983c930a5c
+  branch: master
+  specs:
+    decidim-transparent_trash (0.0.2)
+
+GIT
   remote: https://github.com/OpenSourcePolitics/omniauth-france_connect
   revision: 14a53ad31928c8a83742360cfbdb90938d0a057e
   specs:
@@ -395,7 +402,6 @@ GEM
     decidim-templates (0.27.1)
       decidim-core (= 0.27.1)
       decidim-forms (= 0.27.1)
-    decidim-transparent_trash (0.0.2)
     decidim-verifications (0.27.1)
       decidim-core (= 0.27.1)
     declarative-builder (0.1.0)
@@ -998,7 +1004,7 @@ DEPENDENCIES
   decidim-initiative_status!
   decidim-initiatives (= 0.27.1)
   decidim-term_customizer!
-  decidim-transparent_trash
+  decidim-transparent_trash!
   deface
   dotenv-rails
   faker (~> 2.14)
