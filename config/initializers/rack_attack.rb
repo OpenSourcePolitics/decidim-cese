@@ -21,7 +21,7 @@ Rack::Attack.throttled_responder = lambda do |request|
   rack_logger = Logger.new(Rails.root.join("log/rack_attack.log"))
   match_data = request.env["rack.attack.match_data"]
   now = match_data[:epoch_time]
-  limit = now + (match_data[:period] - now % match_data[:period])
+  limit = now + (match_data[:period] - (now % match_data[:period]))
 
   request_uuid = request.env["action_dispatch.request_id"]
   params = {
