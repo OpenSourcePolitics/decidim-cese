@@ -4,6 +4,13 @@ module Decidim
   module Initiatives
     module InitiativePrintHelper
       include Decidim::TranslatableAttributes
+
+      def can_print?
+        return false if current_user.blank?
+
+        current_initiative.published? && current_initiative.has_authorship?(current_user)
+      end
+
       def i18n_options
         {
           name: author_name,
