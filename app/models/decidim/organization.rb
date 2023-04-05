@@ -39,7 +39,7 @@ module Decidim
     #  enabled: Users registration and sign in are enabled (default value).
     #  existing: Users can't be registered in the system. Only existing users can sign in.
     #  disable: Users can't register or sign in.
-    enum users_registration_mode: [:enabled, :existing, :disabled], _prefix: true
+    enum users_registration_mode: { enabled: 0, existing: 1, disabled: 2 }, _prefix: true
 
     validates :name, :host, uniqueness: true
     validates :reference_prefix, presence: true
