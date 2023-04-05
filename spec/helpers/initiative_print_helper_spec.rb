@@ -52,70 +52,44 @@ module Decidim
       end
 
       describe "signature_image_tag" do
-        context "when the env field is completed" do
+        before do
+          allow(self).to receive(:current_organization).and_return(organization)
+        end
+
+        context "when the image has been uploaded" do
           before do
-            allow(ENV).to receive(:fetch).and_call_original
-            allow(ENV).to receive(:fetch).with("IMG_SIGNATURE", nil).and_return("data:image/png;base64,signature_en_base_64")
+            organization.official_signature.attach(Decidim::Dev.test_file("city.jpeg", "image/jpeg"))
           end
 
           it "returns a valid image tag" do
-            expect(signature_image_tag).to eq("<img width=\"250\" src=\"data:image/png;base64,signature_en_base_64\" />")
+            expect(signature_image_tag).to start_with("<img width=\"250\" src=\"/rails/active_storage/blobs/redirect")
           end
         end
 
         context "when the env field is not completed" do
-          before do
-            allow(ENV).to receive(:fetch).and_call_original
-            allow(ENV).to receive(:fetch).with("IMG_SIGNATURE", nil).and_return(nil)
-          end
-
           it "returns nothing" do
-            expect(signature_image_tag).to be_nil
-          end
-        end
-
-        context "when the env field is badly completed" do
-          before do
-            allow(ENV).to receive(:fetch).and_call_original
-            allow(ENV).to receive(:fetch).with("IMG_SIGNATURE", nil).and_return("signature_en_base_64")
-          end
-
-          it "returns a nothing" do
             expect(signature_image_tag).to be_nil
           end
         end
       end
 
       describe "cachet_image_tag" do
+        before do
+          allow(self).to receive(:current_organization).and_return(organization)
+        end
+
         context "when the env field is completed" do
           before do
-            allow(ENV).to receive(:fetch).and_call_original
-            allow(ENV).to receive(:fetch).with("IMG_CACHET", nil).and_return("data:image/png;base64,cachet_en_base_64")
+            organization.official_cachet.attach(Decidim::Dev.test_file("city.jpeg", "image/jpeg"))
           end
 
           it "returns a valid image tag" do
-            expect(cachet_image_tag).to eq("<img width=\"200\" src=\"data:image/png;base64,cachet_en_base_64\" />")
+            expect(cachet_image_tag).to start_with("<img width=\"200\" src=\"/rails/active_storage/blobs/redirect")
           end
         end
 
         context "when the env field is not completed" do
-          before do
-            allow(ENV).to receive(:fetch).and_call_original
-            allow(ENV).to receive(:fetch).with("IMG_CACHET", nil).and_return(nil)
-          end
-
           it "returns nothing" do
-            expect(cachet_image_tag).to be_nil
-          end
-        end
-
-        context "when the env field is badly completed" do
-          before do
-            allow(ENV).to receive(:fetch).and_call_original
-            allow(ENV).to receive(:fetch).with("IMG_CACHET", nil).and_return("cachet_en_base_64")
-          end
-
-          it "returns a nothing" do
             expect(cachet_image_tag).to be_nil
           end
         end
