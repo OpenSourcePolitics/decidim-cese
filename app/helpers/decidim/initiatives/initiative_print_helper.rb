@@ -21,17 +21,15 @@ module Decidim
       end
 
       def signature_image_tag
-        return if ENV.fetch("IMG_SIGNATURE", nil).blank?
-        return unless ENV.fetch("IMG_SIGNATURE", nil).to_s.include?("data:image/")
+        return unless current_organization.attached_uploader(:official_signature).attached?
 
-        image_tag ENV.fetch("IMG_SIGNATURE", nil).to_s, width: "250"
+        image_tag current_organization.attached_uploader(:official_signature).path, width: 250
       end
 
       def cachet_image_tag
-        return if ENV.fetch("IMG_CACHET", nil).blank?
-        return unless ENV.fetch("IMG_CACHET", nil).to_s.include?("data:image/")
+        return unless current_organization.attached_uploader(:official_cachet).attached?
 
-        image_tag ENV.fetch("IMG_CACHET", nil).to_s, width: "200"
+        image_tag current_organization.attached_uploader(:official_cachet).path, width: 200
       end
 
       private
