@@ -24,6 +24,45 @@ Decidim.configure do |config|
     }
   }
 
+  config.consent_categories = [
+    {
+      slug: "essential",
+      mandatory: true,
+      items: [
+        {
+          type: "cookie",
+          name: "_session_id"
+        },
+        {
+          type: "cookie",
+          name: Decidim.consent_cookie_name
+        }
+      ]
+    },
+    {
+      slug: "preferences",
+      mandatory: false
+    },
+    {
+      slug: "analytics",
+      mandatory: false,
+      items: [
+        {
+          type: "cookie",
+          name: "_pk_id"
+        },
+        {
+          type: "cookie",
+          name: "_pk_ses"
+        }
+      ]
+    },
+    {
+      slug: "marketing",
+      mandatory: false
+    }
+  ]
+
   if defined?(Decidim::Initiatives) && defined?(Decidim::Initiatives.do_not_require_authorization)
     Decidim::Initiatives.minimum_committee_members = 1
     Decidim::Initiatives.do_not_require_authorization = true
