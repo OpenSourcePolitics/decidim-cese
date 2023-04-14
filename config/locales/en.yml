@@ -223,6 +223,15 @@ en:
       - EN9
   layouts:
     decidim:
+      data_consent:
+        details:
+          items:
+            _pk_id:
+              description: This cookie is used by Matomo to recognize repeat visitors.
+              service: Matomo
+            _pk_ses:
+              description: This session cookie is used by Matomo to track the duration of a user's visit on the website.
+              service: Matomo
       footer:
         download_open_data: Open data
         made_with_open_source: Website made by <a target="_blank" href="https://opensourcepolitics.eu/en/">Open Source Politics</a> with the <a target="_blank" href="https://github.com/decidim/decidim">decidim free software</a>.
