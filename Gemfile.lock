@@ -1023,7 +1023,7 @@ DEPENDENCIES
   sentry-ruby
   sentry-sidekiq
   sidekiq (~> 6.0)
-  sidekiq-scheduler
+  sidekiq-scheduler (~> 5.0)
   spring (~> 2.0)
   spring-watcher-listen (~> 2.0)
   sys-filesystem
