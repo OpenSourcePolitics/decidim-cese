@@ -126,4 +126,6 @@ ignore_unused:
   - decidim.resources.initiatives_type.actions.create
   - decidim.proposals.omniauth.france_connect.external.{link,text}
   - decidim.proposals.omniauth.france_connect.forgot_password.ok_text
+  - layouts.decidim.data_consent.details.items.*
+  - rack_attack.too_many_requests.*
 

@@ -8,6 +8,7 @@
               <span class="register__separator__text"><%= t("devise.shared.links.sign_in_with_provider", provider: normalize_full_provider_name(provider).titleize) %></span>
             </span>
             <div class="text-center">
+              <p><%= t("decidim.omniauth.france_connect.explanation") %></p>
               <%= sso_provider_image(provider, decidim.send("user_#{provider}_omniauth_authorize_path")) %>
             </div>
             <% if I18n.exists?("decidim.omniauth.france_connect.external.link") %>
