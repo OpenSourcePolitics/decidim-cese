@@ -107,6 +107,7 @@ en:
           success: You have updated the meeting successfully.
     omniauth:
       france_connect:
+        explanation: FranceConnect est la solution proposée par l’État pour sécuriser et simplifier la connexion à vos services en ligne.
         external:
           link: https://franceconnect.gouv.fr/
           text: What is FranceConnect ?
@@ -233,6 +234,7 @@ en:
               description: This session cookie is used by Matomo to track the duration of a user's visit on the website.
               service: Matomo
       footer:
+        data_consent_settings: Data consent settings
         download_open_data: Open data
         made_with_open_source: Website made by <a target="_blank" href="https://opensourcepolitics.eu/en/">Open Source Politics</a> with the <a target="_blank" href="https://github.com/decidim/decidim">decidim free software</a>.
       header:
