@@ -128,4 +128,5 @@ ignore_unused:
   - decidim.proposals.omniauth.france_connect.forgot_password.ok_text
   - layouts.decidim.data_consent.details.items.*
   - rack_attack.too_many_requests.*
-
+  - activemodel.attributes.confirmation.*
+  - activemodel.attributes.mobile_phone.*
