@@ -20,11 +20,11 @@ en:
         error: There was a problem deleting your account.
         success: Your account was successfully deleted.
       email_change:
-        body1: Body1
-        body2: Body2
-        cancel: Cancel
+        body1: We've sent an email to %{unconfirmed_email} to verify your new email address.
+        body2: Need us to send the verification email again? %{resend_link} or %{cancel_link}.
+        cancel: cancel
         send_again: Send again
-        title: Title
+        title: Email change verification
       show:
         available_locales_helper: Available locales helper
         change_password: Change password
@@ -260,7 +260,7 @@ en:
         account: Account
         conversations: Conversations
         notifications: Notifications
-        profile: Profile
+        profile: My account
   rack_attack:
     too_many_requests:
       message: Your connection has been slowed because server received too many requests.
