@@ -19,6 +19,16 @@ en:
       destroy:
         error: There was a problem deleting your account.
         success: Your account was successfully deleted.
+      email_change:
+        body1: Body1
+        body2: Body2
+        cancel: Cancel
+        send_again: Send again
+        title: Title
+      show:
+        available_locales_helper: Available locales helper
+        change_password: Change password
+        update_account: Update account
     admin:
       participatory_space_private_users:
         create:
@@ -250,6 +260,7 @@ en:
         account: Account
         conversations: Conversations
         notifications: Notifications
+        profile: Profile
   rack_attack:
     too_many_requests:
       message: Your connection has been slowed because server received too many requests.
