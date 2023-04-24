@@ -40,7 +40,9 @@ module DevelopmentApp
     # the framework and any gems in your application.
 
     config.after_initialize do
+      require "extends/forms/decidim/initiatives/initiative_form_extends"
       require "extends/controllers/decidim/devise/sessions_controller_extends"
+      require "extends/forms/decidim/admin/organization_appearance_form_extends"
     end
   end
 end

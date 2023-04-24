@@ -24,12 +24,49 @@ Decidim.configure do |config|
     }
   }
 
+  config.consent_categories = [
+    {
+      slug: "essential",
+      mandatory: true,
+      items: [
+        {
+          type: "cookie",
+          name: "_session_id"
+        },
+        {
+          type: "cookie",
+          name: Decidim.consent_cookie_name
+        }
+      ]
+    },
+    {
+      slug: "preferences",
+      mandatory: false
+    },
+    {
+      slug: "analytics",
+      mandatory: false,
+      items: [
+        {
+          type: "cookie",
+          name: "_pk_id"
+        },
+        {
+          type: "cookie",
+          name: "_pk_ses"
+        }
+      ]
+    },
+    {
+      slug: "marketing",
+      mandatory: false
+    }
+  ]
+
   if defined?(Decidim::Initiatives) && defined?(Decidim::Initiatives.do_not_require_authorization)
-    # puts "Decidim::Initiatives are loaded"
     Decidim::Initiatives.minimum_committee_members = 1
     Decidim::Initiatives.do_not_require_authorization = true
     Decidim::Initiatives.print_enabled = false
-    Decidim::Initiatives.face_to_face_voting_allowed = false
   end
 
   # Custom resource reference generator method
@@ -80,7 +117,7 @@ Decidim.configure do |config|
   #   end
   # end
   #
-  # config.sms_gateway_service = 'Decidim::Verifications::Sms::ExampleGateway'
+  config.sms_gateway_service = "SMSGatewayService"
 
   # Etherpad configuration
   #

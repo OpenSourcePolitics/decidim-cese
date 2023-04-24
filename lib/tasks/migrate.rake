@@ -13,10 +13,7 @@ namespace :decidim do
       logger.info("#{rails_migrations.down.count} migrations seems to be missing...")
       logger.info("#{rails_migrations.not_found.count} migrations registered but not found in current project, must be compared with previous migrations folder.")
 
-      if rails_migrations.down.blank?
-        logger.info("All migrations seems to be 'up', end of task")
-        exit 0
-      end
+      logger.info("All migrations seems to be 'up', end of task") if rails_migrations.down.blank?
 
       rails_migrations.display_status!
 
@@ -63,8 +60,6 @@ namespace :decidim do
       logger.info("#{versions_migration_success.count} migrations passed successfully")
       logger.info("#{versions_migration_forced.count} migrations failed but was marked as 'up' directly in database")
       logger.info("All migrations passed, end of task")
-
-      exit 0
     end
   end
 end
@@ -203,16 +198,12 @@ class MigrationsFixer
       @logger.error("You must specify ENV var 'MIGRATIONS_PATH'")
 
       @logger.fatal(helper)
-      exit 2
     end
   end
 
   # Ensure osp_app path exists
   def validate_osp_app_path
-    unless File.directory?(osp_app_path)
-      @logger.fatal("Directory '#{osp_app_path}' not found, aborting task...")
-      exit 2
-    end
+    @logger.fatal("Directory '#{osp_app_path}' not found, aborting task...") unless File.directory?(osp_app_path)
   end
 
   # Ensure migrations path exists
@@ -222,7 +213,6 @@ class MigrationsFixer
       @logger.error("Please see absolute path '#{File.expand_path(@migrations_path)}'")
 
       @logger.fatal("Please ensure the migration path is correctly defined.")
-      exit 2
     end
   end
 

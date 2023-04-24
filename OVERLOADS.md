@@ -1,4 +1,22 @@
 # Overrides
+## Disable username edition in user account
+* 'app/views/decidim/account/show.html.erb:27'
+```ruby
+      <%= f.text_field :name, autocomplete: "name", readonly: "readonly" %>
+```
+
+## Update France Connect with requirements
+* `app/views/decidim/devise/passwords/new.html.erb`
+* `app/views/decidim/shared/_login_modal.html.erb`
+
+## Admin Password Strong
+Disable ask for new password when login as admin (only for development mode)
+* `config/environments/development.rb:58`
+
+## Update Create initiative command flow
+Create a specific permission for comments on each initiative creation. Only active if ENV var `AH_INITIATIVES_COMMENT` defined and not empty
+
+* `lib/extends/commends/decidim/initiatives/create_initiative_extends.rb`
 
 ## Load decidim-awesome assets only if dependencie is present
 * `app/views/layouts/decidim/_head.html.erb:33`
@@ -46,3 +64,10 @@ de6d804 - fix multipart object tagging (#40) (#41), 2021-12-24
 
 * `lib/tasks/restore_dump.rake`
 705e0ad - Run rubocop, 2021-12-01
+
+## Add recepisse
+* `app/controllers/decidim/initiatives/initiatives_controller.rb`
+* `app/permissions/decidim/initiatives/permissions.rb`
+* `app/views/decidim/initiatives/initiatives/print.html.erb`
+* `app/views/decidim/initiatives/initiatives/show.html.erb`
+* `app/permissions/decidim/initiatives/permissions.rb`

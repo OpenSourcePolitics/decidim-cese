@@ -1,0 +1,32 @@
+<div class="wrapper">
+  <div class="recepisse-head">
+    <%= image_pack_tag "media/images/logo.png", title: "logo", class: "logo", size: "100"  %>
+    <%= image_pack_tag "media/images/republique.png", title: "république", class:"republique", size: "200" %>
+  </div>
+  <br/>
+  <br/>
+  <div class="recepisse">
+    <p class="start">
+      <%== I18n.t("decidim.initiatives.print.start", **i18n_options) %>
+    </p>
+    <p class="end">
+      <i><%= t "decidim.initiatives.print.end" %></i>
+    </p>
+    <br/>
+    <br/>
+    <p class="date">
+      <%== I18n.t("decidim.initiatives.print.date", **{ date: current_initiative.published_at.to_date.strftime("%d/%m/%Y") }) %>
+    </p>
+    <br/>
+    <p class="signature">
+      <b><%= t "decidim.initiatives.print.signature" %></b>
+    </p>
+    <div class="images_signature">
+      <%= signature_image_tag %>
+      <%= cachet_image_tag %>
+    </div>
+  </div>
+
+  <a href="#" onclick="window.print();return false;" class="button expanded"><%= t ".print" %></a>
+  <%= stylesheet_pack_tag "decidim_initiatives_print", media: "all" %>
+</div>

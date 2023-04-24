@@ -1,0 +1,3 @@
+<!-- insert_after '.column ~ .column' -->
+
+<%= render partial: "decidim/initiatives/modal" %>

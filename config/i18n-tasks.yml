@@ -60,6 +60,7 @@ search:
     - "*.jpeg"
     - "*.odt"
     - "*.docx"
+    - "*.deface"
 
   ## Alternatively, the only files or `File.fnmatch patterns` to search in `paths`:
   ## If specified, this settings takes priority over `exclude`, but `exclude` still applies.
@@ -86,6 +87,18 @@ ignore_missing:
  - decidim.devise.shared.omniauth_buttons.or
  - devise.shared.links.sign_in_with_provider
  - layouts.decidim.header.user_menu
+ - decidim.initiatives.initiatives.index_header.new_initiative
+ - decidim.initiatives.admin.content_blocks.highlighted_initiatives.order.*
+ - decidim.initiatives.create_initiative.fill_data.*
+ - decidim.initiatives.form.*
+ - layouts.decidim.header.user_menu
+ - decidim.devise.shared.omniauth_buttons.or
+ - devise.shared.links.sign_in_with_provider
+ - decidim.initiatives.initiatives.print.print
+ - decidim.initiatives.initiatives.show.{any_vote_method,offline_method,edit,send_to_technical_validation,confirm,follow_description}
+ - decidim.proposals.omniauth.france_connect.external.{link,text}
+ - decidim.proposals.omniauth.france_connect.forgot_password.ok_text
+ - decidim.initiatives.initiatives.show.illegal.{title,description}
 
 # Consider these keys used:
 ignore_unused:
@@ -108,3 +121,12 @@ ignore_unused:
   - decidim.system.organizations.omniauth_settings.publik.*
   - decidim.verifications.authorizations.create.*
   - decidim.verifications.authorizations.first_login.actions.*
+  - decidim.events.initiatives.initiative_answered.*
+  - decidim.initiatives.create_initiative.select_initiative_type.*
+  - decidim.resources.initiatives_type.actions.create
+  - decidim.proposals.omniauth.france_connect.external.{link,text}
+  - decidim.proposals.omniauth.france_connect.forgot_password.ok_text
+  - layouts.decidim.data_consent.details.items.*
+  - rack_attack.too_many_requests.*
+  - activemodel.attributes.confirmation.*
+  - activemodel.attributes.mobile_phone.*

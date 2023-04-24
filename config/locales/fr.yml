@@ -2,6 +2,10 @@
 fr:
   activemodel:
     attributes:
+      confirmation:
+        verification_code: Code de confirmation
+      mobile_phone:
+        mobile_phone_number: Numéro de téléphone
       osp_authorization_handler:
         birthday: Date de naissance
         document_number: Numéro unique
@@ -11,6 +15,20 @@ fr:
   decidim:
     accessibility:
       skip_button: Passer au contenu principal
+    account:
+      destroy:
+        error: Il y a eu un problème lors de la suppression de votre compte.
+        success: Votre compte a été supprimé avec succès.
+      email_change:
+        body1: Nous avons envoyé un e-mail à %{unconfirmed_email} pour vérifier votre nouvelle adresse e-mail.
+        body2: Envoyer à nouveau l'e-mail de vérification ? %{resend_link} ou %{cancel_link}.
+        cancel: Annuler
+        send_again: Envoyer à nouveau
+        title: Vérification du changement d'adresse e-mail
+      show:
+        available_locales_helper: Choisissez la langue que vous souhaitez utiliser pour naviguer et recevoir des notifications sur la plateforme
+        change_password: Changer de mot de passe
+        update_account: Mettre à jour votre compte
     admin:
       participatory_space_private_users:
         create:
@@ -32,6 +50,10 @@ fr:
         name: Formulaire de vérification d'identité
       osp_authorization_workflow:
         name: Procédure d'autorisation
+    devise:
+      sessions:
+        new:
+          sign_in_disabled: Vous pouvez accéder avec un compte externe
     events:
       budgets:
         pending_order:
@@ -39,6 +61,12 @@ fr:
           email_outro: Vous avez reçu cette notification parce que vous avez commencé à voter sur la concertation "%{participatory_space_title}"
           email_subject: Votre vote est toujours en attente sur la concertation %{participatory_space_title}
           notification_title: Votre vote pour le budget <a href="%{resource_path}">%{resource_title}</a> attend d'être finalisé sur la concertation %{participatory_space_title}
+      initiatives:
+        initiative_answered:
+          email_intro: La pétition "%{resource_title}" a reçu une réponse.
+          email_outro: Vous avez reçu cette notification parce que vous suivez la pétition "%{resource_title}".
+          email_subject: La pétition "%{resource_title}" a reçu une réponse.
+          notification_title: La pétition <a href="%{resource_path}">%{resource_title}</a> a reçu une réponse.
       users:
         user_officialized:
           email_intro: Le participant %{name} (%{nickname}) a été officialisé.
@@ -51,6 +79,26 @@ fr:
           email_outro: Vérifiez la <a href="%{conflicts_path}">Liste de conflits des vérifications</a> et contactez les participants pour vérifier leurs renseignements et résoudre le problème.
           email_subject: Un utilisateur a tenté de se faire vérifier avec les données d'un utilisateur représenté
           notification_title: Le participant <a href="%{resource_path}">%{resource_title}</a> a tenté de se faire vérifier avec les données de l'utilisateur représenté <a href="%{managed_user_path}">%{managed_user_name}</a>.
+    initiatives:
+      create_initiative:
+        fill_data:
+          decidim_user_group_id_help: Il est impossible de changer l'auteur de la pétition après la création
+        select_initiative_type:
+          verification_required: Vérifiez votre compte pour signer la pétition
+      initiatives:
+        show:
+          print: Voir le récépissé
+      modal:
+        not_authorized:
+          authorizations_page: Voir les vérifications
+          close: Fermer
+          explanation: Vous devez avoir vérifié votre compte pour signer la pétition
+          title: Vérification requise
+      print:
+        date: Fait à Paris, le %{date}
+        end: Le présent récépissé ne préjuge en rien de la recevabilité de la pétition, étudiée par le Bureau lorsque celle-ci réunit les conditions de saisine du Conseil économique, social et environnemental.
+        signature: Le Secrétaire général du CESE
+        start: Le Conseil économique social et environnemental atteste la réception et la mise en ligne de la pétition intitulée « <b> %{title}</b> », déposée par <b>%{name}</b>, identifié(e) comme mandataire unique. <br/> La pétition est mise en ligne sur la plateforme de pétitions du CESE le %{publication_date}. <br/> Conformément au décret n°2022-886 du 14 juin 2022, ce récépissé ouvre le délai d’un an pour recueillir des signatures. La pétition sera clôturée le %{end_date}, à 23h59.
     meetings:
       directory:
         meetings:
@@ -65,6 +113,14 @@ fr:
         update:
           invalid: Il y a eu une erreur lors de la mise à jour de la rencontre.
           success: La rencontre a été mise à jour avec succès.
+    omniauth:
+      france_connect:
+        explanation: FranceConnect est la solution proposée par l’État pour sécuriser et simplifier la connexion à vos services en ligne.
+        external:
+          link: https://franceconnect.gouv.fr/
+          text: Qu'est-ce-que FranceConnect ?
+        forgot_password:
+          ok_text: Attention, ce mot de passe est celui de votre compte local et en aucun cas celui du compte que vous utilisez au travers de FranceConnect. Il vous servira uniquement lorsque vous vous connecterez avec votre adresse mail plutôt que via FranceConnect.
     proposals:
       create:
         error: Il y a eu des erreurs lors de la sauvegarde de la proposition.
@@ -72,6 +128,13 @@ fr:
       destroy_draft:
         error: Des erreurs sont survenues lors de la suppression du brouillon de la proposition.
         success: Le brouillon de la proposition a bien été supprimé.
+      omniauth:
+        france_connect:
+          external:
+            link: https://franceconnect.gouv.fr/
+            text: Qu'est-ce-que FranceConnect ?
+          forgot_password:
+            ok_text: Attention, ce mot de passe est celui de votre compte local et en aucun cas celui du compte que vous utilisez au travers de FranceConnect. Il vous servira uniquement lorsque vous vous connecterez avec votre adresse mail plutôt que via FranceConnect.
       proposals:
         compare:
           no_similars_found: Bien joué ! Aucune proposition similaire n'a été trouvée
@@ -87,6 +150,10 @@ fr:
       withdraw:
         errors:
           has_supports: Cette proposition ne peut pas être retirée car elle dispose déjà de supports.
+    resources:
+      initiatives_type:
+        actions:
+          create: Créer
     scopes:
       global: Portée générale
       picker:
@@ -94,6 +161,11 @@ fr:
         change: Modifier
         choose: Sélectionner
         currently_selected: Sélectionné
+    shared:
+      login_modal:
+        close_modal: Fermer
+        please_sign_in: Veuillez vous connecter
+        sign_up: Créer un compte
     system:
       organizations:
         omniauth_settings:
@@ -126,6 +198,34 @@ fr:
           actions:
             osp_authorization_handler: Vérifier avec le formulaire de vérification de l'identité
             osp_authorization_workflow: Vérifier avec le formulaire de vérification de l'identité
+        renew:
+          'false': Non
+          'true': Oui
+      sms:
+        authorizations:
+          edit:
+            confirm_destroy: Confirmer
+            resend: Renvoyer un SMS
+            send: Authentifier mon compte
+            title: Vérifier votre identité avec la méthode de vérification par SMS
+            verification_code: Code de vérification
+          new:
+            instructions: Renseignez votre numéro de téléphone puis le code de vérification transmis par SMS. Cette méthode nous permet de nous assurer que vous avez bien voté une seule fois.
+            instructions_helper: "<ul><li>Ne doit contenir que des chiffres</li><li>Doit commencer par 0</li><li>Doit contenir 10 chiffres</li><li>Ne doit pas être utilisé par un autre compte sur cette plateforme</li></ul>"
+            mobile_phone_number: Votre numéro de téléphone mobile
+            send: Envoyer un SMS
+            title: Vérifier votre identité avec la méthode de vérification par SMS
+  devise:
+    passwords:
+      new:
+        forgot_your_password: Mot de passe oublié ?
+        send_me_reset_password_instructions: Envoyez-moi les instructions de réinitialisation du mot de passe
+    sessions:
+      new:
+        sign_in: S'identifier
+    shared:
+      links:
+        forgot_your_password: Mot de passe oublié ?
   faker:
     address:
       country_code:
@@ -142,7 +242,17 @@ fr:
       - FR9
   layouts:
     decidim:
+      data_consent:
+        details:
+          items:
+            _pk_id:
+              description: Ce cookie est utilisé par Matomo pour reconnaître les visiteurs récurrents.
+              service: Matomo
+            _pk_ses:
+              description: Ce cookie de session est utilisé par Matomo pour suivre la durée de la visite d'un utilisateur sur le site.
+              service: Matomo
       footer:
+        data_consent_settings: Data consent settings
         download_open_data: Données ouvertes
         made_with_open_source: Site réalisé par <a target="_blank" href="https://opensourcepolitics.eu">Open Source Politics</a> grâce au <a target="_blank" href="https://github.com/decidim/decidim">logiciel libre Decidim</a>.
       header:
@@ -154,3 +264,12 @@ fr:
         account: Mon compte
         conversations: Conversations
         notifications: Notifications
+        profile: Mon profil public
+  rack_attack:
+    too_many_requests:
+      message: Votre connexion a été ralentie à cause d'un nombre de requêtes trop important
+      time: 'Votre navigation reprend dans :'
+      time_unit: secondes
+      title: Merci pour votre participation sur %{organization_name}
+  sms_verification_workflow:
+    message: Bonjour, %{code} est le code pour vous authentifier sur la plateforme de petitions du CESE.

@@ -8,3 +8,35 @@
 
 @import "email/email-custom";
 @import "modules/footer";
+
+.recepisse {
+  text-align: justify;
+  padding: 1rem;
+  font-size: large;
+}
+
+.date, .signature{
+  text-align: right;
+}
+
+.end, .date, .signature {
+  font-size: medium;
+}
+
+.recepisse-head{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.recepisse-head h1 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-align: center;
+}
+
+.images_signature {
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+}

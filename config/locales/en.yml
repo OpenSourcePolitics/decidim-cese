@@ -2,6 +2,10 @@
 en:
   activemodel:
     attributes:
+      confirmation:
+        verification_code: Verification code
+      mobile_phone:
+        mobile_phone_number: Mobile phone number
       osp_authorization_handler:
         birthday: Birthday
         document_number: Unique number
@@ -11,6 +15,20 @@ en:
   decidim:
     accessibility:
       skip_button: Skip button
+    account:
+      destroy:
+        error: There was a problem deleting your account.
+        success: Your account was successfully deleted.
+      email_change:
+        body1: We've sent an email to %{unconfirmed_email} to verify your new email address.
+        body2: Need us to send the verification email again? %{resend_link} or %{cancel_link}.
+        cancel: cancel
+        send_again: Send again
+        title: Email change verification
+      show:
+        available_locales_helper: Available locales helper
+        change_password: Change password
+        update_account: Update account
     admin:
       participatory_space_private_users:
         create:
@@ -32,6 +50,10 @@ en:
         name: Identity Verification Form
       osp_authorization_workflow:
         name: Authorization procedure
+    devise:
+      sessions:
+        new:
+          sign_in_disabled: Sign in disabled
     events:
       budgets:
         pending_order:
@@ -39,6 +61,12 @@ en:
           email_outro: You have received this notification because you are participating in "%{participatory_space_title}"
           email_subject: Your vote is still pending in %{participatory_space_title}
           notification_title: The vote on budget <a href="%{resource_path}">%{resource_title}</a> is still waiting for your confirmation in %{participatory_space_title}
+      initiatives:
+        initiative_answered:
+          email_intro: The initiative "%{resource_title}" has been answered.
+          email_outro: You have received this notification because you are following the initiative "%{resource_title}".
+          email_subject: Initiative "%{resource_title}" has been answered
+          notification_title: The initiative <a href="%{resource_path}">%{resource_title}</a> has been answered.
       users:
         user_officialized:
           email_intro: Participant %{name} (%{nickname}) has been officialized.
@@ -51,6 +79,32 @@ en:
           email_outro: Check the <a href="%{conflicts_path}">Verifications's conflicts list</a> and contact the participant to verify their details and solve the issue.
           email_subject: Failed verification attempt against a managed participant
           notification_title: The participant <a href="%{resource_path}">%{resource_title}</a> has tried to verify themself with the data of the managed participant <a href="%{managed_user_path}">%{managed_user_name}</a>.
+    initiatives:
+      admin:
+        content_blocks:
+          highlighted_initiatives:
+            order:
+              most_popular: Most popular
+              random: Randomly
+      create_initiative:
+        fill_data:
+          decidim_user_group_id_help: It's not possible to change initiative authorship after creation
+        select_initiative_type:
+          verification_required: Verify your account to promote this initiative
+      initiatives:
+        show:
+          print: Voir le récépissé
+      modal:
+        not_authorized:
+          authorizations_page: View authorizations
+          close: Close
+          explanation: You need to be verified in order to create a new initiative.
+          title: Authorization required
+      print:
+        date: Fait à Paris, le %{date}
+        end: Le présent récépissé ne préjuge en rien de la recevabilité de la pétition, étudiée par le Bureau lorsque celle-ci réunit les conditions de saisine du Conseil économique, social et environnemental.
+        signature: Le Secrétaire général du CESE
+        start: Le Conseil économique social et environnemental atteste la réception et la mise en ligne de la pétition intitulée « <b> %{title}</b> », déposée par <b>%{name}</b>, identifié(e) comme mandataire unique. <br/> La pétition est mise en ligne sur la plateforme de pétitions du CESE le %{publication_date}. <br/> Conformément au décret n°2022-886 du 14 juin 2022, ce récépissé ouvre le délai d’un an pour recueillir des signatures. La pétition sera clôturée le %{end_date}, à 23h59.
     meetings:
       directory:
         meetings:
@@ -65,6 +119,14 @@ en:
         update:
           invalid: There was a problem updating the meeting.
           success: You have updated the meeting successfully.
+    omniauth:
+      france_connect:
+        explanation: FranceConnect est la solution proposée par l’État pour sécuriser et simplifier la connexion à vos services en ligne.
+        external:
+          link: https://franceconnect.gouv.fr/
+          text: What is FranceConnect ?
+        forgot_password:
+          ok_text: Warning, this password is the one of your local account and in no case the one of the account you use through FranceConnect. It will only be used when you log in with your email address rather than via FranceConnect.
     proposals:
       create:
         error: There was a problem saving
@@ -87,6 +149,10 @@ en:
       withdraw:
         errors:
           has_supports: This proposal can not be withdrawn because it already has supports.
+    resources:
+      initiatives_type:
+        actions:
+          create: Create
     scopes:
       global: Global
       picker:
@@ -94,6 +160,11 @@ en:
         change: Change
         choose: Choose
         currently_selected: Currently selected
+    shared:
+      login_modal:
+        close_modal: Close modal
+        please_sign_in: Please sign in
+        sign_up: Sign up
     system:
       organizations:
         omniauth_settings:
@@ -126,6 +197,34 @@ en:
           actions:
             osp_authorization_handler: Verify with the identity verification form
             osp_authorization_workflow: Verify with the identity verification form
+        renew:
+          'false': false
+          'true': true
+      sms:
+        authorizations:
+          edit:
+            confirm_destroy: Confirm
+            resend: Reset verification code
+            send: Confirm
+            title: Introduce the verification code you received
+            verification_code: Verification code
+          new:
+            instructions: Enter your phone number and the verification code sent by SMS. This method allows us to ensure that you have voted only once.
+            instructions_helper: "<ul><li>Must contain only numbers</li><li>Must start with 0</li><li>Must contain 10 digits</li><li>Must not be used by another account on this platform</li></ul>"
+            mobile_phone_number: Mobile phone number
+            send: Send me an SMS
+            title: Verify your identity with the SMS verification method
+  devise:
+    passwords:
+      new:
+        forgot_your_password: Forgot your password
+        send_me_reset_password_instructions: Send me reset password instructions
+    sessions:
+      new:
+        sign_in: Log in
+    shared:
+      links:
+        forgot_your_password: Forgot your password
   faker:
     address:
       country_code:
@@ -142,7 +241,17 @@ en:
       - EN9
   layouts:
     decidim:
+      data_consent:
+        details:
+          items:
+            _pk_id:
+              description: This cookie is used by Matomo to recognize repeat visitors.
+              service: Matomo
+            _pk_ses:
+              description: This session cookie is used by Matomo to track the duration of a user's visit on the website.
+              service: Matomo
       footer:
+        data_consent_settings: Data consent settings
         download_open_data: Open data
         made_with_open_source: Website made by <a target="_blank" href="https://opensourcepolitics.eu/en/">Open Source Politics</a> with the <a target="_blank" href="https://github.com/decidim/decidim">decidim free software</a>.
       header:
@@ -154,3 +263,12 @@ en:
         account: Account
         conversations: Conversations
         notifications: Notifications
+        profile: My account
+  rack_attack:
+    too_many_requests:
+      message: Your connection has been slowed because server received too many requests.
+      time: 'You will be able to navigate on our website in :'
+      time_unit: seconds
+      title: Thank you for your participation on %{organization_name}
+  sms_verification_workflow:
+    message: 'Hello, here is the code to authenticate yourself on the CESE initiatives platform: %{code}'

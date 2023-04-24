@@ -6,3 +6,32 @@
     });
   </script>
 <% end %>
+
+<!-- Matomo -->
+<script>
+    var consentCookie = JSON.parse(decodeURIComponent(document.cookie.replace(/(?:(?:^|.*;\s*)decidim-consent\s*=\s*([^;]*).*$)|^.*$/, "$1")));
+    if (consentCookie && consentCookie.analytics === true) {
+        var _paq = window._paq = window._paq || [];
+        /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+        _paq.push(["setDoNotTrack", true]);
+        _paq.push(['trackPageView']);
+        _paq.push(['enableLinkTracking']);
+        (function() {
+            var u="https://argus.osp.cat/";
+            _paq.push(['setTrackerUrl', u+'matomo.php']);
+            _paq.push(['setSiteId', '132']);
+            var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+            g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+        })();
+    } else if (consentCookie) {
+        // Clear Matomo cookies
+        var cookies = document.cookie.split("; ");
+        for (var i = 0; i < cookies.length; i++) {
+            if (cookies[i].indexOf("_pk_ses.") === 0 || cookies[i].indexOf("_pk_id.") === 0) {
+                var cookieName = cookies[i].split("=")[0];
+                document.cookie = cookieName + "=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+            }
+        }
+    }
+</script>
+<!-- End Matomo Code -->
