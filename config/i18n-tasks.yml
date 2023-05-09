@@ -130,3 +130,4 @@ ignore_unused:
   - rack_attack.too_many_requests.*
   - activemodel.attributes.confirmation.*
   - activemodel.attributes.mobile_phone.*
+  - decidim.admin.participatory_space_private_users.create.*
