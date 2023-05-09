@@ -1,0 +1,71 @@
+<div class="card">
+  <div class="card-divider">
+    <h2 class="card-title"><%= t ".layout_appearance_title" %></h2>
+  </div>
+
+  <div class="card-section">
+    <div class="minimap">
+      <label for="minimap"><%= t(".preview") %></label>
+      <%= render "decidim/admin/organization_appearance/form/minimap" %>
+    </div>
+
+    <div class="organization-images">
+      <div class="preview">
+        <%= form.upload(
+              :favicon,
+              dimensions_info: current_organization.attached_uploader(:favicon).dimensions_info,
+              extension_allowlist: current_organization.attached_uploader(:favicon).extension_allowlist,
+              help_i18n_scope: "decidim.forms.file_help.icon"
+            ) %>
+      </div>
+
+      <div class="preview">
+        <%= form.upload(
+              :logo,
+              dimensions_info: current_organization.attached_uploader(:logo).dimensions_info,
+              extension_allowlist: current_organization.attached_uploader(:logo).extension_allowlist
+            ) %>
+      </div>
+
+      <div class="preview">
+        <%= form.upload(
+              :official_img_header,
+              dimensions_info: current_organization.attached_uploader(:official_img_header).dimensions_info,
+              extension_allowlist: current_organization.attached_uploader(:official_img_header).extension_allowlist
+            ) %>
+      </div>
+
+      <div class="preview">
+        <%= form.upload(
+              :official_img_footer,
+              dimensions_info: current_organization.attached_uploader(:official_img_footer).dimensions_info,
+              extension_allowlist: current_organization.attached_uploader(:official_img_footer).extension_allowlist
+            ) %>
+      </div>
+
+      <div class="preview">
+        <%= form.upload(
+              :official_signature,
+              dimensions_info: current_organization.attached_uploader(:official_signature).dimensions_info,
+              extension_allowlist: current_organization.attached_uploader(:official_signature).extension_allowlist
+            ) %>
+      </div>
+
+      <div class="preview">
+        <%= form.upload(
+              :official_cachet,
+              dimensions_info: current_organization.attached_uploader(:official_cachet).dimensions_info,
+              extension_allowlist: current_organization.attached_uploader(:official_cachet).extension_allowlist
+            ) %>
+      </div>
+    </div>
+  </div>
+
+  <div class="card-section">
+    <div class="row" style="display: grid; grid-template-columns: 1fr 1fr;">
+      <div class="preview-official_url">
+        <%= form.text_field :official_url %>
+      </div>
+    </div>
+  </div>
+</div>
