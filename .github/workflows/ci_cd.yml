@@ -130,7 +130,7 @@ jobs:
           tag: "develop-${{ github.sha }}"
   generate_release:
     name: Generate release
-    needs: [ lint, tests, test_build ]
+    needs: [ lint, tests, system_tests, test_build ]
     if: "github.ref == 'refs/heads/master'"
     runs-on: ubuntu-latest
     steps:
