@@ -118,7 +118,7 @@ jobs:
   build_and_push_image_dev:
     name: Build and push image to Registry
     if: "github.ref == 'refs/heads/develop'"
-    needs: [ lint, tests, test_build ]
+    needs: [ lint, tests, system_tests, test_build ]
     runs-on: ubuntu-latest
     steps:
       - uses: OpenSourcePolitics/build-and-push-images-action@master
