@@ -1,8 +1,7 @@
 FROM ruby:3.0.2
 
 ENV RAILS_ENV=production \
-    SECRET_KEY_BASE=dummy \
-    DEFACE_ENABLED=true
+    SECRET_KEY_BASE=dummy
 
 WORKDIR /app
 
@@ -27,8 +26,9 @@ RUN yarn install
 
 COPY . .
 
-RUN DEFACE_ENABLED=false bundle exec bootsnap precompile --gemfile app/ lib/ config/ bin/ db/ && \
-    DEFACE_ENABLED=false bundle exec rails assets:precompile
+RUN bundle exec bootsnap precompile --gemfile app/ lib/ config/ bin/ db/ && \
+    bundle exec rails assets:precompile && \
+    bundle exec rails deface:precompile
 
 # Configure endpoint.
 COPY ./entrypoint.sh /usr/bin/
