@@ -41,6 +41,7 @@ gem "bootsnap", "~> 1.4"
 gem "deface"
 gem "puma", ">= 5.6.2"
 
+gem "deface"
 gem "faker", "~> 2.14"
 
 group :development, :test do
