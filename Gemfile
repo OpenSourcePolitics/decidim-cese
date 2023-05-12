@@ -37,6 +37,8 @@ gem "sys-filesystem"
 
 gem "omniauth-rails_csrf_protection", "~> 1.0"
 
+gem "activerecord-session_store"
+
 gem "bootsnap", "~> 1.4"
 gem "puma", ">= 5.6.2"
 
