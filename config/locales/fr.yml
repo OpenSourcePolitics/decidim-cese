@@ -2,6 +2,10 @@
 fr:
   activemodel:
     attributes:
+      confirmation:
+        verification_code: Code de confirmation
+      mobile_phone:
+        mobile_phone_number: Numéro de téléphone
       osp_authorization_handler:
         birthday: Date de naissance
         document_number: Numéro unique
@@ -15,6 +19,16 @@ fr:
       destroy:
         error: Il y a eu un problème lors de la suppression de votre compte.
         success: Votre compte a été supprimé avec succès.
+      email_change:
+        body1: Nous avons envoyé un e-mail à %{unconfirmed_email} pour vérifier votre nouvelle adresse e-mail.
+        body2: Envoyer à nouveau l'e-mail de vérification ? %{resend_link} ou %{cancel_link}.
+        cancel: Annuler
+        send_again: Envoyer à nouveau
+        title: Vérification du changement d'adresse e-mail
+      show:
+        available_locales_helper: Choisissez la langue que vous souhaitez utiliser pour naviguer et recevoir des notifications sur la plateforme
+        change_password: Changer de mot de passe
+        update_account: Mettre à jour votre compte
     admin:
       participatory_space_private_users:
         create:
@@ -101,6 +115,7 @@ fr:
           success: La rencontre a été mise à jour avec succès.
     omniauth:
       france_connect:
+        explanation: FranceConnect est la solution proposée par l’État pour sécuriser et simplifier la connexion à vos services en ligne.
         external:
           link: https://franceconnect.gouv.fr/
           text: Qu'est-ce-que FranceConnect ?
@@ -183,6 +198,9 @@ fr:
           actions:
             osp_authorization_handler: Vérifier avec le formulaire de vérification de l'identité
             osp_authorization_workflow: Vérifier avec le formulaire de vérification de l'identité
+        renew:
+          'false': Non
+          'true': Oui
       sms:
         authorizations:
           edit:
@@ -224,7 +242,17 @@ fr:
       - FR9
   layouts:
     decidim:
+      data_consent:
+        details:
+          items:
+            _pk_id:
+              description: Ce cookie est utilisé par Matomo pour reconnaître les visiteurs récurrents.
+              service: Matomo
+            _pk_ses:
+              description: Ce cookie de session est utilisé par Matomo pour suivre la durée de la visite d'un utilisateur sur le site.
+              service: Matomo
       footer:
+        data_consent_settings: Data consent settings
         download_open_data: Données ouvertes
         made_with_open_source: Site réalisé par <a target="_blank" href="https://opensourcepolitics.eu">Open Source Politics</a> grâce au <a target="_blank" href="https://github.com/decidim/decidim">logiciel libre Decidim</a>.
       header:
@@ -236,6 +264,7 @@ fr:
         account: Mon compte
         conversations: Conversations
         notifications: Notifications
+        profile: Mon profil public
   rack_attack:
     too_many_requests:
       message: Votre connexion a été ralentie à cause d'un nombre de requêtes trop important

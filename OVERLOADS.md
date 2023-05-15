@@ -1,5 +1,9 @@
 # Overrides
-
+## Disable username edition in user account
+* 'app/views/decidim/account/show.html.erb:27'
+```ruby
+      <%= f.text_field :name, autocomplete: "name", readonly: "readonly" %>
+```
 
 ## Update France Connect with requirements
 * `app/views/decidim/devise/passwords/new.html.erb`

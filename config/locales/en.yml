@@ -2,6 +2,10 @@
 en:
   activemodel:
     attributes:
+      confirmation:
+        verification_code: Verification code
+      mobile_phone:
+        mobile_phone_number: Mobile phone number
       osp_authorization_handler:
         birthday: Birthday
         document_number: Unique number
@@ -15,6 +19,16 @@ en:
       destroy:
         error: There was a problem deleting your account.
         success: Your account was successfully deleted.
+      email_change:
+        body1: We've sent an email to %{unconfirmed_email} to verify your new email address.
+        body2: Need us to send the verification email again? %{resend_link} or %{cancel_link}.
+        cancel: cancel
+        send_again: Send again
+        title: Email change verification
+      show:
+        available_locales_helper: Available locales helper
+        change_password: Change password
+        update_account: Update account
     admin:
       participatory_space_private_users:
         create:
@@ -107,6 +121,7 @@ en:
           success: You have updated the meeting successfully.
     omniauth:
       france_connect:
+        explanation: FranceConnect est la solution proposée par l’État pour sécuriser et simplifier la connexion à vos services en ligne.
         external:
           link: https://franceconnect.gouv.fr/
           text: What is FranceConnect ?
@@ -182,6 +197,9 @@ en:
           actions:
             osp_authorization_handler: Verify with the identity verification form
             osp_authorization_workflow: Verify with the identity verification form
+        renew:
+          'false': false
+          'true': true
       sms:
         authorizations:
           edit:
@@ -223,7 +241,17 @@ en:
       - EN9
   layouts:
     decidim:
+      data_consent:
+        details:
+          items:
+            _pk_id:
+              description: This cookie is used by Matomo to recognize repeat visitors.
+              service: Matomo
+            _pk_ses:
+              description: This session cookie is used by Matomo to track the duration of a user's visit on the website.
+              service: Matomo
       footer:
+        data_consent_settings: Data consent settings
         download_open_data: Open data
         made_with_open_source: Website made by <a target="_blank" href="https://opensourcepolitics.eu/en/">Open Source Politics</a> with the <a target="_blank" href="https://github.com/decidim/decidim">decidim free software</a>.
       header:
@@ -235,6 +263,7 @@ en:
         account: Account
         conversations: Conversations
         notifications: Notifications
+        profile: My account
   rack_attack:
     too_many_requests:
       message: Your connection has been slowed because server received too many requests.

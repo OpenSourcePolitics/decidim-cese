@@ -20,6 +20,7 @@ gem "decidim-extended_socio_demographic_authorization_handler", git: "https://gi
                                                                 branch: "cese"
 # gem "decidim-question_captcha", git: "https://github.com/OpenSourcePolitics/decidim-module-question_captcha.git", branch: DECIDIM_VERSION
 # gem "decidim-spam_detection", git: "https://github.com/OpenSourcePolitics/decidim-spam_detection.git"
+gem "decidim-spam_detection"
 gem "decidim-term_customizer", git: "https://github.com/mainio/decidim-module-term_customizer.git", branch: "develop"
 gem "omniauth-france_connect", git: "https://github.com/OpenSourcePolitics/omniauth-france_connect"
 
@@ -36,6 +37,8 @@ gem "rack-attack"
 gem "sys-filesystem"
 
 gem "omniauth-rails_csrf_protection", "~> 1.0"
+
+gem "activerecord-session_store"
 
 gem "bootsnap", "~> 1.4"
 gem "puma", ">= 5.6.2"
@@ -69,6 +72,6 @@ group :production do
   gem "sentry-rails"
   gem "sentry-ruby"
   gem "sentry-sidekiq"
-  gem "sidekiq"
-  gem "sidekiq-scheduler"
+  gem "sidekiq", "~> 6.0"
+  gem "sidekiq-scheduler", "~> 5.0"
 end

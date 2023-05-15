@@ -11,28 +11,29 @@
   - scheduled
   - exports
 
-:schedule:
-  CalculateAllMetrics:
-    cron: '0 0 0 * * *' # Run at midnight
-    class: CalculateAllMetricsJob
-    queue: scheduled
-  PreloadOpenData:
-    cron: '0 0 1 * * *' # Run at 01:00
-    class: PreloadOpenDataJob
-    queue: scheduled
-  DetectSpamUsers:
-    cron: '0 0 8 * * *' # Run at 08:00
-    class: Decidim::SpamDetection::MarkUsersJob
-    queue: scheduled
-  Backup:
-    cron: '0 0 4 * * *' # Run at 04:00
-    class: BackupJob
-    queue: backups
-  SendNotificationMailDaily:
-    cron: '0 5 0 * * *' # Run at 00:05
-    class: SendNotificationMailDailyJob
-    queue: mailers
-  SendNotificationMailWeekly:
-    cron: '0 5 0 * * 6' # Run at 00:05 on Saturday
-    class: SendNotificationMailWeeklyJob
-    queue: mailers
+:scheduler:
+  :schedule:
+    CalculateAllMetrics:
+      cron: '0 0 0 * * *' # Run at midnight
+      class: CalculateAllMetricsJob
+      queue: scheduled
+    PreloadOpenData:
+      cron: '0 0 1 * * *' # Run at 01:00
+      class: PreloadOpenDataJob
+      queue: scheduled
+    DetectSpamUsers:
+      cron: '0 0 8 * * *' # Run at 08:00
+      class: Decidim::SpamDetection::MarkUsersJob
+      queue: scheduled
+    Backup:
+      cron: '0 0 4 * * *' # Run at 04:00
+      class: BackupJob
+      queue: backups
+    SendNotificationMailDaily:
+      cron: '0 5 0 * * *' # Run at 00:05
+      class: SendNotificationMailDailyJob
+      queue: mailers
+    SendNotificationMailWeekly:
+      cron: '0 5 0 * * 6' # Run at 00:05 on Saturday
+      class: SendNotificationMailWeeklyJob
+      queue: mailers
