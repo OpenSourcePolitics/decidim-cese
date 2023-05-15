@@ -9,27 +9,25 @@ module AsDownloadPatch
 end
 
 Rails.application.config.to_prepare do
-  ActiveStorage::Blob.send(:include, AsDownloadPatch)
+  ActiveStorage::Blob.include AsDownloadPatch
 end
 
 def migrate(from, to)
   configs = Rails.configuration.active_storage.service_configurations
   from_service = ActiveStorage::Service.configure from, configs
-  to_service   = ActiveStorage::Service.configure to, configs
+  to_service = ActiveStorage::Service.configure to, configs
 
   ActiveStorage::Blob.service = from_service
 
   puts "#{ActiveStorage::Blob.count} Blobs to go..."
   ActiveStorage::Blob.find_each do |blob|
-    begin
-      print '.'
-      blob.open do |tf|
-        checksum = blob.checksum
-        to_service.upload(blob.key, tf, checksum: checksum)
-      end
-    rescue ActiveStorage::FileNotFoundError
-      next
+    print "."
+    blob.open do |tf|
+      checksum = blob.checksum
+      to_service.upload(blob.key, tf, checksum: checksum)
     end
+  rescue ActiveStorage::FileNotFoundError
+    next
   end
 end
 
