@@ -29,6 +29,7 @@ gem "omniauth-france_connect", git: "https://github.com/OpenSourcePolitics/omnia
 ## End gems /!\ Required comment for : $ rake app:upgrade
 
 gem "activejob-uniqueness", require: "active_job/uniqueness/sidekiq_patch"
+gem "aws-sdk-s3", require: false
 gem "dotenv-rails"
 gem "fog-aws"
 gem "foundation_rails_helper", git: "https://github.com/sgruhier/foundation_rails_helper.git"
