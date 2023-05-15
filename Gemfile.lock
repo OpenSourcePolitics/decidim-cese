@@ -1014,8 +1014,8 @@ PLATFORMS
 
 DEPENDENCIES
   activejob-uniqueness
-  aws-sdk-s3
   activerecord-session_store
+  aws-sdk-s3
   bootsnap (~> 1.4)
   brakeman (~> 5.2)
   byebug (~> 11.0)
