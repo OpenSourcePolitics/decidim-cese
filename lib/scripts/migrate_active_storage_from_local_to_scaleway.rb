@@ -21,10 +21,14 @@ def migrate(from, to)
 
   puts "#{ActiveStorage::Blob.count} Blobs to go..."
   ActiveStorage::Blob.find_each do |blob|
-    print '.'
-    blob.open do |tf|
-      checksum = blob.checksum
-      to_service.upload(blob.key, tf, checksum: checksum)
+    begin
+      print '.'
+      blob.open do |tf|
+        checksum = blob.checksum
+        to_service.upload(blob.key, tf, checksum: checksum)
+      end
+    rescue ActiveStorage::FileNotFoundError
+      next
     end
   end
 end
