@@ -99,6 +99,8 @@ ignore_missing:
  - decidim.proposals.omniauth.france_connect.external.{link,text}
  - decidim.proposals.omniauth.france_connect.forgot_password.ok_text
  - decidim.initiatives.initiatives.show.illegal.{title,description}
+ - decidim.initiatives.create_initiative.select_initiative_type.*
+ - decidim.admin.organization_appearance.form.images.*
 
 # Consider these keys used:
 ignore_unused:
@@ -130,3 +132,4 @@ ignore_unused:
   - rack_attack.too_many_requests.*
   - activemodel.attributes.confirmation.*
   - activemodel.attributes.mobile_phone.*
+  - decidim.admin.participatory_space_private_users.create.*

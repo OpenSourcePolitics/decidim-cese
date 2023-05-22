@@ -23,3 +23,5 @@ docker-compose.prod.yml
 docker-compose.yml
 OVERLOADS.md
 Makefile
+public/decidim-packs
+public/packs-test
