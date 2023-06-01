@@ -82,34 +82,8 @@ module Decidim::Verifications
                  name: handler.handler_name)
         end
 
-        it "saves conflicts" do
-          expect { subject.call }.to change(Decidim::Verifications::Conflict, :count).by(1)
-        end
-
-        it "increases conflicts times" do
-          subject.call
-
-          conflict = Decidim::Verifications::Conflict.last
-
-          expect(conflict.times).to eq(1)
-
-          subject.call
-
-          expect(conflict.reload.times).to eq(2)
-        end
-
-        it "sends notification to admins" do
-          allow(Decidim::EventsManager).to receive(:publish).and_call_original
-          subject.call
-
-          conflict = Decidim::Verifications::Conflict.last
-
-          expect(Decidim::EventsManager).to have_received(:publish).with(
-            event: "decidim.events.verifications.managed_user_error_event",
-            event_class: Decidim::Verifications::ManagedUserErrorEvent,
-            resource: conflict,
-            affected_users: Decidim::User.where(admin: true, organization: organization)
-          )
+        it "doesn't saves conflicts" do
+          expect { subject.call }.not_to change(Decidim::Verifications::Conflict, :count)
         end
       end
     end
