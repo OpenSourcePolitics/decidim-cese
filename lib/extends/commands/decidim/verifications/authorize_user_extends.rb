@@ -6,9 +6,7 @@ module AuthorizeUserExtends
   included do
     # Override commands to remove the verification conflict
     def call
-      if handler.invalid?
-        return broadcast(:invalid)
-      end
+      return broadcast(:invalid) if handler.invalid?
 
       Decidim::Authorization.create_or_update_from(handler)
 
@@ -20,4 +18,3 @@ end
 Decidim::Verifications::AuthorizeUser.class_eval do
   include(AuthorizeUserExtends)
 end
-
