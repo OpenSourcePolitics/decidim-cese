@@ -33,8 +33,8 @@ describe "Initiatives", type: :system do
     end
 
     context "when some types and scopes have been created" do
-      let!(:initiative_type){ create(:initiatives_type, organization: organization) }
-      let!(:initiative_type_scope){ create(:initiatives_type_scope, type: initiative_type) }
+      let!(:initiative_type) { create(:initiatives_type, organization: organization) }
+      let!(:initiative_type_scope) { create(:initiatives_type_scope, type: initiative_type) }
 
       it "displays transparent trash link" do
         visit decidim_initiatives.initiatives_path
