@@ -4,7 +4,7 @@ module CreateInitiativeControllerExtends
   extend ActiveSupport::Concern
 
   included do
-    helper Decidim::Initiatives::CreateInitiativeHelper
+    helper Decidim::Initiatives::SignatureTypeOptionsHelper
 
     def show
       send("#{step}_step", initiative: session_initiative)
