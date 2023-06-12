@@ -390,7 +390,7 @@ describe "Initiative", type: :system do
 
         it "have fields for title and description" do
           expect(page).to have_xpath("//input[@id='initiative_title']")
-          expect(page).to have_xpath("//input[@id='initiative_description']", visible: :all)
+          expect(page).to have_xpath("//textarea[@id='initiative_description']", visible: :all)
         end
 
         it "offers contextual help" do
@@ -421,7 +421,7 @@ describe "Initiative", type: :system do
 
         it "have fields for title and description" do
           expect(page).to have_xpath("//input[@id='initiative_title']")
-          expect(page).to have_xpath("//input[@id='initiative_description']", visible: :all)
+          expect(page).to have_xpath("//textarea[@id='initiative_description']", visible: :all)
         end
 
         it "offers contextual help" do
@@ -438,7 +438,7 @@ describe "Initiative", type: :system do
           allow(Decidim::Initiatives.config).to receive(:similarity_threshold).and_return(0.25)
           find_button("I want to promote this initiative").click
           fill_in "Title", with: translated(initiative.title, locale: :en)
-          fill_in_editor "initiative_description", with: translated(initiative.description, locale: :en)
+          fill_in "initiative_description", with: translated(initiative.description, locale: :en)
           find_button("Continue").click
         end
 
@@ -470,7 +470,7 @@ describe "Initiative", type: :system do
 
           before do
             fill_in "Title", with: translated(initiative.title, locale: :en)
-            fill_in_editor "initiative_description", with: translated(initiative.description, locale: :en)
+            fill_in "initiative_description", with: translated(initiative.description, locale: :en)
             find_button("Continue").click
           end
 
@@ -489,7 +489,7 @@ describe "Initiative", type: :system do
           before do
             find_button("I want to promote this initiative").click
             fill_in "Title", with: translated(initiative.title, locale: :en)
-            fill_in_editor "initiative_description", with: translated(initiative.description, locale: :en)
+            fill_in "initiative_description", with: translated(initiative.description, locale: :en)
             find_button("Continue").click
           end
 
@@ -577,7 +577,7 @@ describe "Initiative", type: :system do
           find_button("I want to promote this initiative").click
 
           fill_in "Title", with: translated(initiative.title, locale: :en)
-          fill_in_editor "initiative_description", with: translated(initiative.description, locale: :en)
+          fill_in "initiative_description", with: translated(initiative.description, locale: :en)
           find_button("Continue").click
 
           select("Online", from: "Signature collection type")
@@ -631,7 +631,7 @@ describe "Initiative", type: :system do
           find_button("I want to promote this initiative").click
 
           fill_in "Title", with: translated(initiative.title, locale: :en)
-          fill_in_editor "initiative_description", with: translated(initiative.description, locale: :en)
+          fill_in "initiative_description", with: translated(initiative.description, locale: :en)
           find_button("Continue").click
 
           select(translated(initiative_type_scope.scope.name, locale: :en), from: "Scope")
