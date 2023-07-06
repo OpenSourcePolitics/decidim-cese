@@ -45,13 +45,14 @@ Rails.application.configure do
       "1"
     end
   end.to_i.weeks
+
   # Mount Action Cable outside main process or domain
   # config.action_cable.mount_path = nil
   # config.action_cable.url = 'wss://example.com/cable'
   # config.action_cable.allowed_request_origins = [ 'http://example.com', /http:\/\/example.*/ ]
 
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
-  # config.force_ssl = true
+  config.force_ssl = ENV.fetch("FORCE_SSL", "1") == "1"
 
   # Use the lowest log level to ensure availability of diagnostic information
   # when problems arise.
@@ -61,17 +62,11 @@ Rails.application.configure do
   config.log_tags = [:request_id]
 
   # Use a different cache store in production.
-  config.cache_store = if ENV["MEMCACHEDCLOUD_SERVERS"].present?
-                         [:dalli_store, ENV["MEMCACHEDCLOUD_SERVERS"].split(","), {
-                           username: ENV.fetch("MEMCACHEDCLOUD_USERNAME", nil), password: ENV.fetch("MEMCACHEDCLOUD_PASSWORD", nil)
-                         }]
-                       else
-                         :mem_cache_store
-                       end
+  config.cache_store = :mem_cache_store, ENV.fetch("MEMCACHE_SERVERS", "localhost:11211")
 
   # Use a real queuing backend for Active Job (and separate queues per environment)
   config.active_job.queue_adapter = :sidekiq
-  # see confguration for sidekiq in `config/sidekiq.yml`
+  # see configuration for sidekiq in `config/sidekiq.yml`
   # config.active_job.queue_name_prefix = "development_app_#{Rails.env}"
 
   config.action_mailer.perform_caching = false
@@ -89,28 +84,32 @@ Rails.application.configure do
 
   # config.action_mailer.raise_delivery_errors = true
   # config.action_mailer.delivery_method = :letter_opener_web
-
-  config.action_mailer.delivery_method = :smtp
-  config.action_mailer.smtp_settings = {
-    address: Rails.application.secrets.smtp_address,
-    port: Rails.application.secrets.smtp_port,
-    authentication: Rails.application.secrets.smtp_authentication,
-    user_name: Rails.application.secrets.smtp_username,
-    password: Rails.application.secrets.smtp_password,
-    domain: Rails.application.secrets.smtp_domain,
-    enable_starttls_auto: Rails.application.secrets.smtp_starttls_auto,
-    openssl_verify_mode: "none"
-  }
-
-  if Rails.application.secrets.sendgrid
-    config.action_mailer.default_options = {
-      "X-SMTPAPI" => {
-        filters: {
-          clicktrack: { settings: { enable: 0 } },
-          opentrack: { settings: { enable: 0 } }
-        }
-      }.to_json
+  if ENV.fetch("ENABLE_LETTER_OPENER", "0") == "1"
+    config.action_mailer.delivery_method = :letter_opener_web
+    config.action_mailer.default_url_options = { port: 3000 }
+  else
+    config.action_mailer.delivery_method = :smtp
+    config.action_mailer.smtp_settings = {
+      address: Rails.application.secrets.smtp_address,
+      port: Rails.application.secrets.smtp_port,
+      authentication: Rails.application.secrets.smtp_authentication,
+      user_name: Rails.application.secrets.smtp_username,
+      password: Rails.application.secrets.smtp_password,
+      domain: Rails.application.secrets.smtp_domain,
+      enable_starttls_auto: Rails.application.secrets.smtp_starttls_auto,
+      openssl_verify_mode: "none"
     }
+
+    if Rails.application.secrets.sendgrid
+      config.action_mailer.default_options = {
+        "X-SMTPAPI" => {
+          filters: {
+            clicktrack: { settings: { enable: 0 } },
+            opentrack: { settings: { enable: 0 } }
+          }
+        }.to_json
+      }
+    end
   end
 
   # Use default logging formatter so that PID and timestamp are not suppressed.
@@ -141,5 +140,8 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 
-  config.deface.enabled = ENV.fetch("DEFACE_ENABLED", "false") == "true"
+  # Global IDs are used to identify records and
+  # are known to cause issue with moderation due to expiration
+  # Setting this to 100 years should be enough
+  config.global_id.expires_in = 100.years
 end
