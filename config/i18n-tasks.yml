@@ -101,6 +101,7 @@ ignore_missing:
  - decidim.initiatives.initiatives.show.illegal.{title,description}
  - decidim.initiatives.create_initiative.select_initiative_type.*
  - decidim.admin.organization_appearance.form.images.*
+ - extended_socio_demographic_authorization.form.*
 
 # Consider these keys used:
 ignore_unused:
@@ -133,3 +134,4 @@ ignore_unused:
   - activemodel.attributes.confirmation.*
   - activemodel.attributes.mobile_phone.*
   - decidim.admin.participatory_space_private_users.create.*
+  - extended_socio_demographic_authorization.form.*
