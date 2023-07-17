@@ -21,7 +21,7 @@ module Decidim
         next if auth.user.blank? || !auth.user.respond_to?(:extended_data)
         next if auth.user.extended_data.include?(auth.name)
 
-        Rails.logger.debug "[DuplicatesMetadata] - Updating metadata for user (ID/#{auth.user.id})"
+        Rails.logger.debug { "[DuplicatesMetadata] - Updating metadata for user (ID/#{auth.user.id})" }
         auth.user.update!(
           extended_data: auth.user.extended_data.merge(auth.name => auth.metadata)
         )

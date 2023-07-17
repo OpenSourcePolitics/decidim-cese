@@ -38,11 +38,11 @@ describe Decidim::DuplicatesMetadata do
       user2.reload
 
       expect(user.extended_data).to include(
-        "extended_socio_demographic_authorization_handler" => socio_authorization.metadata,
+        "extended_socio_demographic_authorization_handler" => socio_authorization.metadata
       )
 
       expect(user2.extended_data).to include(
-        "extended_socio_demographic_authorization_handler" => socio_authorization_user2.metadata,
+        "extended_socio_demographic_authorization_handler" => socio_authorization_user2.metadata
       )
     end
 
