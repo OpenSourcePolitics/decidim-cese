@@ -67,7 +67,7 @@ AllCops:
   # If a value is specified for TargetRubyVersion then it is used.
   # Else if .ruby-version exists and it contains an MRI version it is used.
   # Otherwise we fallback to the oldest officially supported Ruby version (2.0).
-  TargetRubyVersion: 3.0
+  TargetRubyVersion: 2.7
 
   RSpec:
     Patterns:
@@ -1098,6 +1098,10 @@ Style/WordArray:
   # The regular expression WordRegex decides what is considered a word.
   WordRegex: !ruby/regexp '/\A[\p{Word}\n\t]+\z/'
 
+Style/MutableConstant:
+  Exclude:
+    - "bin/overloads"
+
 ##################### Metrics ##################################
 
 Metrics/AbcSize:
@@ -1268,11 +1272,10 @@ RSpec/NamedSubject:
   Enabled: false
 
 RSpec/RepeatedExampleGroupDescription:
-  Enabled: true
+  Enabled: false
 
 RSpec/RepeatedExampleGroupBody:
-  Enabled: true
-
+  Enabled: false
 RSpec/VerifiedDoubles:
   Enabled: false
 
