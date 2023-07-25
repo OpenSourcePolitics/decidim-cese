@@ -55,10 +55,7 @@ describe ActiveStorage::Migrator do
   describe ".migrate!" do
     it "creates a new instance and calls #migrate!" do
       expect(described_class).to receive(:new).with(source, destination).and_return(subject)
-      # rubocop:disable RSpec/SubjectStub
       expect(subject).to receive(:migrate!)
-      # rubocop:enable RSpec/SubjectStub
-
       described_class.migrate!(source, destination)
     end
   end

@@ -32,29 +32,23 @@ describe DecidimApp::K8s::OrganizationExporter do
 
   describe ".export!" do
     it "calls the right methods" do
-      # rubocop:disable RSpec/AnyInstance
       expect_any_instance_of(described_class).to receive(:export!)
       described_class.export!(organization, logger, export_path, image)
-      # rubocop:enable RSpec/AnyInstance
     end
   end
 
   describe "#export!" do
     it "calls the right methods" do
-      # rubocop:disable RSpec/SubjectStub
       expect(subject).to receive(:creating_directories)
       expect(subject).to receive(:exporting_env_vars)
       expect(subject).to receive(:exporting_configuration)
-      # rubocop:enable RSpec/SubjectStub
       subject.export!
     end
   end
 
   describe "#dumping_database" do
     it "dumps the database" do
-      # rubocop:disable RSpec/SubjectStub
       expect(subject).to receive(:system).with("pg_dump -Fc #{database_name} > #{export_path}/#{name_space}--#{hostname}/postgres/#{hostname}--de.dump")
-      # rubocop:enable RSpec/SubjectStub
       subject.dumping_database
     end
   end

@@ -26,10 +26,7 @@ describe "SMS code request", type: :system do
 
   context "when requesting a code by sms" do
     before do
-      # rubocop:disable RSpec/AnyInstance
       allow_any_instance_of(SMSGatewayService).to receive(:deliver_code).and_return(true)
-      # rubocop:enable RSpec/AnyInstance
-
       fill_in "Mobile phone number", with: "600102030"
       click_button "Send me an SMS"
     end

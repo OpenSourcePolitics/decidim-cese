@@ -3,7 +3,7 @@
 source "https://rubygems.org"
 
 DECIDIM_VERSION = "0.27"
-DECIDIM_BRANCH = "release/#{DECIDIM_VERSION}-stable"
+DECIDIM_BRANCH = "release/#{DECIDIM_VERSION}-stable".freeze
 
 ruby RUBY_VERSION
 
@@ -15,30 +15,31 @@ gem "decidim", "~> #{DECIDIM_VERSION}.0"
 gem "decidim-initiatives", "~> #{DECIDIM_VERSION}.0"
 
 # External Decidim gems
-gem "decidim-transparent_trash", git: "https://github.com/OpenSourcePolitics/decidim-module-transparent_trash.git", branch: "master"
 gem "decidim-blog_author_petition", git: "https://github.com/OpenSourcePolitics/decidim-module-blog_author_petition.git", branch: "main"
 gem "decidim-decidim_awesome", git: "https://github.com/decidim-ice/decidim-module-decidim_awesome.git", branch: "main"
+gem "decidim-extended_socio_demographic_authorization_handler", git: "https://github.com/OpenSourcePolitics/decidim-module-extended_socio_demographic_authorization_handler.git",
+                                                                branch: "hotfix/disable_autocomplete"
 gem "decidim-initiative_status", git: "https://github.com/OpenSourcePolitics/decidim-module-initiative_status.git", branch: "main"
-gem "decidim-extended_socio_demographic_authorization_handler", git: "https://github.com/OpenSourcePolitics/decidim-module-extended_socio_demographic_authorization_handler.git", branch: "hotfix/disable_autocomplete"
 gem "decidim-spam_detection"
 gem "decidim-term_customizer", git: "https://github.com/mainio/decidim-module-term_customizer.git", branch: "develop"
+gem "decidim-transparent_trash", git: "https://github.com/OpenSourcePolitics/decidim-module-transparent_trash.git", branch: "master"
 
 # Omniauth gems
 gem "omniauth-france_connect", git: "https://github.com/OpenSourcePolitics/omniauth-france_connect"
 
 # Default
 gem "activejob-uniqueness", require: "active_job/uniqueness/sidekiq_patch"
-gem "aws-sdk-s3", require: false
-gem "fog-aws"
-gem "foundation_rails_helper", git: "https://github.com/sgruhier/foundation_rails_helper.git"
-gem "rack-attack"
-gem "sys-filesystem"
-gem "omniauth-rails_csrf_protection", "~> 1.0"
 gem "activerecord-session_store"
+gem "aws-sdk-s3", require: false
 gem "bootsnap", "~> 1.4"
 gem "deface"
-gem "puma", ">= 5.6.2"
 gem "faker", "~> 2.14"
+gem "fog-aws"
+gem "foundation_rails_helper", git: "https://github.com/sgruhier/foundation_rails_helper.git"
+gem "omniauth-rails_csrf_protection", "~> 1.0"
+gem "puma", ">= 5.6.2"
+gem "rack-attack"
+gem "sys-filesystem"
 
 group :development do
   gem "letter_opener_web", "~> 2.0"
@@ -50,9 +51,9 @@ group :development do
 end
 
 group :development, :test do
+  gem "brakeman", "~> 5.2"
   gem "byebug", "~> 11.0", platform: :mri
   gem "climate_control", "~> 1.2"
-  gem "brakeman", "~> 5.2"
   gem "decidim-dev", "~> #{DECIDIM_VERSION}.0"
   gem "parallel_tests", "~> 3.7"
 end
