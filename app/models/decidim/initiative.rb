@@ -72,8 +72,10 @@ module Decidim
     enum state: { created: 0, validating: 1, discarded: 2, published: 3, rejected: 4, accepted: 5, invalidated: 6, illegal: 7 }
 
     validates :title, :description, :state, :signature_type, presence: true
+    # rubocop:disable Rails/UniqueValidationWithoutIndex
     validates :hashtag,
               uniqueness: { allow_blank: true, case_sensitive: false }
+    # rubocop:enable Rails/UniqueValidationWithoutIndex
 
     validate :signature_type_allowed
 
