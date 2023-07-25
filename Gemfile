@@ -21,7 +21,7 @@ gem "decidim-extended_socio_demographic_authorization_handler", git: "https://gi
                                                                 branch: "hotfix/disable_autocomplete"
 gem "decidim-initiative_status", git: "https://github.com/OpenSourcePolitics/decidim-module-initiative_status.git", branch: "main"
 gem "decidim-spam_detection"
-gem "decidim-term_customizer", git: "https://github.com/mainio/decidim-module-term_customizer.git", branch: "develop"
+gem "decidim-term_customizer", git: "https://github.com/armandfardeau/decidim-module-term_customizer.git", branch: "fix/precompile-on-docker-0.27"
 gem "decidim-transparent_trash", git: "https://github.com/OpenSourcePolitics/decidim-module-transparent_trash.git", branch: "master"
 
 # Omniauth gems
