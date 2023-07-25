@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 require "decidim_app/config"
-require "decidim/dev/dummy_translator"
 
 Decidim.configure do |config|
   config.application_name = "OSP Agora"
@@ -33,6 +32,51 @@ Decidim.configure do |config|
       address_format: [%w(houseNumber street), "city", "country"]
     }
   }
+
+  config.consent_categories = [
+    {
+      slug: "essential",
+      mandatory: true,
+      items: [
+        {
+          type: "cookie",
+          name: "_session_id"
+        },
+        {
+          type: "cookie",
+          name: Decidim.consent_cookie_name
+        }
+      ]
+    },
+    {
+      slug: "preferences",
+      mandatory: false
+    },
+    {
+      slug: "analytics",
+      mandatory: false,
+      items: [
+        {
+          type: "cookie",
+          name: "_pk_id"
+        },
+        {
+          type: "cookie",
+          name: "_pk_ses"
+        }
+      ]
+    },
+    {
+      slug: "marketing",
+      mandatory: false
+    }
+  ]
+
+  if defined?(Decidim::Initiatives) && defined?(Decidim::Initiatives.do_not_require_authorization)
+    Decidim::Initiatives.minimum_committee_members = 1
+    Decidim::Initiatives.do_not_require_authorization = true
+    Decidim::Initiatives.print_enabled = false
+  end
 
   # Custom resource reference generator method
   # config.resource_reference_generator = lambda do |resource, feature|
@@ -99,38 +143,6 @@ Decidim.configure do |config|
   end
 
   config.base_uploads_path = "#{ENV["HEROKU_APP_NAME"]}/" if ENV["HEROKU_APP_NAME"].present?
-
-  # Machine Translation Configuration
-  #
-  # Enable machine translations
-  config.enable_machine_translations = Rails.application.secrets.translator[:enabled]
-  config.machine_translation_service = "DeeplTranslator"
-  config.machine_translation_delay = Rails.application.secrets.translator[:delay]
-end
-
-Decidim.module_eval do
-  autoload :ReminderRegistry, "decidim/reminder_registry"
-  autoload :ReminderManifest, "decidim/reminder_manifest"
-  autoload :ManifestMessages, "decidim/manifest_messages"
-
-  def self.reminders_registry
-    @reminders_registry ||= Decidim::ReminderRegistry.new
-  end
-end
-
-Decidim.reminders_registry.register(:orders) do |reminder_registry|
-  reminder_registry.generator_class_name = "Decidim::Budgets::OrderReminderGenerator"
-  reminder_registry.form_class_name = "Decidim::Budgets::Admin::OrderReminderForm"
-  reminder_registry.command_class_name = "Decidim::Budgets::Admin::CreateOrderReminders"
-
-  reminder_registry.settings do |settings|
-    settings.attribute :reminder_times, type: :array, default: [2.hours, 1.week, 2.weeks]
-  end
-
-  reminder_registry.messages do |msg|
-    msg.set(:title) { |count: 0| I18n.t("decidim.budgets.admin.reminders.orders.title", count: count) }
-    msg.set(:description) { I18n.t("decidim.budgets.admin.reminders.orders.description") }
-  end
 end
 
 Rails.application.config.i18n.available_locales = Decidim.available_locales
