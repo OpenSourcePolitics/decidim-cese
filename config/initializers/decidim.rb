@@ -9,11 +9,11 @@ Decidim.configure do |config|
 
   # Change these lines to set your preferred locales
   config.default_locale = ENV.fetch("DEFAULT_LOCALE", "en").to_sym
-  if Rails.env.production?
-    config.available_locales = ENV.fetch("AVAILABLE_LOCALES", "fr").split(",").map(&:to_sym)
-  else
-    config.available_locales = ENV.fetch("AVAILABLE_LOCALES", "en,fr").split(",").map(&:to_sym)
-  end
+  config.available_locales = if Rails.env.production?
+                               ENV.fetch("AVAILABLE_LOCALES", "fr").split(",").map(&:to_sym)
+                             else
+                               ENV.fetch("AVAILABLE_LOCALES", "en,fr").split(",").map(&:to_sym)
+                             end
 
   # Timeout session
   config.expire_session_after = ENV.fetch("DECIDIM_SESSION_TIMEOUT", 180).to_i.minutes
