@@ -8,8 +8,8 @@ GIT
 
 GIT
   remote: https://github.com/OpenSourcePolitics/decidim-module-extended_socio_demographic_authorization_handler.git
-  revision: 7fbf85ee4bd3a947a9a979412e26297f8e6d3869
-  branch: hotfix/disable_autocomplete
+  revision: f51e6314e014fe89156b1115dbd7fe14ecaa5565
+  branch: cese
   specs:
     decidim-extended_socio_demographic_authorization_handler (0.26.1)
       decidim-core (~> 0.27)
