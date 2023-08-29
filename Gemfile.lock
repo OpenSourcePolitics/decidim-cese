@@ -37,6 +37,15 @@ GIT
       omniauth_openid_connect (~> 0.4.0)
 
 GIT
+  remote: https://github.com/armandfardeau/decidim-module-term_customizer.git
+  revision: 41f6c0fa95cc26c7f0dbe317d48e83723cb08b1b
+  branch: fix/precompile-on-docker-0.27
+  specs:
+    decidim-term_customizer (0.27.0)
+      decidim-admin (~> 0.27.0)
+      decidim-core (~> 0.27.0)
+
+GIT
   remote: https://github.com/decidim-ice/decidim-module-decidim_awesome.git
   revision: aa01fdab225ae7a5e7de6fc5d529f7c236376c0c
   branch: main
@@ -45,15 +54,6 @@ GIT
       decidim-admin (>= 0.26.0, < 0.28)
       decidim-core (>= 0.26.0, < 0.28)
       sassc (~> 2.3)
-
-GIT
-  remote: https://github.com/mainio/decidim-module-term_customizer.git
-  revision: 5ca4cc484fa6542327572a3c1d62482c748085ac
-  branch: develop
-  specs:
-    decidim-term_customizer (0.27.0)
-      decidim-admin (~> 0.27.0)
-      decidim-core (~> 0.27.0)
 
 GIT
   remote: https://github.com/sgruhier/foundation_rails_helper.git
@@ -650,8 +650,9 @@ GEM
       timeout
     net-smtp (0.3.3)
       net-protocol
-    newrelic_rpm (9.2.2)
     nio4r (2.5.9)
+    nokogiri (1.14.5-aarch64-linux)
+      racc (~> 1.4)
     nokogiri (1.14.5-arm64-darwin)
       racc (~> 1.4)
     nokogiri (1.14.5-x86_64-darwin)
@@ -720,9 +721,6 @@ GEM
       parallel
     parser (3.2.2.1)
       ast (~> 2.4.1)
-    passenger (6.0.17)
-      rack
-      rake (>= 0.8.1)
     pg (1.1.4)
     pg_search (2.3.6)
       activerecord (>= 5.2)
@@ -1014,6 +1012,8 @@ GEM
     zeitwerk (2.6.8)
 
 PLATFORMS
+  aarch64-linux
+  arm64-darwin-21
   arm64-darwin-22
   x86_64-darwin-20
   x86_64-darwin-21
@@ -1028,13 +1028,13 @@ DEPENDENCIES
   byebug (~> 11.0)
   climate_control (~> 1.2)
   dalli
-  decidim (= 0.27.3)
+  decidim (~> 0.27.0)
   decidim-blog_author_petition!
   decidim-decidim_awesome!
-  decidim-dev (= 0.27.3)
+  decidim-dev (~> 0.27.0)
   decidim-extended_socio_demographic_authorization_handler!
   decidim-initiative_status!
-  decidim-initiatives (= 0.27.3)
+  decidim-initiatives (~> 0.27.0)
   decidim-spam_detection
   decidim-term_customizer!
   decidim-transparent_trash!
@@ -1047,11 +1047,9 @@ DEPENDENCIES
   letter_opener_web (~> 2.0)
   listen (~> 3.1)
   lograge
-  newrelic_rpm
   omniauth-france_connect!
   omniauth-rails_csrf_protection (~> 1.0)
   parallel_tests (~> 3.7)
-  passenger
   puma (>= 5.6.2)
   rack-attack
   rubocop-faker
