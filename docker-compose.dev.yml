@@ -44,6 +44,9 @@ services:
       - MEMCACHE_SERVERS=memcached:11211
       - RAILS_SERVE_STATIC_FILES=true
       - RAILS_LOG_TO_STDOUT=true
+      - FORCE_SSL="0"
+      - LETTER_OPENER_ENABLED="true"
+      - SEED=true
     ports:
       - 3000:3000
     depends_on:
