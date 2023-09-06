@@ -25,10 +25,12 @@ class CheckLegacyTables < ActiveRecord::Migration[5.2]
       if tables_exists.all?
         migrate_legacy_data if Question.any?
       else
+        # rubocop:disable Rails/Output
         puts "Some legacy surveys tables exist but not all. Have you migrated all the data?"
         puts "Migrate or backup your data and then remove the following raise statement to continue with the migrations (that will remove surveys legacy tables)"
         puts "For migrating your data you can do that with the command:"
         puts "bundle exec rake decidim_surveys:migrate_data_to_decidim_forms"
+        # rubocop:enable Rails/Output
         raise "ERROR:  there's the risk to loose legacy information from old surveys!"
       end
     end
@@ -39,12 +41,18 @@ class CheckLegacyTables < ActiveRecord::Migration[5.2]
   end
 
   def migrate_legacy_data
+    # rubocop:disable Rails/Output
     puts "Migrating data from decidim_surveys tables to decidim_forms tables..."
+    # rubocop:enable Rails/Output
     ActiveRecord::Base.transaction do
       Decidim::Surveys::Survey.find_each do |survey|
+        # rubocop:disable Rails/Output
         puts "Migrating survey #{survey.id}..."
+        # rubocop:enable Rails/Output
         if survey.questionnaire.present?
+          # rubocop:disable Rails/Output
           puts("already migrated at questionnaire #{survey.questionnaire.id}")
+          # rubocop:enable Rails/Output
           next
         end
 
@@ -59,7 +67,9 @@ class CheckLegacyTables < ActiveRecord::Migration[5.2]
         )
 
         Question.where(decidim_survey_id: survey.id).find_each do |survey_question|
+          # rubocop:disable Rails/Output
           puts "Migrating question #{survey_question.id}..."
+          # rubocop:enable Rails/Output
 
           question = ::Decidim::Forms::Question.create!(
             questionnaire: questionnaire,
@@ -110,4 +120,5 @@ class CheckLegacyTables < ActiveRecord::Migration[5.2]
     end
   end
 end
+
 # rubocop:enable Style/GuardClause
