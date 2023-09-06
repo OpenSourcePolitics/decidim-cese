@@ -1,18 +1,28 @@
 # frozen_string_literal: true
 
+require "decidim_app/config"
+
 Decidim.configure do |config|
   config.expire_session_after = ENV.fetch("DECIDIM_SESSION_TIMEOUT", 90).to_i.minutes
   config.application_name = "OSP Agora"
   config.mailer_sender = "OSP Agora <ne-pas-repondre@opensourcepolitics.eu>"
 
   # Change these lines to set your preferred locales
-  config.default_locale = :en
-  config.available_locales = [:en, :fr]
+  if Rails.env.production?
+    config.default_locale = ENV.fetch("DEFAULT_LOCALE", "fr").to_sym
+    config.available_locales = ENV.fetch("AVAILABLE_LOCALES", "fr").split(",").map(&:to_sym)
+  else
+    config.default_locale = ENV.fetch("DEFAULT_LOCALE", "en").to_sym
+    config.available_locales = ENV.fetch("AVAILABLE_LOCALES", "en,fr").split(",").map(&:to_sym)
+  end
 
   # Timeout session
   config.expire_session_after = ENV.fetch("DECIDIM_SESSION_TIMEOUT", 180).to_i.minutes
 
   config.maximum_attachment_height_or_width = 6000
+
+  # Whether SSL should be forced or not (only in production).
+  config.force_ssl = (ENV.fetch("FORCE_SSL", "1") == "1") && Rails.env.production?
 
   # Geocoder configuration
   config.maps = {
@@ -76,7 +86,7 @@ Decidim.configure do |config|
   # end
 
   # Currency unit
-  # config.currency_unit = "€"
+  config.currency_unit = Rails.application.secrets.decidim[:currency]
 
   # The number of reports which an object can receive before hiding it
   # config.max_reports_before_hiding = 3
