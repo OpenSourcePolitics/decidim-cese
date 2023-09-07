@@ -3,9 +3,9 @@ fr:
   activemodel:
     attributes:
       confirmation:
-        verification_code: Verification code
+        verification_code: Code de confirmation
       mobile_phone:
-        mobile_phone_number: Mobile phone number
+        mobile_phone_number: Numéro de téléphone
       osp_authorization_handler:
         birthday: Date de naissance
         document_number: Numéro unique
@@ -85,10 +85,10 @@ fr:
           print: Voir le récépissé
       modal:
         not_authorized:
-          authorizations_page: View authorizations
-          close: Close
-          explanation: You need to be verified in order to create a new initiative.
-          title: Authorization required
+          authorizations_page: Voir les vérifications
+          close: Fermer
+          explanation: Vous devez avoir vérifié votre compte pour signer la pétition
+          title: Vérification requise
       print:
         date: Fait à Paris, le %{date}
         end: Le présent récépissé ne préjuge en rien de la recevabilité de la pétition, étudiée par le Bureau lorsque celle-ci réunit les conditions de saisine du Conseil économique, social et environnemental.
