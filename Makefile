@@ -1,89 +1,36 @@
-#### Terraform | Scaleway provider
-init-scw:
-	terraform -chdir=deploy/providers/scaleway init
+run: up
+	@make create-seeds
 
-plan-scw:
-	@make init-scw
-	terraform -chdir=deploy/providers/scaleway plan	
-	
-deploy-scw:
-	@make init-scw
-	terraform -chdir=deploy/providers/scaleway apply
+up:
+	docker-compose -f docker-compose.local.yml up --build -d
+	@make setup-database
 
-destroy-scw:
-	terraform -chdir=deploy/providers/scaleway destroy
+# Stops containers and remove volumes
+teardown:
+	docker-compose -f docker-compose.local.yml down -v --rmi all
 
-### Docker usage
-
-# Docker images commands
-
-REGISTRY := rg.fr-par.scw.cloud
-NAMESPACE := decidim-app
-VERSION := latest
-IMAGE_NAME := decidim-app
-TAG := $(REGISTRY)/$(NAMESPACE)/$(IMAGE_NAME):$(VERSION)
-
-login:
-	docker login $(REGISTRY) -u nologin -p $(SCW_SECRET_TOKEN)
-
-build-classic:
-	docker build -t $(IMAGE_NAME):$(VERSION) .
-build-scw:
-	docker build -t $(TAG) .
-push:
-	@make build-scw
-	@make login
-	docker push $(TAG)
-pull:
-	@make build-scw
-	docker pull $(TAG)
-
-# Bundle commands
 create-database:
-	docker-compose run app bundle exec rails db:create
-run-migrations:
-	docker-compose run app bundle exec rails db:migrate
+	docker-compose -f docker-compose.local.yml exec app /bin/bash -c 'DISABLE_DATABASE_ENVIRONMENT_CHECK=1 /usr/local/bundle/bin/bundle exec rake db:create'
+
+setup-database: create-database
+	docker-compose -f docker-compose.local.yml exec app /bin/bash -c 'DISABLE_DATABASE_ENVIRONMENT_CHECK=1 /usr/local/bundle/bin/bundle exec rake db:migrate'
+
+# Create seeds
 create-seeds:
-	docker-compose run app bundle exec rails db:seed
+	docker-compose -f docker-compose.local.yml exec app /bin/bash -c 'DISABLE_DATABASE_ENVIRONMENT_CHECK=1 /usr/local/bundle/bin/bundle exec rake db:schema:load db:seed'
 
-# Database commands 
+# Restore dump
 restore-dump:
-	bundle exec rake restore_dump 
+	bundle exec rake restore_dump
 
-# Start commands seperated by context
-start:
-	docker-compose up
+shell:
+	docker-compose -f docker-compose.local.yml exec app /bin/bash
 
-start-dumped-decidim:
-	@make create-database
-	@make -i restore-dump
-	@make run-migrations
-	@make start
-start-seeded-decidim:
-	@make create-database
-	@make run-migrations
-	@make create-seeds
-	@make start
-start-clean-decidim:
-	@make create-database
-	@make run-migrations
-	@make start
+restart:
+	docker-compose -f docker-compose.local.yml up -d
 
-# Utils commands
-rails-console:
-	docker exec -it decidim-app_app_1 rails c
-connect-app:
-	docker exec -it decidim-app_app_1 bash
+status:
+	docker-compose -f docker-compose.local.yml ps
 
-# Stop and delete commands
-stop:
-	docker-compose down
-delete:
-	@make stop
-	docker volume prune
-
-local-dev:
-	docker-compose -f docker-compose.dev.yml up -d
-	@make create-database
-	@make run-migrations
-	@make create-seeds
+logs:
+	docker-compose -f docker-compose.local.yml logs app
