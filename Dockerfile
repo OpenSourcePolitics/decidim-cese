@@ -24,8 +24,7 @@ RUN yarn install --frozen-lockfile
 COPY . .
 
 RUN bundle exec bootsnap precompile --gemfile app/ lib/ config/ bin/ db/ && \
-    bundle exec rails assets:precompile && \
-    bundle exec rails deface:precompile
+    bundle exec rails assets:precompile
 
 RUN rm -rf node_modules tmp/cache vendor/bundle spec \
     && rm -rf /usr/local/bundle/cache/*.gem \
