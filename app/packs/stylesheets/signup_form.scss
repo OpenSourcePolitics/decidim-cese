@@ -1,11 +1,13 @@
-.select-date-container {
-  display: flex;
-  flex-direction: row-reverse;
-  justify-content: space-between;
-  align-items: center;
-  margin: 0 20px;
-}
+#register-form {
+  .select-date-container {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 20px;
+  }
 
-.select-date-container .columns {
-  padding-right: 1.4rem;
+  .select-date-container .columns {
+    padding-right: 1.4rem;
+  }
 }

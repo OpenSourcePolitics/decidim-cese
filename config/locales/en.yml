@@ -53,7 +53,14 @@ en:
     devise:
       registrations:
         new:
-          birth_date: Birth date ma man
+          address: Address
+          birth_date: Date of birth
+          certification: Certification CESE
+          city: City
+          news_cese: Do you want to receive news from CESE ?
+          postal_code: Postal code
+          help_message: Please fill the postal code field to be able to select your city
+          birth_date_help: You must be over 16 years old to access this service.
       sessions:
         new:
           sign_in_disabled: Sign in disabled

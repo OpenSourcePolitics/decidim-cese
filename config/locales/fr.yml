@@ -51,6 +51,17 @@ fr:
       osp_authorization_workflow:
         name: Procédure d'autorisation
     devise:
+      registrations:
+        new:
+          address: Addresse
+          birth_date: Date de naissance
+          birth_date_help: Vous devez avoir plus de 16 ans pour avoir accès à ce service.
+          certification: Je certifie l'exactitude de ces informations.
+          city: Ville
+          code: Code postal
+          news_cese: Souhaitez-vous recevoir les actualités du CESE ?
+          help_message: Veuillez renseigner votre code postal pour choisir la ville
+          postal_code: Code postal
       sessions:
         new:
           sign_in_disabled: Vous pouvez accéder avec un compte externe
