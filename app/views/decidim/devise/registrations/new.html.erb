@@ -72,12 +72,61 @@
             </div>
           </div>
 
+          <div class="card" id="socia_demographic_ah">
+            <div class="card__content">
+              <div class="row">
+                <div class="columns medium-12">
+                  <%= f.date_select :birth_date, {label: t(".birth_date"), start_year: Date.today.year - 120, end_year: Date.today.year }, { class: "columns medium-3" } %>
+                </div>
+                <div class="columns margin-bottom-1 postal_code_help">
+                  <small><em><%= t(".birth_date_help") %></em></small>
+                </div>
+              </div>
+
+              <div class="field">
+                <%= f.text_field :address, autocomplete: "street-address", label: t(".address") %>
+              </div>
+
+              <div class="row">
+                <div class="columns medium-4">
+                  <div class="field">
+                    <%= f.text_field :postal_code, pattern: "^[0-9]+$", minlength: 5, maxlength: 5, autocomplete: "postal-code", label: t(".code") %>
+                  </div>
+                </div>
+                <div class="columns medium-8">
+                  <div class="field">
+                    <%= f.text_field :city, label: t(".city") %>
+                  </div>
+                </div>
+
+                <div class="columns margin-bottom-1 postal_code_help">
+                  <small><em><%= t(".postal_code.help_message") %></em></small>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
           <div class="card" id="card__newsletter">
             <div class="card__content">
               <h3><%= t(".newsletter_title") %></h3>
               <div class="field">
                 <%= f.check_box :newsletter, label: t(".newsletter"), checked: @form.newsletter %>
               </div>
+
+              <div class="row">
+                <div class="columns">
+                  <div class="field">
+                    <%= f.check_box :certification, label: t(".certification") %>
+                  </div>
+                </div>
+                <div class="columns">
+                  <div class="field">
+                    <%== f.check_box :news_cese, label: t(".news_cese") %>
+                  </div>
+                </div>
+              </div>
+
             </div>
           </div>
 
