@@ -191,8 +191,8 @@ en:
     verifications:
       authorizations:
         create:
-          error: Error
-          success: Success
+          error: There was a problem creating the authorization.
+          success: You've been successfully authorized
         first_login:
           actions:
             osp_authorization_handler: Verify with the identity verification form
@@ -225,6 +225,24 @@ en:
     shared:
       links:
         forgot_your_password: Forgot your password
+  extended_socio_demographic_authorization:
+    errors:
+      messages:
+        over_16: You must be over 16 years old to access this service.
+    form:
+      address: Address
+      birth_date: Date of birth
+      birth_date_help: You must be over 16 years old to access this service.
+      certification: Certification CESE
+      city: City
+      code: Postal code
+      lastname: Last name
+      name: First name
+      news_cese: Do you want to receive news from CESE ?
+      postal_code:
+        help_message: Please fill the postal code field to be able to select your city
+      usual_firstname: Usual first name
+      usual_lastname: Usual last name
   faker:
     address:
       country_code:

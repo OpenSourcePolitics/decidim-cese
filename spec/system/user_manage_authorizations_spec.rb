@@ -77,7 +77,7 @@ describe "User authorizations", type: :system do
       check :authorization_handler_news_cese
       click_button "Send"
 
-      expect(page).to have_content("Success")
+      expect(page).to have_content("You've been successfully authorized")
     end
 
     it "allows to select a city when multiple cities are enabled" do
@@ -94,7 +94,7 @@ describe "User authorizations", type: :system do
       check :authorization_handler_news_cese
       click_button "Send"
 
-      expect(page).to have_content("Success")
+      expect(page).to have_content("You've been successfully authorized")
     end
 
     it "refuses to authorize when younger than 16" do
