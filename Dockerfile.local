@@ -26,7 +26,6 @@ RUN yarn install --frozen-lock
 COPY . .
 
 RUN bundle exec bootsnap precompile --gemfile app/ lib/ config/ bin/ db/ && \
-    bundle exec rails deface:precompile && \
     bundle exec rails assets:precompile
 
 run mkdir certificate-https-local

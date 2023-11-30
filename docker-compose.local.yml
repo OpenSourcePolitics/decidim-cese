@@ -33,7 +33,7 @@ services:
       - FORCE_SSL=1
       - ENABLE_LETTER_OPENER=1
       - SEED=true
-      - DEFACE_ENABLED=false
+      - DEFACE_ENABLED=true
       - QUESTION_CAPTCHA_HOST=
       - ENABLE_RACK_ATTACK=0
       - PUMA_MIN_THREADS=5
@@ -63,7 +63,7 @@ services:
       - FORCE_SSL=1
       - ENABLE_LETTER_OPENER=1
       - SEED=true
-      - DEFACE_ENABLED=false
+      - DEFACE_ENABLED=true
       - QUESTION_CAPTCHA_HOST=
       - ENABLE_RACK_ATTACK=0
       - PUMA_MIN_THREADS=5
