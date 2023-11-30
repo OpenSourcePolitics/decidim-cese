@@ -51,6 +51,9 @@ en:
       osp_authorization_workflow:
         name: Authorization procedure
     devise:
+      registrations:
+        new:
+          birth_date: Birth date ma man
       sessions:
         new:
           sign_in_disabled: Sign in disabled
