@@ -62,6 +62,10 @@ fr:
           news_cese: Souhaitez-vous recevoir les actualités du CESE ?
           help_message: Veuillez renseigner votre code postal pour choisir la ville
           postal_code: Code postal
+        form:
+          errors:
+            messages:
+              over_16: Vous devez avoir plus de 16 ans pour accéder à ce service.
       sessions:
         new:
           sign_in_disabled: Vous pouvez accéder avec un compte externe

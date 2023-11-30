@@ -70,9 +70,9 @@ module Decidim
 
     def over_16?
       return if birth_date.blank?
-      return true if birth_date < 16.years.ago.to_date
+      return if 16.years.ago.to_date > birth_date
 
-      errors.add :birth_date, I18n.t("extended_socio_demographic_authorization.errors.messages.over_16")
+      errors.add :birth_date, I18n.t("decidim.devise.registrations.form.errors.messages.over_16")
     end
   end
 end
