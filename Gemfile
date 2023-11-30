@@ -36,11 +36,11 @@ gem "deface"
 gem "faker", "~> 2.14"
 gem "fog-aws"
 gem "foundation_rails_helper", git: "https://github.com/sgruhier/foundation_rails_helper.git"
+gem "letter_opener_web", "~> 2.0"
 gem "omniauth-rails_csrf_protection", "~> 1.0"
 gem "puma", ">= 5.6.2"
 gem "rack-attack"
 gem "sys-filesystem"
-gem "letter_opener_web", "~> 2.0"
 
 group :development do
   gem "listen", "~> 3.1"
