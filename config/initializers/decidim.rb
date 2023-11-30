@@ -19,6 +19,8 @@ Decidim.configure do |config|
   # Timeout session
   config.expire_session_after = ENV.fetch("DECIDIM_SESSION_TIMEOUT", 180).to_i.minutes
 
+  config.unconfirmed_access_for = ENV.fetch("DECIDIM_UNCONFIRMED_ACCESS", 0).to_i.days
+
   config.maximum_attachment_height_or_width = 6000
 
   # Whether SSL should be forced or not (only in production).

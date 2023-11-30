@@ -48,6 +48,7 @@ module DevelopmentApp
       require "extends/forms/decidim/initiatives/initiative_form_extends"
       require "extends/controllers/decidim/devise/sessions_controller_extends"
       require "extends/forms/decidim/admin/organization_appearance_form_extends"
+      require "extends/models/decidim/user_extends"
     end
 
     initializer "session cookie domain", after: "Expire sessions" do
