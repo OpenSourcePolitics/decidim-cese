@@ -52,6 +52,10 @@ fr:
         name: Procédure d'autorisation
     devise:
       registrations:
+        form:
+          errors:
+            messages:
+              over_16: Vous devez avoir plus de 16 ans pour accéder à ce service.
         new:
           address: Addresse
           birth_date: Date de naissance
@@ -59,14 +63,9 @@ fr:
           certification: Je certifie l'exactitude de ces informations.
           city: Ville
           code: Code postal
-          news_cese: Souhaitez-vous recevoir les actualités du CESE ?
           help_message: Veuillez renseigner votre code postal pour choisir la ville
-          postal_code: Code postal
+          news_cese: Souhaitez-vous recevoir les actualités du CESE ?
           personal_data_step: Informations personnelles
-        form:
-          errors:
-            messages:
-              over_16: Vous devez avoir plus de 16 ans pour accéder à ce service.
       sessions:
         new:
           sign_in_disabled: Vous pouvez accéder avec un compte externe
