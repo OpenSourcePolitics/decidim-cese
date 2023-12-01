@@ -90,15 +90,15 @@
                 </div>
               </div>
 
+              <div class="field">
+                <%= f.check_box :certification, label: t(".certification") %>
+              </div>
             </div>
           </div>
 
           <div class="card" id="card__newsletter">
             <div class="card__content">
               <h3><%= t(".newsletter_title") %></h3>
-              <div class="field">
-                <%= f.check_box :newsletter, label: t(".newsletter"), checked: @form.newsletter %>
-              </div>
 
               <div class="field">
                 <%== f.check_box :news_cese, label: t(".news_cese") %>
@@ -116,10 +116,6 @@
 
               <div class="field">
                 <%= f.check_box :tos_agreement, label: t(".tos_agreement", link: link_to(t(".terms"), page_path("terms-and-conditions"))) %>
-              </div>
-
-              <div class="field">
-                <%= f.check_box :certification, label: t(".certification") %>
               </div>
             </div>
           </div>
