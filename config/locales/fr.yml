@@ -62,6 +62,7 @@ fr:
           news_cese: Souhaitez-vous recevoir les actualités du CESE ?
           help_message: Veuillez renseigner votre code postal pour choisir la ville
           postal_code: Code postal
+          personal_data_step: Informations personnelles
         form:
           errors:
             messages:

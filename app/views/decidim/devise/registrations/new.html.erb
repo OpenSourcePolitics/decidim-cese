@@ -59,7 +59,7 @@
 
           <div class="card" id="socia_demographic_ah">
             <div class="card__content">
-              <h3>Informations personnelles</h3>
+              <h3><%= t(".personal_data_step") %></h3>
               <div class="row">
                 <div class="columns medium-12">
                   <%= f.date_select :birth_date, { label: t(".birth_date"), start_year: Date.today.year - 100, end_year: Date.today.year }, { class: "columns medium-3" } %>

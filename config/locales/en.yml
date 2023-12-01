@@ -61,6 +61,7 @@ en:
           postal_code: Postal code
           help_message: Please fill the postal code field to be able to select your city
           birth_date_help: You must be over 16 years old to access this service.
+          personal_data_step: Personal data
         form:
           errors:
             messages:
