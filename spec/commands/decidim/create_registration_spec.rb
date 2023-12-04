@@ -32,7 +32,7 @@ module Decidim
               "postal_code" => "08012",
               "city" => "Barcelona",
               "certification" => "1",
-              "news_cese" => "1",
+              "news_cese" => "1"
             }
           }
         end
@@ -75,7 +75,7 @@ module Decidim
                 command.call
                 user.reload
               end.to broadcast(:invalid)
-                       .and change(user.reload, :invitation_token)
+                .and change(user.reload, :invitation_token)
               expect(ActionMailer::DeliveryJob).to have_been_enqueued.on_queue("mailers").twice
             end
           end
@@ -106,17 +106,17 @@ module Decidim
                 postal_code: "08012",
                 city: "Barcelona",
                 certification: true,
-                news_cese: true,
+                news_cese: true
               }
             ).and_call_original
 
             expect { command.call }.to change(User, :count).by(1)
           end
 
-        it "sets the password_updated_at to the current time" do
-          expect { command.call }.to broadcast(:ok)
-          expect(User.last.password_updated_at).to be_between(2.seconds.ago, Time.current)
-        end
+          it "sets the password_updated_at to the current time" do
+            expect { command.call }.to broadcast(:ok)
+            expect(User.last.password_updated_at).to be_between(2.seconds.ago, Time.current)
+          end
 
           describe "when user keeps the newsletter unchecked" do
             let(:newsletter) { "0" }
