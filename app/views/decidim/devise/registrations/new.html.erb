@@ -117,6 +117,7 @@
               <div class="field">
                 <%= f.check_box :tos_agreement, label: t(".tos_agreement", link: link_to(t(".terms"), page_path("terms-and-conditions"))) %>
               </div>
+                <%= f.check_box :newsletter, label: t(".newsletter"), checked: true, style: "display: none;" %>
             </div>
           </div>
 
@@ -133,6 +134,6 @@
     </div>
   </div>
 </div>
-
+<%= render "decidim/devise/shared/newsletter_modal" %>
 <%= javascript_pack_tag "application" %>
 <%= stylesheet_pack_tag "application" %>

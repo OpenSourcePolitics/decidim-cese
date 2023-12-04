@@ -22,9 +22,18 @@ describe "Authentication", type: :system do
           fill_in :registration_user_nickname, with: "responsible"
           fill_in :registration_user_password, with: "DfyvHn425mYAy2HL"
           fill_in :registration_user_password_confirmation, with: "DfyvHn425mYAy2HL"
+
+          select "1997", from: :registration_user_birth_date_1i
+          select "March", from: :registration_user_birth_date_2i
+          select "1", from: :registration_user_birth_date_3i
+          fill_in :registration_user_postal_code, with: "08080"
+          fill_in :registration_user_city, with: "Barcelona"
+          fill_in :registration_user_address, with: "Carrer de la Ciutat"
+          check :registration_user_certification
           check :registration_user_tos_agreement
-          check :registration_user_newsletter
+
           find("*[type=submit]").click
+          page.save_screenshot("screenshot.png")
         end
 
         expect(page).to have_content("confirmation link")
@@ -47,8 +56,16 @@ describe "Authentication", type: :system do
           fill_in :registration_user_nickname, with: "responsible"
           fill_in :registration_user_password, with: "DfyvHn425mYAy2HL"
           fill_in :registration_user_password_confirmation, with: "DfyvHn425mYAy2HL"
+
+          select "1997", from: :registration_user_birth_date_1i
+          select "décembre", from: :registration_user_birth_date_2i
+          select "1", from: :registration_user_birth_date_3i
+          fill_in :registration_user_postal_code, with: "08080"
+          fill_in :registration_user_city, with: "Barcelona"
+          fill_in :registration_user_address, with: "Carrer de la Ciutat, 1"
+          check :registration_user_certification
           check :registration_user_tos_agreement
-          check :registration_user_newsletter
+
           find("*[type=submit]").click
         end
 
@@ -68,8 +85,16 @@ describe "Authentication", type: :system do
           fill_in :registration_user_nickname, with: "responsible"
           fill_in :registration_user_password, with: "DfyvHn425mYAy2HL"
           fill_in :registration_user_password_confirmation, with: "DfyvHn425mYAy2HL"
+
+          select "1997", from: :registration_user_birth_date_1i
+          select "March", from: :registration_user_birth_date_2i
+          select "1", from: :registration_user_birth_date_3i
+          fill_in :registration_user_postal_code, with: "08080"
+          fill_in :registration_user_city, with: "Barcelona"
+          fill_in :registration_user_address, with: "Carrer de la Ciutat, 1"
+          check :registration_user_certification
           check :registration_user_tos_agreement
-          check :registration_user_newsletter
+
           find("*[type=submit]").click
         end
 
@@ -583,8 +608,14 @@ describe "Authentication", type: :system do
             fill_in :registration_user_nickname, with: "responsible"
             fill_in :registration_user_password, with: "DfyvHn425mYAy2HL"
             fill_in :registration_user_password_confirmation, with: "DfyvHn425mYAy2HL"
+            select "1997", from: :registration_user_birth_date_1i
+            select "March", from: :registration_user_birth_date_2i
+            select "1", from: :registration_user_birth_date_3i
+            fill_in :registration_user_postal_code, with: "08080"
+            fill_in :registration_user_city, with: "Barcelona"
+            fill_in :registration_user_address, with: "Carrer de la Ciutat, 1"
+            check :registration_user_certification
             check :registration_user_tos_agreement
-            check :registration_user_newsletter
             find("*[type=submit]").click
           end
 
