@@ -14,7 +14,7 @@ module Decidim
         let(:password) { "Y1fERVzL2F" }
         let(:password_confirmation) { password }
         let(:tos_agreement) { "1" }
-        let(:newsletter) { "1" }
+        let(:newsletter) { nil }
         let(:current_locale) { "fr" }
 
         let(:form_params) do
@@ -26,7 +26,13 @@ module Decidim
               "password" => password,
               "password_confirmation" => password_confirmation,
               "tos_agreement" => tos_agreement,
-              "newsletter_at" => newsletter
+              "newsletter_at" => newsletter,
+              "birth_date" => "1980-01-01",
+              "address" => "Carrer de la Llibertat, 47",
+              "postal_code" => "08012",
+              "city" => "Barcelona",
+              "certification" => "1",
+              "news_cese" => "1",
             }
           }
         end
@@ -69,7 +75,7 @@ module Decidim
                 command.call
                 user.reload
               end.to broadcast(:invalid)
-                .and change(user.reload, :invitation_token)
+                       .and change(user.reload, :invitation_token)
               expect(ActionMailer::DeliveryJob).to have_been_enqueued.on_queue("mailers").twice
             end
           end
@@ -87,16 +93,30 @@ module Decidim
               email: form.email,
               password: form.password,
               password_confirmation: form.password_confirmation,
+              password_updated_at: an_instance_of(ActiveSupport::TimeWithZone),
               tos_agreement: form.tos_agreement,
               newsletter_notifications_at: form.newsletter_at,
               organization: organization,
               accepted_tos_version: organization.tos_version,
               locale: form.current_locale,
-              notifications_sending_frequency: :none
+              notifications_sending_frequency: :none,
+              extended_data: {
+                birth_date: Date.new(1980, 0o1, 0o1),
+                address: "Carrer de la Llibertat, 47",
+                postal_code: "08012",
+                city: "Barcelona",
+                certification: true,
+                news_cese: true,
+              }
             ).and_call_original
 
             expect { command.call }.to change(User, :count).by(1)
           end
+
+        it "sets the password_updated_at to the current time" do
+          expect { command.call }.to broadcast(:ok)
+          expect(User.last.password_updated_at).to be_between(2.seconds.ago, Time.current)
+        end
 
           describe "when user keeps the newsletter unchecked" do
             let(:newsletter) { "0" }
