@@ -13,6 +13,14 @@ fr:
       participatory_process:
         private_space: Espace privé
   decidim:
+    confirmation_reminder_mailer:
+      send_reminder:
+        subject: Veuillez confirmer votre compte
+        body:
+          title: Vous avez créé un compte il y a 2 jours mais vous ne l'avez pas encore confirmé.
+          body: Veuillez confirmer votre compte en cliquant sur le lien ci-dessous.
+          warning: L'ensemble de vos votes seront supprimés dans 6 jours si votre compte n'est pas confirmé dans ce délai.
+          confirmation_link: Lien de confirmation
     accessibility:
       skip_button: Passer au contenu principal
     account:

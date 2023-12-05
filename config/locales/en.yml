@@ -13,6 +13,14 @@ en:
       participatory_process:
         private_space: Private space
   decidim:
+    confirmation_reminder_mailer:
+      send_reminder:
+        subject: Please confirm your email address
+        body:
+          title: You have created an account there is 2 days ago and you haven't confirmed your email yet.
+          body: Please confirm your email address to persist your votes.
+          warning: If you don't confirm your email address, your votes will be deleted.
+          confirmation_link: Link to confirmation
     accessibility:
       skip_button: Skip button
     account:

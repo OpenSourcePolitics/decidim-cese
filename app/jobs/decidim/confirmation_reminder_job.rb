@@ -4,7 +4,7 @@ module Decidim
   class ConfirmationReminderJob < ApplicationJob
     def perform
       unconfirmed_users.each do |user|
-        send_notification(user)
+        Decidim::ConfirmationReminderMailer.send_reminder(user).deliver_now
       end
     end
 
@@ -12,17 +12,6 @@ module Decidim
 
     def unconfirmed_users
       @unconfirmed_users ||= Decidim::User.not_confirmed.where("DATE(created_at) = ?", 2.days.ago)
-    end
-
-    def send_notification(user)
-      Decidim::EventsManager.publish(
-        event: "decidim.events.confirmation_reminder_event",
-        event_class: ConfirmationReminderEvent,
-        resource: nil,
-        affected_users: [user],
-        force_send: true,
-        extra: {}
-      )
     end
   end
 end
