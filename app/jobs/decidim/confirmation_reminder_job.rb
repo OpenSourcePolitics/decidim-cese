@@ -4,7 +4,6 @@ module Decidim
   class ConfirmationReminderJob < ApplicationJob
     def perform
       unconfirmed_users.each do |user|
-        puts unconfirmed_users.map(&:email)
         send_notification(user)
       end
     end
@@ -27,4 +26,3 @@ module Decidim
     end
   end
 end
-
