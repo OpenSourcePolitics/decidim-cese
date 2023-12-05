@@ -55,6 +55,8 @@ fr:
         new:
           sign_in_disabled: Vous pouvez accéder avec un compte externe
     events:
+      confirmation_reminder_event:
+        notification_body: Vous avez créé un compte il y a 2 jours mais vous ne l'avez pas confirmé. Afin de persister vos votes, veuillez confirmer votre compte. L'ensemble de vos votes seront supprimés dans 6 jours si votre compte n'est pas confirmé dans ce délai.
       budgets:
         pending_order:
           email_intro: Le vote sur le budget "%{resource_title}" n'est pas encore finalisé sur la concertation "%{participatory_space_title}".

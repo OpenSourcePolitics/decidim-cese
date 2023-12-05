@@ -55,6 +55,8 @@ en:
         new:
           sign_in_disabled: Sign in disabled
     events:
+      confirmation_reminder_event:
+        notification_body: You created an account there is 2 days ago and you haven't confirmed your email yet. Please confirm your email address to persist your votes.
       budgets:
         pending_order:
           email_intro: The vote on budget "%{resource_title}" is not confirmed yet in "%{participatory_space_title}".
