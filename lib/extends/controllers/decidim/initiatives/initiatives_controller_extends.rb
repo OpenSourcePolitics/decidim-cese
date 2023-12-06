@@ -17,6 +17,7 @@ module InitiativesControllerExtends
         tos_after_action = session["tos_after_action"]
         session.delete("tos_after_action")
         after_sign_in_action_for(current_user, tos_after_action)
+        current_initiative.reload
       end
     end
 
