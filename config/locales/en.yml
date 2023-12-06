@@ -59,9 +59,9 @@ en:
           certification: CESE Certification
           city: City
           code: Postal code
-          complete_profile: Complete your profile
-          personal_data_step: Personal data
-          registration_info: Please fill your registration data
+          complete_profile: Complete profile
+          personal_data_step: Complete your profile
+          registration_info: Please complete your profile
           sign_up: Sign up
           subtitle: Create your account
       registrations:
