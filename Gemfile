@@ -17,8 +17,6 @@ gem "decidim-initiatives", "~> #{DECIDIM_VERSION}.0"
 # External Decidim gems
 gem "decidim-blog_author_petition", git: "https://github.com/OpenSourcePolitics/decidim-module-blog_author_petition.git", branch: "main"
 gem "decidim-decidim_awesome", git: "https://github.com/decidim-ice/decidim-module-decidim_awesome.git", branch: "main"
-gem "decidim-extended_socio_demographic_authorization_handler", git: "https://github.com/OpenSourcePolitics/decidim-module-extended_socio_demographic_authorization_handler.git",
-                                                                branch: "cese"
 gem "decidim-initiative_status", git: "https://github.com/OpenSourcePolitics/decidim-module-initiative_status.git", branch: "main"
 gem "decidim-spam_detection"
 gem "decidim-term_customizer", git: "https://github.com/armandfardeau/decidim-module-term_customizer.git", branch: "fix/precompile-on-docker-0.27"
