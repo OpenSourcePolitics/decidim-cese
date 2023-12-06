@@ -13,6 +13,13 @@ en:
       participatory_process:
         private_space: Private space
   decidim:
+    unconfirmed_votes_clear_mailer:
+      send_resume:
+        subject: You did not confirm your account, existing votes have been deleted
+        body:
+          title: You did not confirm your account, existing votes have been deleted
+          confirm: You can still confirm your account and vote again on initiatives.
+          vote: Your vote on %{initiative_title} has been deleted.
     confirmation_reminder_mailer:
       send_reminder:
         subject: Please confirm your email address
