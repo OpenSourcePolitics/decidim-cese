@@ -29,6 +29,9 @@ shell:
 restart:
 	docker-compose -f docker-compose.local.yml up -d
 
+rebuild:
+	docker-compose -f docker-compose.local.yml up --build -d
+
 status:
 	docker-compose -f docker-compose.local.yml ps
 
