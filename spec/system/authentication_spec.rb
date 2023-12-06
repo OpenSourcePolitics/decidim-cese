@@ -38,7 +38,7 @@ describe "Authentication", type: :system do
       end
     end
 
-    context "when using another langage" do
+    context "when using another language" do
       before do
         within_language_menu do
           click_link "Français"
@@ -93,155 +93,6 @@ describe "Authentication", type: :system do
         end
 
         expect(page).not_to have_content("A message with a confirmation link has been sent to your email address.")
-      end
-    end
-
-    context "when using facebook" do
-      let(:omniauth_hash) do
-        OmniAuth::AuthHash.new(
-          provider: "facebook",
-          uid: "123545",
-          info: {
-            email: "user@from-facebook.com",
-            name: "Facebook User"
-          }
-        )
-      end
-
-      before do
-        OmniAuth.config.test_mode = true
-        OmniAuth.config.mock_auth[:facebook] = omniauth_hash
-        OmniAuth.config.add_camelization "facebook", "FaceBook"
-        OmniAuth.config.request_validation_phase = ->(env) {} if OmniAuth.config.respond_to?(:request_validation_phase)
-      end
-
-      after do
-        OmniAuth.config.test_mode = false
-        OmniAuth.config.mock_auth[:facebook] = nil
-        OmniAuth.config.camelizations.delete("facebook")
-      end
-
-      context "when the user has confirmed the email in facebook" do
-        it "creates a new User without sending confirmation instructions" do
-          find(".sign-up-link").click
-
-          click_link "Sign in with Facebook"
-
-          expect(page).to have_content("Successfully")
-          expect_user_logged
-        end
-      end
-    end
-
-    context "when using twitter" do
-      let(:email) { nil }
-      let(:omniauth_hash) do
-        OmniAuth::AuthHash.new(
-          provider: "twitter",
-          uid: "123545",
-          info: {
-            name: "Twitter User",
-            nickname: "twitter_user",
-            email: email
-          }
-        )
-      end
-
-      before do
-        OmniAuth.config.test_mode = true
-        OmniAuth.config.mock_auth[:twitter] = omniauth_hash
-
-        OmniAuth.config.add_camelization "twitter", "Twitter"
-        OmniAuth.config.request_validation_phase = ->(env) {} if OmniAuth.config.respond_to?(:request_validation_phase)
-      end
-
-      after do
-        OmniAuth.config.test_mode = false
-        OmniAuth.config.mock_auth[:twitter] = nil
-        OmniAuth.config.camelizations.delete("twitter")
-      end
-
-      context "when the response doesn't include the email" do
-        it "redirects the user to a finish signup page" do
-          find(".sign-up-link").click
-
-          click_link "Sign in with Twitter"
-
-          expect(page).to have_content("Successfully")
-          expect(page).to have_content("Please complete your profile")
-
-          within ".new_user" do
-            fill_in :registration_user_email, with: "user@from-twitter.com"
-            find("*[type=submit]").click
-          end
-        end
-
-        context "and a user already exists with the given email" do
-          it "doesn't allow it" do
-            create(:user, :confirmed, email: "user@from-twitter.com", organization: organization)
-            find(".sign-up-link").click
-
-            click_link "Sign in with Twitter"
-
-            expect(page).to have_content("Successfully")
-            expect(page).to have_content("Please complete your profile")
-
-            within ".new_user" do
-              fill_in :registration_user_email, with: "user@from-twitter.com"
-              find("*[type=submit]").click
-            end
-
-            expect(page).to have_content("Please complete your profile")
-            expect(page).to have_content("Another account is using the same email address")
-          end
-        end
-      end
-
-      context "when the response includes the email" do
-        let(:email) { "user@from-twitter.com" }
-
-        it "creates a new User" do
-          find(".sign-up-link").click
-
-          click_link "Sign in with Twitter"
-
-          expect_user_logged
-        end
-      end
-    end
-
-    context "when using google" do
-      let(:omniauth_hash) do
-        OmniAuth::AuthHash.new(
-          provider: "google_oauth2",
-          uid: "123545",
-          info: {
-            name: "Google User",
-            email: "user@from-google.com"
-          }
-        )
-      end
-
-      before do
-        OmniAuth.config.test_mode = true
-        OmniAuth.config.mock_auth[:google_oauth2] = omniauth_hash
-
-        OmniAuth.config.add_camelization "google_oauth2", "GoogleOauth"
-        OmniAuth.config.request_validation_phase = ->(env) {} if OmniAuth.config.respond_to?(:request_validation_phase)
-      end
-
-      after do
-        OmniAuth.config.test_mode = false
-        OmniAuth.config.mock_auth[:google_oauth2] = nil
-        OmniAuth.config.camelizations.delete("google_oauth2")
-      end
-
-      it "creates a new User" do
-        find(".sign-up-link").click
-
-        click_link "Sign in with Google"
-
-        expect_user_logged
       end
     end
 
@@ -612,49 +463,6 @@ describe "Authentication", type: :system do
           end
 
           expect(page).to have_content("A message with a confirmation link has been sent to your email address.")
-        end
-      end
-    end
-  end
-
-  context "when a user is already registered in another organization with the same fb account" do
-    let(:user) { create(:user, :confirmed) }
-    let(:identity) { create(:identity, user: user, provider: "facebook", uid: "12345") }
-
-    let(:omniauth_hash) do
-      OmniAuth::AuthHash.new(
-        provider: identity.provider,
-        uid: identity.uid,
-        info: {
-          email: user.email,
-          name: "Facebook User",
-          verified: true
-        }
-      )
-    end
-
-    before do
-      OmniAuth.config.test_mode = true
-      OmniAuth.config.mock_auth[:facebook] = omniauth_hash
-      OmniAuth.config.add_camelization "facebook", "FaceBook"
-      OmniAuth.config.request_validation_phase = ->(env) {} if OmniAuth.config.respond_to?(:request_validation_phase)
-    end
-
-    after do
-      OmniAuth.config.test_mode = false
-      OmniAuth.config.mock_auth[:facebook] = nil
-      OmniAuth.config.camelizations.delete("facebook")
-    end
-
-    describe "Sign Up" do
-      context "when the user has confirmed the email in facebook" do
-        it "creates a new User without sending confirmation instructions" do
-          find(".sign-up-link").click
-
-          click_link "Sign in with Facebook"
-
-          expect(page).to have_content("Successfully")
-          expect_user_logged
         end
       end
     end
