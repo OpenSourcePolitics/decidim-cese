@@ -63,7 +63,6 @@ en:
           certification: Certification CESE
           city: City
           code: Postal code
-          help_message: Please fill the postal code field to be able to select your city
           personal_data_step: Personal data
       sessions:
         new:

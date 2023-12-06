@@ -63,7 +63,6 @@ fr:
           certification: Je certifie l'exactitude de ces informations.
           city: Ville
           code: Code postal
-          help_message: Veuillez renseigner votre code postal pour choisir la ville
           personal_data_step: Informations personnelles
       sessions:
         new:
