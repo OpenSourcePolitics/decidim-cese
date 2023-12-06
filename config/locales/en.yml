@@ -51,6 +51,19 @@ en:
       osp_authorization_workflow:
         name: Authorization procedure
     devise:
+      omniauth_registrations:
+        new:
+          address: Address
+          birth_date: Date of birth
+          birth_date_help: You must be over 16 years old to access this service.
+          certification: CESE Certification
+          city: City
+          code: Postal code
+          complete_profile: Complete your profile
+          personal_data_step: Personal data
+          registration_info: Please fill your registration data
+          sign_up: Sign up
+          subtitle: Create your account
       registrations:
         form:
           errors:
@@ -67,6 +80,9 @@ en:
       sessions:
         new:
           sign_in_disabled: Sign in disabled
+    errors:
+      not_found:
+        back_home: Back to home
     events:
       budgets:
         pending_order:

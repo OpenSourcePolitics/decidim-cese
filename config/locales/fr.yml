@@ -51,6 +51,19 @@ fr:
       osp_authorization_workflow:
         name: Procédure d'autorisation
     devise:
+      omniauth_registrations:
+        new:
+          address: Addresse
+          birth_date: Date de naissance
+          birth_date_help: Vous devez avoir plus de 16 ans pour avoir accès à ce service.
+          certification: Certification CESE
+          city: Ville
+          code: Code postal
+          complete_profile: Complétez votre profil
+          personal_data_step: Informations personnelles
+          registration_info: Renseignez vos informations personnelles
+          sign_up: Renseignez vos informations personnelles
+          subtitle: Vous êtes sur le point de créer un compte sur la plateforme de pétitions du CESE.
       registrations:
         form:
           errors:
@@ -67,6 +80,9 @@ fr:
       sessions:
         new:
           sign_in_disabled: Vous pouvez accéder avec un compte externe
+    errors:
+      not_found:
+        back_home: Retour à l'accueil
     events:
       budgets:
         pending_order:
