@@ -18,10 +18,10 @@ module OmniauthRegistrationFormExtend
               :city,
               :address,
               :certification,
-              presence: true
+              presence: true, unless: ->(form) { form.certification.blank? }
 
-    validates :postal_code, numericality: { only_integer: true }, length: { is: 5 }
-    validates :certification, acceptance: true
+    validates :postal_code, numericality: { only_integer: true }, length: { is: 5 }, unless: ->(form) { form.certification.blank? }
+    validates :certification, acceptance: true, presence: true
     validate :over_16?
 
     private
@@ -31,6 +31,7 @@ module OmniauthRegistrationFormExtend
       return if 16.years.ago.to_date > birth_date
 
       errors.add :base, I18n.t("decidim.devise.registrations.form.errors.messages.over_16")
+      errors.add :birth_date, I18n.t("decidim.devise.registrations.form.errors.messages.over_16")
     end
   end
 end
