@@ -2,5 +2,5 @@
 
 class ApplicationMailer < Decidim::ApplicationMailer
   default from: "from@example.com"
-  layout "send_reminder"
+  layout "mailer"
 end
