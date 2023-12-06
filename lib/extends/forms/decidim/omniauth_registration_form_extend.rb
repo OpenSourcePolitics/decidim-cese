@@ -6,18 +6,22 @@ module OmniauthRegistrationFormExtend
   extend ActiveSupport::Concern
 
   included do
+    attribute :certification, ::ActiveModel::Type::Boolean
     attribute :birth_date, Date
     attribute :address, String
     attribute :postal_code, String
     attribute :city, String
 
-    validates :email, 'valid_email_2/email': { mx: true }
+    validates :email, "valid_email_2/email": { mx: true }
     validates :postal_code,
               :birth_date,
               :city,
               :address,
+              :certification,
               presence: true
 
+    validates :postal_code, numericality: { only_integer: true }, length: { is: 5 }
+    validates :certification, acceptance: true
     validate :over_16?
 
     private
