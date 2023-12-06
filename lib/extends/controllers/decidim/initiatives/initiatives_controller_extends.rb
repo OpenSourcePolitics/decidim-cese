@@ -4,10 +4,21 @@ module InitiativesControllerExtends
   extend ActiveSupport::Concern
 
   included do
+    include Decidim::AfterSignInActionHelper
+
     helper Decidim::Initiatives::SignatureTypeOptionsHelper
     helper Decidim::Initiatives::InitiativePrintHelper
 
     helper_method :available_initiative_types
+
+    def show
+      enforce_permission_to :read, :initiative, initiative: current_initiative
+      if session["tos_after_action"].present? && URI.parse(request.referer).path == tos_path.split("?")&.first
+        tos_after_action = session["tos_after_action"]
+        session.delete("tos_after_action")
+        after_sign_in_action_for(current_user, tos_after_action)
+      end
+    end
 
     def print
       enforce_permission_to :print, :initiative, initiative: current_initiative
