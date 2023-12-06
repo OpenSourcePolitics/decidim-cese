@@ -12,7 +12,9 @@ $(document).ready(() => {
     const fieldElements = document.querySelectorAll('.field');
 
     // Masquer la classe "user-nickname"
-    userNicknameField.style.display = 'none';
+    if (userNicknameField !== null) {
+        userNicknameField.style.display = 'none';
+    }
 
     // Masquer la classe "field" contenant la classe "registration_user_password_confirmation"
     fieldElements.forEach(field => {
@@ -23,16 +25,18 @@ $(document).ready(() => {
     });
 
     // // Écouteur d'événement sur le champ du mot de passe
-    passwordInput.addEventListener('input', function() {
-        // If there is a form-error behind the password field, remove it
-        const passwordField = passwordInput.parentElement;
-        const passwordError = passwordField.querySelector('.form-error');
-        if (passwordError !== null) {
-            changeMessage(passwordError)
-        }
+    if (passwordInput !== null) {
+        passwordInput.addEventListener('input', function() {
+            // If there is a form-error behind the password field, remove it
+            const passwordField = passwordInput.parentElement;
+            const passwordError = passwordField.querySelector('.form-error');
+            if (passwordError !== null) {
+                changeMessage(passwordError)
+            }
 
-        confirmPasswordInput.value = passwordInput.value;
-    });
+            confirmPasswordInput.value = passwordInput.value;
+        });
+    }
 
     function changeMessage(passwordError) {
         const password = passwordInput.value;
@@ -44,16 +48,18 @@ $(document).ready(() => {
     }
 
     // Génération automatique du surnom à partir du champ du nom
-    userNameInput.addEventListener('input', function() {
-        const userName = userNameInput.value.toLowerCase().replace(/\s/g, '_').replace(/[^\w\s]/gi, ''); // Remplacement des espaces par des underscores, suppression des caractères spéciaux et mise en minuscules
-        const randomNum = Math.floor(100000 + Math.random() * 900000); // Génération d'un nombre aléatoire à 6 chiffres
-        const generatedNickname = userName + '_' + randomNum;
+    if (userNameInput !== null) {
+        userNameInput.addEventListener('input', function() {
+            const userName = userNameInput.value.toLowerCase().replace(/\s/g, '_').replace(/[^\w\s]/gi, ''); // Remplacement des espaces par des underscores, suppression des caractères spéciaux et mise en minuscules
+            const randomNum = Math.floor(100000 + Math.random() * 900000); // Génération d'un nombre aléatoire à 6 chiffres
+            const generatedNickname = userName + '_' + randomNum;
 
-        // Remplissage automatique du champ du surnom
-        userNicknameInput.value = generatedNickname.substr(0, 20); // Limite le surnom à 20 caractères
+            // Remplissage automatique du champ du surnom
+            userNicknameInput.value = generatedNickname.substr(0, 20); // Limite le surnom à 20 caractères
 
-        // Cacher les champs générés automatiquement
-        confirmPasswordInput.style.display = 'none'; // Cacher le champ de confirmation du mot de passe
-        userNicknameInput.style.display = 'none'; // Cacher le champ du surnom
-    });
+            // Cacher les champs générés automatiquement
+            confirmPasswordInput.style.display = 'none'; // Cacher le champ de confirmation du mot de passe
+            userNicknameInput.style.display = 'none'; // Cacher le champ du surnom
+        });
+    }
 })
