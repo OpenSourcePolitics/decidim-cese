@@ -19,6 +19,7 @@ describe Decidim::ConfirmationReminderJob do
 
   context "when confirmation reminder is set to 3 days" do
     before do
+      allow(Rails.application.secrets).to receive(:dig).and_call_original
       allow(Rails.application.secrets).to receive(:dig).with(:decidim, :reminder, :unconfirmed_email, :days).and_return(3)
     end
 
