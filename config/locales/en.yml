@@ -13,21 +13,6 @@ en:
       participatory_process:
         private_space: Private space
   decidim:
-    unconfirmed_votes_clear_mailer:
-      send_resume:
-        subject: You did not confirm your account, existing votes have been deleted
-        body:
-          title: You did not confirm your account, existing votes have been deleted
-          confirm: You can still confirm your account and vote again on initiatives.
-          vote: Your vote on %{initiative_title} has been deleted.
-    confirmation_reminder_mailer:
-      send_reminder:
-        subject: Please confirm your email address
-        body:
-          title: You have created an account there is 2 days ago and you haven't confirmed your email yet.
-          body: Please confirm your email address to persist your votes.
-          warning: If you don't confirm your email address, your votes will be deleted.
-          confirmation_link: Link to confirmation
     accessibility:
       skip_button: Skip button
     account:
@@ -65,19 +50,27 @@ en:
         name: Identity Verification Form
       osp_authorization_workflow:
         name: Authorization procedure
+    confirmation_reminder_mailer:
+      send_reminder:
+        body:
+          body: Please confirm your email address to persist your votes.
+          confirmation_link: Link to confirmation
+          title: You have created an account there is 2 days ago and you haven't confirmed your email yet.
+          warning: If you don't confirm your email address, your votes will be deleted.
+        subject: Please confirm your email address
     devise:
       sessions:
         new:
           sign_in_disabled: Sign in disabled
     events:
-      confirmation_reminder_event:
-        notification_body: You created an account there is 2 days ago and you haven't confirmed your email yet. Please confirm your email address to persist your votes.
       budgets:
         pending_order:
           email_intro: The vote on budget "%{resource_title}" is not confirmed yet in "%{participatory_space_title}".
           email_outro: You have received this notification because you are participating in "%{participatory_space_title}"
           email_subject: Your vote is still pending in %{participatory_space_title}
           notification_title: The vote on budget <a href="%{resource_path}">%{resource_title}</a> is still waiting for your confirmation in %{participatory_space_title}
+      confirmation_reminder_event:
+        notification_body: You created an account there is 2 days ago and you haven't confirmed your email yet. Please confirm your email address to persist your votes.
       initiatives:
         initiative_answered:
           email_intro: The initiative "%{resource_title}" has been answered.
@@ -205,6 +198,13 @@ en:
             client_id: Client ID
             client_secret: Client secret
             site_url: Site URL
+    unconfirmed_votes_clear_mailer:
+      send_resume:
+        body:
+          confirm: You can still confirm your account and vote again on initiatives.
+          title: You did not confirm your account, existing votes have been deleted
+          vote: Your vote on %{initiative_title} has been deleted.
+        subject: You did not confirm your account, existing votes have been deleted
     verifications:
       authorizations:
         create:

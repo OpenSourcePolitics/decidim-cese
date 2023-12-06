@@ -13,21 +13,6 @@ fr:
       participatory_process:
         private_space: Espace privé
   decidim:
-    unconfirmed_votes_clear_mailer:
-      send_resume:
-        subject: Vous n'avez pas confirmé votre compte, vos votes ont été supprimés
-        body:
-          title: Vous n'avez pas confirmé votre compte, les votes que vous avez fait ont été supprimés
-          confirm: Vous pouvez toujours confirmer votre compte et voter à nouveau sur les pétitions.
-          vote: Votre vote sur la pétition '%{initiative_title}' a été supprimé.
-    confirmation_reminder_mailer:
-      send_reminder:
-        subject: Veuillez confirmer votre compte
-        body:
-          title: Vous avez créé un compte il y a 2 jours mais vous ne l'avez pas encore confirmé.
-          body: Veuillez confirmer votre compte en cliquant sur le lien ci-dessous.
-          warning: L'ensemble de vos votes seront supprimés dans 6 jours si votre compte n'est pas confirmé dans ce délai.
-          confirmation_link: Lien de confirmation
     accessibility:
       skip_button: Passer au contenu principal
     account:
@@ -65,19 +50,27 @@ fr:
         name: Formulaire de vérification d'identité
       osp_authorization_workflow:
         name: Procédure d'autorisation
+    confirmation_reminder_mailer:
+      send_reminder:
+        body:
+          body: Veuillez confirmer votre compte en cliquant sur le lien ci-dessous.
+          confirmation_link: Lien de confirmation
+          title: Vous avez créé un compte il y a 2 jours mais vous ne l'avez pas encore confirmé.
+          warning: L'ensemble de vos votes seront supprimés dans 6 jours si votre compte n'est pas confirmé dans ce délai.
+        subject: Veuillez confirmer votre compte
     devise:
       sessions:
         new:
           sign_in_disabled: Vous pouvez accéder avec un compte externe
     events:
-      confirmation_reminder_event:
-        notification_body: Vous avez créé un compte il y a 2 jours mais vous ne l'avez pas confirmé. Afin de persister vos votes, veuillez confirmer votre compte. L'ensemble de vos votes seront supprimés dans 6 jours si votre compte n'est pas confirmé dans ce délai.
       budgets:
         pending_order:
           email_intro: Le vote sur le budget "%{resource_title}" n'est pas encore finalisé sur la concertation "%{participatory_space_title}".
           email_outro: Vous avez reçu cette notification parce que vous avez commencé à voter sur la concertation "%{participatory_space_title}"
           email_subject: Votre vote est toujours en attente sur la concertation %{participatory_space_title}
           notification_title: Votre vote pour le budget <a href="%{resource_path}">%{resource_title}</a> attend d'être finalisé sur la concertation %{participatory_space_title}
+      confirmation_reminder_event:
+        notification_body: Vous avez créé un compte il y a 2 jours mais vous ne l'avez pas confirmé. Afin de persister vos votes, veuillez confirmer votre compte. L'ensemble de vos votes seront supprimés dans 6 jours si votre compte n'est pas confirmé dans ce délai.
       initiatives:
         initiative_answered:
           email_intro: La pétition "%{resource_title}" a reçu une réponse.
@@ -201,6 +194,13 @@ fr:
             client_id: Client ID
             client_secret: Client secret
             site_url: Site URL
+    unconfirmed_votes_clear_mailer:
+      send_resume:
+        body:
+          confirm: Vous pouvez toujours confirmer votre compte et voter à nouveau sur les pétitions.
+          title: Vous n'avez pas confirmé votre compte, les votes que vous avez fait ont été supprimés
+          vote: Votre vote sur la pétition '%{initiative_title}' a été supprimé.
+        subject: Vous n'avez pas confirmé votre compte, vos votes ont été supprimés
     verifications:
       authorizations:
         create:
