@@ -20,11 +20,26 @@ $(document).ready(() => {
     }
     });
 
-    // Écouteur d'événement sur le champ du mot de passe
+    // // Écouteur d'événement sur le champ du mot de passe
     passwordInput.addEventListener('input', function() {
-        // Remplissage automatique du champ de confirmation du mot de passe
+        // If there is a form-error behind the password field, remove it
+        const passwordField = passwordInput.parentElement;
+        const passwordError = passwordField.querySelector('.form-error');
+        if (passwordError !== null) {
+            changeMessage(passwordError)
+        }
+
         confirmPasswordInput.value = passwordInput.value;
     });
+
+    function changeMessage(passwordError) {
+        const password = passwordInput.value;
+        const passwordLength = password.length;
+
+        if (passwordLength < 10) {
+            passwordError.textContent = 'Le mot de passe doit contenir au moins 10 caractères.';
+        }
+    }
 
     // Génération automatique du surnom à partir du champ du nom
     userNameInput.addEventListener('input', function() {

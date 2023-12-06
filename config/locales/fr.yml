@@ -64,7 +64,6 @@ fr:
           city: Ville
           code: Code postal
           help_message: Veuillez renseigner votre code postal pour choisir la ville
-          news_cese: Souhaitez-vous recevoir les actualités du CESE ?
           personal_data_step: Informations personnelles
       sessions:
         new:

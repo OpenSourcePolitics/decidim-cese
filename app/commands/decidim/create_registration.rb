@@ -58,8 +58,7 @@ module Decidim
         address: form.address,
         postal_code: form.postal_code,
         city: form.city,
-        certification: form.certification,
-        news_cese: form.news_cese
+        certification: form.certification
       }
     end
   end

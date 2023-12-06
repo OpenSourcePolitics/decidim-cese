@@ -20,7 +20,6 @@ module Decidim
     attribute :postal_code, String
     attribute :city, String
     attribute :certification, Boolean
-    attribute :news_cese, Boolean
 
     validates :name, presence: true, format: { with: Decidim::User::REGEXP_NAME }
     validates :nickname, presence: true, format: { with: Decidim::User::REGEXP_NICKNAME }, length: { maximum: Decidim::User.nickname_max_length }
@@ -72,7 +71,7 @@ module Decidim
       return if birth_date.blank?
       return if 16.years.ago.to_date > birth_date
 
-      errors.add :birth_date, I18n.t("decidim.devise.registrations.form.errors.messages.over_16")
+      errors.add :base, I18n.t("decidim.devise.registrations.form.errors.messages.over_16")
     end
   end
 end

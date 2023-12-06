@@ -31,8 +31,7 @@ module Decidim
               "address" => "Carrer de la Llibertat, 47",
               "postal_code" => "08012",
               "city" => "Barcelona",
-              "certification" => "1",
-              "news_cese" => "1"
+              "certification" => "1"
             }
           }
         end
@@ -105,8 +104,7 @@ module Decidim
                 address: "Carrer de la Llibertat, 47",
                 postal_code: "08012",
                 city: "Barcelona",
-                certification: true,
-                news_cese: true
+                certification: true
               }
             ).and_call_original
 
