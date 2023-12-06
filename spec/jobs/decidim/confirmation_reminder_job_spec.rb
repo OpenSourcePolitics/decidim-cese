@@ -17,6 +17,16 @@ describe Decidim::ConfirmationReminderJob do
     expect { subject.new.perform }.to change { ActionMailer::Base.deliveries.count }.by(2)
   end
 
+  context "when confirmation reminder is set to 3 days" do
+    before do
+      allow(Rails.application.secrets).to receive(:dig).with(:decidim, :reminder, :unconfirmed_email, :days).and_return(3)
+    end
+
+    it "send a unique email to user created there is 3 days ago" do
+      expect { subject.new.perform }.to change { ActionMailer::Base.deliveries.count }.by(1)
+    end
+  end
+
   describe "#unconfirmed_users" do
     it "returns the unconfirmed users" do
       expect(subject.new.send(:unconfirmed_users)).to match_array(unconfirmed_users)

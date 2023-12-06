@@ -21,7 +21,7 @@ Decidim.configure do |config|
 
   # Devise unconfirmed access
   # see also config/initializers/devise.rb line 27
-  config.unconfirmed_access_for = ENV.fetch("DECIDIM_UNCONFIRMED_ACCESS", 7).to_i.days
+  config.unconfirmed_access_for = ENV.fetch("DECIDIM_UNCONFIRMED_ACCESS", 0).to_i.days
 
   config.maximum_attachment_height_or_width = 6000
 

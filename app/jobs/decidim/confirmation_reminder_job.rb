@@ -11,7 +11,7 @@ module Decidim
     private
 
     def unconfirmed_users
-      @unconfirmed_users ||= Decidim::User.not_confirmed.where("DATE(created_at) = ?", 2.days.ago)
+      @unconfirmed_users ||= Decidim::User.not_confirmed.where("DATE(created_at) = ?", Rails.application.secrets.dig(:decidim, :reminder, :unconfirmed_email, :days).days.ago)
     end
   end
 end

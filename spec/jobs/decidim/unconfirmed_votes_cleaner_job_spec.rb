@@ -11,6 +11,7 @@ describe Decidim::UnconfirmedVotesCleanerJob do
   let!(:confirmed_votes) { create_list(:initiative_user_vote, 3, author: confirmed_user) }
 
   before do
+    allow(Decidim.unconfirmed_access_for).to receive(:ago).and_return(7.days.ago)
     create(:user, created_at: 30.days.ago)
     create(:user, :confirmed, created_at: 2.days.ago)
     create(:user, created_at: 1.day.ago)

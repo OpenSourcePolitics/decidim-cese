@@ -13,7 +13,7 @@ module Decidim
       @initiatives = initiatives
 
       with_user(user) do
-        @subject = I18n.t(".subject", scope: "decidim.unconfirmed_votes_clear_mailer.send_resume")
+        @subject = I18n.t("subject", scope: "decidim.unconfirmed_votes_clear_mailer.send_resume")
 
         mail(to: "#{user.name} <#{user.email}>", subject: @subject)
       end

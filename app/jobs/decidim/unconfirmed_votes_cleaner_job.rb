@@ -18,7 +18,7 @@ module Decidim
 
     def unconfirmed_users
       @unconfirmed_users ||= Decidim::User.not_confirmed
-                                          .where("DATE(decidim_users.created_at) = ?", 7.days.ago.to_date)
+                                          .where("DATE(decidim_users.created_at) = ?", Decidim.unconfirmed_access_for.ago.to_date)
                                           .joins("JOIN decidim_initiatives_votes ON decidim_users.id = decidim_initiatives_votes.decidim_author_id")
                                           .distinct
     end
