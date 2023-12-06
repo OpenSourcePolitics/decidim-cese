@@ -96,3 +96,5 @@ yarn-debug.log*
 .yarn-integrity
 *.rubocop-https*
 certificate-https-local/
+
+.DS_Store
