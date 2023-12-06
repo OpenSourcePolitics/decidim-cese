@@ -104,9 +104,12 @@ en:
           decidim_user_group_id_help: It's not possible to change initiative authorship after creation
         select_initiative_type:
           verification_required: Verify your account to promote this initiative
+      initiative_votes:
+        create:
+          success: Congratulations! The initiative has been successfully signed
       initiatives:
         show:
-          print: Voir le récépissé
+          print: Show receipt
       modal:
         not_authorized:
           authorizations_page: View authorizations

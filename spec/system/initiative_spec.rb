@@ -46,13 +46,13 @@ describe "Initiative", type: :system do
 
       shared_examples_for "initiative shows recepisse link" do
         it "shows recepisse link" do
-          expect(page).to have_link("Voir le récépissé")
+          expect(page).to have_link("Show receipt")
         end
       end
 
       shared_examples_for "initiative does not show recepisse link" do
         it "does not show recepisse link" do
-          expect(page).not_to have_link("Voir le récépissé")
+          expect(page).not_to have_link("Show receipt")
         end
       end
 

@@ -137,3 +137,5 @@ ignore_unused:
   - activemodel.attributes.confirmation.*
   - activemodel.attributes.mobile_phone.*
   - decidim.admin.participatory_space_private_users.create.*
+  - decidim.admin.participatory_space_private_users.create.*
+  - decidim.initiatives.initiative_votes.create.success
