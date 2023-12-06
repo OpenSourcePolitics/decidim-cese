@@ -50,6 +50,14 @@ fr:
         name: Formulaire de vérification d'identité
       osp_authorization_workflow:
         name: Procédure d'autorisation
+    confirmation_reminder_mailer:
+      send_reminder:
+        body:
+          body: Veuillez confirmer votre compte en cliquant sur le lien ci-dessous.
+          confirmation_link: Lien de confirmation
+          title: Vous avez créé un compte il y a 2 jours mais vous ne l'avez pas encore confirmé.
+          warning: L'ensemble de vos votes seront supprimés dans 6 jours si votre compte n'est pas confirmé dans ce délai.
+        subject: Veuillez confirmer votre compte
     devise:
       registrations:
         form:
@@ -200,6 +208,13 @@ fr:
             client_id: Client ID
             client_secret: Client secret
             site_url: Site URL
+    unconfirmed_votes_clear_mailer:
+      send_resume:
+        body:
+          confirm: Vous pouvez toujours confirmer votre compte et voter à nouveau sur les pétitions.
+          title: Vous n'avez pas confirmé votre compte, les votes que vous avez fait ont été supprimés
+          vote: Votre vote sur la pétition '%{initiative_title}' a été supprimé.
+        subject: Vous n'avez pas confirmé votre compte, vos votes ont été supprimés
     verifications:
       authorizations:
         create:

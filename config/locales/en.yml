@@ -50,6 +50,14 @@ en:
         name: Identity Verification Form
       osp_authorization_workflow:
         name: Authorization procedure
+    confirmation_reminder_mailer:
+      send_reminder:
+        body:
+          body: Please confirm your email address to persist your votes.
+          confirmation_link: Link to confirmation
+          title: You have created an account there is 2 days ago and you haven't confirmed your email yet.
+          warning: If you don't confirm your email address, your votes will be deleted.
+        subject: Please confirm your email address
     devise:
       registrations:
         form:
@@ -204,6 +212,13 @@ en:
             client_id: Client ID
             client_secret: Client secret
             site_url: Site URL
+    unconfirmed_votes_clear_mailer:
+      send_resume:
+        body:
+          confirm: You can still confirm your account and vote again on initiatives.
+          title: You did not confirm your account, existing votes have been deleted
+          vote: Your vote on %{initiative_title} has been deleted.
+        subject: You did not confirm your account, existing votes have been deleted
     verifications:
       authorizations:
         create:

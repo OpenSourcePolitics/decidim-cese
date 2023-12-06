@@ -24,6 +24,7 @@ services:
     environment:
       - DATABASE_HOST=database
       - DATABASE_USERNAME=postgres
+      - DATABASE_NAME=decidim_cese
       - DECIDIM_HOST=localhost
       - REDIS_URL=redis://redis:6379
       - MEMCACHE_SERVERS=memcached:11211
@@ -53,6 +54,7 @@ services:
       dockerfile: Dockerfile.local
     environment:
       - DATABASE_HOST=database
+      - DATABASE_NAME=decidim_cese
       - DATABASE_USERNAME=postgres
       - DECIDIM_HOST=localhost
       - REDIS_URL=redis://redis:6379
