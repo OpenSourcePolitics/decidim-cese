@@ -69,8 +69,6 @@ en:
           email_outro: You have received this notification because you are participating in "%{participatory_space_title}"
           email_subject: Your vote is still pending in %{participatory_space_title}
           notification_title: The vote on budget <a href="%{resource_path}">%{resource_title}</a> is still waiting for your confirmation in %{participatory_space_title}
-      confirmation_reminder_event:
-        notification_body: You created an account there is 2 days ago and you haven't confirmed your email yet. Please confirm your email address to persist your votes.
       initiatives:
         initiative_answered:
           email_intro: The initiative "%{resource_title}" has been answered.
