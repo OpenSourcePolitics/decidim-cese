@@ -77,6 +77,7 @@ module Decidim
         @user.skip_confirmation! if verified_email
       end
 
+      @user.tos_agreement = "1"
       @user.save!
     end
 
