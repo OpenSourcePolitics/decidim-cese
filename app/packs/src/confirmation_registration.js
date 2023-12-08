@@ -8,6 +8,17 @@ $(document).ready(() => {
         }
     });
 
+    $("#user_tos_agreement").on("change", function(e) {
+        const tosField = event.target.parentNode.parentNode;
+        const tosError = tosField.querySelectorAll('.form-error');
+
+        if (tosError) {
+            tosError.forEach(error => {
+                error.remove();
+            });
+        }
+    });
+
     $(".select-date-container").on("change", function(e) {
         const dateField = event.target.parentNode.parentNode;
         const dateError = dateField.querySelectorAll('.form-error');
