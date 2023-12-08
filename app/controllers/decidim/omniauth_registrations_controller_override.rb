@@ -21,6 +21,22 @@ module Decidim
           super
         end
       end
+
+      private
+
+      def verified_email
+        @verified_email ||= find_verified_email
+      end
+
+      def find_verified_email
+        if oauth_data.present?
+          session["oauth_data.verified_email"] = oauth_data.dig(:info, :email)
+        else
+          email_from_session = session["oauth_data.verified_email"]
+          session.delete("oauth_data.verified_email")
+          email_from_session
+        end
+      end
     end
   end
 end
