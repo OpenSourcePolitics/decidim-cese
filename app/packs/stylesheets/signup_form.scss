@@ -1,0 +1,13 @@
+#register-form, #new_user {
+  .select-date-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 20px;
+  }
+
+  .select-date-container .columns {
+    padding-right: 1.4rem;
+  }
+}

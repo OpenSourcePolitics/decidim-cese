@@ -50,10 +50,50 @@ fr:
         name: Formulaire de vérification d'identité
       osp_authorization_workflow:
         name: Procédure d'autorisation
+    confirmation_reminder_mailer:
+      send_reminder:
+        body:
+          body: Veuillez confirmer votre compte en cliquant sur le lien ci-dessous.
+          confirmation_link: Lien de confirmation
+          title: Vous avez créé un compte il y a 2 jours mais vous ne l'avez pas encore confirmé.
+          warning: L'ensemble de vos votes seront supprimés dans 6 jours si votre compte n'est pas confirmé dans ce délai.
+        subject: Veuillez confirmer votre compte
     devise:
+      omniauth_registrations:
+        new:
+          address: Adresse
+          birth_date: Date de naissance
+          birth_date_help: Vous devez avoir plus de 16 ans pour avoir accès à ce service.
+          certification: Je certifie l'exactitude de ces informations.
+          city: Ville
+          code: Code postal
+          complete_profile: Complétez votre profil
+          personal_data_step: Complétez votre profil
+          registration_info: Renseignez vos informations personnelles
+          sign_up: Renseignez vos informations personnelles
+          subtitle: Vous êtes sur le point de créer un compte sur la plateforme de pétitions du CESE.
+          terms: les termes et conditions d'utilisation
+          tos_agreement: En vous créant un compte, vous acceptez %{link}.
+          tos_title: Conditions d'utilisation
+      registrations:
+        form:
+          errors:
+            messages:
+              over_16: Vous devez avoir plus de 16 ans pour accéder à ce service.
+        new:
+          address: Adresse
+          birth_date: Date de naissance
+          birth_date_help: Vous devez avoir plus de 16 ans pour avoir accès à ce service.
+          certification: Je certifie l'exactitude de ces informations.
+          city: Ville
+          code: Code postal
+          personal_data_step: Informations personnelles
       sessions:
         new:
           sign_in_disabled: Vous pouvez accéder avec un compte externe
+    errors:
+      not_found:
+        back_home: Retour à l'accueil
     events:
       budgets:
         pending_order:
@@ -80,6 +120,9 @@ fr:
           email_subject: Un utilisateur a tenté de se faire vérifier avec les données d'un utilisateur représenté
           notification_title: Le participant <a href="%{resource_path}">%{resource_title}</a> a tenté de se faire vérifier avec les données de l'utilisateur représenté <a href="%{managed_user_path}">%{managed_user_name}</a>.
     initiatives:
+      initiative_votes:
+        create:
+          success: Toutes nos félicitations ! La pétition a été signée correctement
       initiatives:
         show:
           print: Voir le récépissé
@@ -184,6 +227,13 @@ fr:
             client_id: Client ID
             client_secret: Client secret
             site_url: Site URL
+    unconfirmed_votes_clear_mailer:
+      send_resume:
+        body:
+          confirm: Vous pouvez toujours confirmer votre compte et voter à nouveau sur les pétitions.
+          title: Vous n'avez pas confirmé votre compte, les votes que vous avez fait ont été supprimés
+          vote: Votre vote sur la pétition '%{initiative_title}' a été supprimé.
+        subject: Vous n'avez pas confirmé votre compte, vos votes ont été supprimés
     verifications:
       authorizations:
         create:

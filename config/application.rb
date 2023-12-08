@@ -47,12 +47,23 @@ module DevelopmentApp
     config.after_initialize do
       require "extends/forms/decidim/initiatives/initiative_form_extends"
       require "extends/controllers/decidim/devise/sessions_controller_extends"
+      require "extends/controllers/decidim/homepage_controller_extends"
       require "extends/forms/decidim/admin/organization_appearance_form_extends"
+      require "extends/omniauth/strategies/france_connect_extends"
+      require "extends/forms/decidim/omniauth_registration_form_extend"
     end
 
     initializer "session cookie domain", after: "Expire sessions" do
       Rails.application.config.session_store :active_record_store, key: "_decidim_session", expire_after: Decidim.config.expire_session_after
       ActiveRecord::SessionStore::Session.serializer = :hybrid
+    end
+
+    initializer "decidim_app.overrides", after: "decidim.action_controller" do
+      config.to_prepare do
+        Decidim::Initiatives::InitiativeHelper.include(Decidim::Initiatives::InitiativeHelperVoteModalOverride)
+        Decidim::Devise::RegistrationsController.include(Decidim::RegistrationsControllerOverride)
+        Decidim::Devise::OmniauthRegistrationsController.include(Decidim::OmniauthRegistrationsControllerOverride)
+      end
     end
   end
 end

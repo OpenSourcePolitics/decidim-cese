@@ -101,6 +101,10 @@ ignore_missing:
  - decidim.initiatives.initiatives.show.illegal.{title,description}
  - decidim.initiatives.create_initiative.select_initiative_type.*
  - decidim.admin.organization_appearance.form.images.*
+ - decidim.devise.registrations.new.*
+ - devise.failure.invited
+ - devise.registrations.new.sign_up
+
 
 # Consider these keys used:
 ignore_unused:
@@ -133,3 +137,5 @@ ignore_unused:
   - activemodel.attributes.confirmation.*
   - activemodel.attributes.mobile_phone.*
   - decidim.admin.participatory_space_private_users.create.*
+  - decidim.admin.participatory_space_private_users.create.*
+  - decidim.initiatives.initiative_votes.create.success

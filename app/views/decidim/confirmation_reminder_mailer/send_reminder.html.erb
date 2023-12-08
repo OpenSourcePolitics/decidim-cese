@@ -1,0 +1,20 @@
+
+<p>
+  <%== t "title", scope: "decidim.confirmation_reminder_mailer.send_reminder.body" %>
+</p>
+
+<p>
+  <%== t "body", scope: "decidim.confirmation_reminder_mailer.send_reminder.body" %>
+</p>
+
+<div>
+  <%= link_to t("confirmation_link", scope: "decidim.confirmation_reminder_mailer.send_reminder.body"), @confirmation_link %>
+</div>
+
+<p>
+  <%== t "warning", scope: "decidim.confirmation_reminder_mailer.send_reminder.body" %>
+</p>
+
+<% content_for :note do %>
+  <%== t "subject", scope: "decidim.confirmation_reminder_mailer.send_reminder", organization_name: h(@organization.name), link: decidim.notifications_settings_url(host: @organization.host) %>
+<% end %>

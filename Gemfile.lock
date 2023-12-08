@@ -7,14 +7,6 @@ GIT
       decidim-core (~> 0.27)
 
 GIT
-  remote: https://github.com/OpenSourcePolitics/decidim-module-extended_socio_demographic_authorization_handler.git
-  revision: f51e6314e014fe89156b1115dbd7fe14ecaa5565
-  branch: cese
-  specs:
-    decidim-extended_socio_demographic_authorization_handler (0.26.1)
-      decidim-core (~> 0.27)
-
-GIT
   remote: https://github.com/OpenSourcePolitics/decidim-module-initiative_status.git
   revision: eae4e5440fc84adac72097afb6e06ec172795dd4
   branch: main
@@ -1032,7 +1024,6 @@ DEPENDENCIES
   decidim-blog_author_petition!
   decidim-decidim_awesome!
   decidim-dev (~> 0.27.0)
-  decidim-extended_socio_demographic_authorization_handler!
   decidim-initiative_status!
   decidim-initiatives (~> 0.27.0)
   decidim-spam_detection

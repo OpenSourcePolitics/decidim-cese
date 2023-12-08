@@ -151,6 +151,7 @@ module Decidim
         can_unvote = initiative.accepts_online_unvotes? &&
                      initiative.organization&.id == user.organization&.id &&
                      initiative.votes.where(author: user).any? &&
+                     user.tos_accepted? &&
                      authorized?(:vote, resource: initiative, permissions_holder: initiative.type)
 
         toggle_allow(can_unvote)
@@ -181,6 +182,7 @@ module Decidim
         initiative.votes_enabled? &&
           initiative.organization&.id == user.organization&.id &&
           initiative.votes.where(author: user).empty? &&
+          user.tos_accepted? &&
           authorized?(:vote, resource: initiative, permissions_holder: initiative.type)
       end
 
