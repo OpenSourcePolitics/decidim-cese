@@ -61,7 +61,7 @@ fr:
     devise:
       omniauth_registrations:
         new:
-          address: Addresse
+          address: Adresse
           birth_date: Date de naissance
           birth_date_help: Vous devez avoir plus de 16 ans pour avoir accès à ce service.
           certification: Certification CESE
@@ -78,7 +78,7 @@ fr:
             messages:
               over_16: Vous devez avoir plus de 16 ans pour accéder à ce service.
         new:
-          address: Addresse
+          address: Adresse
           birth_date: Date de naissance
           birth_date_help: Vous devez avoir plus de 16 ans pour avoir accès à ce service.
           certification: Je certifie l'exactitude de ces informations.
