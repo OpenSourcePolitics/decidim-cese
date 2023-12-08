@@ -62,6 +62,8 @@ module Decidim
         @user.email = (verified_email || form.email)
         @user.name = form.name
         @user.nickname = form.normalized_nickname
+        @user.tos_agreement = form.tos_agreement
+        @user.accepted_tos_version = form.current_organization.tos_version
         @user.newsletter_notifications_at = nil
         @user.password = generated_password
         @user.password_confirmation = generated_password
