@@ -64,7 +64,7 @@ fr:
           address: Addresse
           birth_date: Date de naissance
           birth_date_help: Vous devez avoir plus de 16 ans pour avoir accès à ce service.
-          certification: Certification CESE
+          certification: Je certifie l'exactitude de ces informations.
           city: Ville
           code: Code postal
           complete_profile: Complétez votre profil
