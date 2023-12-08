@@ -72,6 +72,9 @@ fr:
           registration_info: Renseignez vos informations personnelles
           sign_up: Renseignez vos informations personnelles
           subtitle: Vous êtes sur le point de créer un compte sur la plateforme de pétitions du CESE.
+          terms: les termes et conditions d'utilisation
+          tos_agreement: En vous créant un compte, vous acceptez %{link}.
+          tos_title: Conditions d'utilisation
       registrations:
         form:
           errors:

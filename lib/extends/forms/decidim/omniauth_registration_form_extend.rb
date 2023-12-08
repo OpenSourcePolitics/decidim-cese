@@ -11,6 +11,7 @@ module OmniauthRegistrationFormExtend
     attribute :address, String
     attribute :postal_code, String
     attribute :city, String
+    attribute :tos_agreement, ::ActiveModel::Type::Boolean
 
     validates :email, "valid_email_2/email": { mx: true }
     validates :postal_code,
@@ -18,10 +19,12 @@ module OmniauthRegistrationFormExtend
               :city,
               :address,
               :certification,
-              presence: true, unless: ->(form) { form.certification.blank? }
+              :tos_agreement,
+              presence: true, unless: ->(form) { form.tos_agreement.blank? }
 
-    validates :postal_code, numericality: { only_integer: true }, length: { is: 5 }, unless: ->(form) { form.certification.blank? }
-    validates :certification, acceptance: true, presence: true
+    validates :postal_code, numericality: { only_integer: true }, length: { is: 5 }, unless: ->(form) { form.tos_agreement.blank? }
+    validates :certification, acceptance: true, presence: true, unless: ->(form) { form.tos_agreement.blank? }
+    validates :tos_agreement, acceptance: true, presence: true
     validate :over_16?
 
     private
