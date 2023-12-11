@@ -56,7 +56,7 @@ fr:
           body: Veuillez confirmer votre compte en cliquant sur le lien ci-dessous.
           confirmation_link: Lien de confirmation
           title: Vous avez créé un compte il y a 2 jours mais vous ne l'avez pas encore confirmé.
-          warning: L'ensemble de vos votes seront supprimés dans 6 jours si votre compte n'est pas confirmé dans ce délai.
+          warning: L'ensemble de vos signatures seront annulées dans 6 jours si vous ne confirmez pas votre compte.
         subject: Veuillez confirmer votre compte
     devise:
       omniauth_registrations:
@@ -230,10 +230,10 @@ fr:
     unconfirmed_votes_clear_mailer:
       send_resume:
         body:
-          confirm: Vous pouvez toujours confirmer votre compte et voter à nouveau sur les pétitions.
-          title: Vous n'avez pas confirmé votre compte, les votes que vous avez fait ont été supprimés
-          vote: Votre vote sur la pétition '%{initiative_title}' a été supprimé.
-        subject: Vous n'avez pas confirmé votre compte, vos votes ont été supprimés
+          confirm: Vous pouvez toujours confirmer votre compte et signer à nouveau les pétitions de votre choix. Pour cela, cliquez sur le bouton de renvoi des instructions de confirmation sur la page de connexion de la plateforme.
+          title: Vous n’avez pas confirmé votre compte sur la plateforme de pétitions du CESE , les signatures suivantes ont donc été annulées
+          vote: Votre signature de la pétition '%{initiative_title}' a été annulée.
+        subject: Vous n'avez pas confirmé votre compte, vos signatures ont donc été annulées
     verifications:
       authorizations:
         create:
