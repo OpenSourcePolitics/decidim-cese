@@ -231,7 +231,7 @@ fr:
       send_resume:
         body:
           confirm: Vous pouvez toujours confirmer votre compte et signer à nouveau les pétitions de votre choix. Pour cela, cliquez sur le bouton de renvoi des instructions de confirmation sur la page de connexion de la plateforme.
-          title: Vous n’avez pas confirmé votre compte sur la plateforme de pétitions du CESE , les signatures suivantes ont donc été annulées :
+          title: Vous n’avez pas confirmé votre compte sur la plateforme de pétitions du CESE , les signatures suivantes ont donc été annulées
           vote: Votre signature de la pétition '%{initiative_title}' a été annulée.
         subject: Vous n'avez pas confirmé votre compte, vos signatures ont donc été annulées
     verifications:
