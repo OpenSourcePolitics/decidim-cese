@@ -16,4 +16,3 @@ module AuthorizationExtends
 end
 
 Decidim::Authorization.include(AuthorizationExtends)
-
