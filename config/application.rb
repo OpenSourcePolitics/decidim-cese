@@ -51,6 +51,7 @@ module DevelopmentApp
       require "extends/forms/decidim/admin/organization_appearance_form_extends"
       require "extends/omniauth/strategies/france_connect_extends"
       require "extends/forms/decidim/omniauth_registration_form_extend"
+      require "extends/models/decidim/authorization_extends"
     end
 
     initializer "session cookie domain", after: "Expire sessions" do
