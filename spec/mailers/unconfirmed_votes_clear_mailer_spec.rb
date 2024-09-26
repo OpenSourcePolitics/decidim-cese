@@ -34,14 +34,14 @@ module Decidim
         end
 
         it "parses the subject in the user's locale" do
-          expect(mail.subject).to eq("Vous n'avez pas confirmé votre compte, vos votes ont été supprimés")
+          expect(mail.subject).to eq("Vous n'avez pas confirmé votre compte, vos signatures ont donc été annulées")
         end
 
         it "parses the body in the user's locale" do
-          expect(email_body(mail)).to include("Vous n'avez pas confirmé votre compte, les votes que vous avez fait ont été supprimés")
-          expect(email_body(mail)).to include("Vous pouvez toujours confirmer votre compte et voter à nouveau sur les pétitions.")
+          expect(email_body(mail)).to include("Vous n’avez pas confirmé votre compte sur la plateforme de pétitions du CESE , les signatures suivantes ont donc été annulées")
+          expect(email_body(mail)).to include("Vous pouvez toujours confirmer votre compte et signer à nouveau les pétitions de votre choix.")
           initiatives.each do |initiative|
-            expect(email_body(mail)).to include("Votre vote sur la pétition '#{translated(initiative.title)}' a été supprimé.")
+            expect(email_body(mail)).to include("Votre signature de la pétition '#{translated(initiative.title)}' a été annulée.")
           end
         end
       end
