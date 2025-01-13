@@ -13,6 +13,7 @@
   - metrics
   - vote_reminder
   - reminders
+  - initiatives
 
 :scheduler:
   :schedule:
@@ -48,3 +49,15 @@
       cron: '0 5 0 * * 6' # Run at 00:05 on Saturday
       class: SendNotificationMailWeeklyJob
       queue: mailers
+    CheckPublishedInitiatives:
+      cron: '0 1 * * *'
+      class: CheckPublishedInitiatives
+      queue: initiatives
+    CheckValidatingInitiatives:
+      cron: '0 1 * * *'
+      class: CheckValidatingInitiatives
+      queue: initiatives
+    NotifyProgressInitiatives:
+      cron: '0 1 * * *'
+      class: NotifyProgressInitiatives
+      queue: initiatives

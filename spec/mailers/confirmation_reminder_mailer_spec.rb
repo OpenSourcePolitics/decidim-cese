@@ -33,7 +33,7 @@ module Decidim
         it "parses the body in the user's locale" do
           expect(email_body(mail)).to include("Vous avez créé un compte il y a 2 jours mais vous ne l'avez pas encore confirmé.")
           expect(email_body(mail)).to include("Veuillez confirmer votre compte en cliquant sur le lien ci-dessous.")
-          expect(email_body(mail)).to include("L'ensemble de vos votes seront supprimés dans 6 jours si votre compte n'est pas confirmé dans ce délai.")
+          expect(email_body(mail)).to include("L'ensemble de vos signatures seront annulées dans 6 jours si vous ne confirmez pas votre compte.")
         end
       end
     end
