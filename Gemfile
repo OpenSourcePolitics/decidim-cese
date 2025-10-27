@@ -37,6 +37,7 @@ gem "foundation_rails_helper", git: "https://github.com/sgruhier/foundation_rail
 gem "html_tokenizer", "~> 0.0.8"
 gem "letter_opener_web", "~> 2.0"
 gem "omniauth-rails_csrf_protection", "~> 1.0"
+gem "openssl", "2.2.0"
 gem "puma", ">= 5.6.2"
 gem "rack-attack"
 gem "sys-filesystem"
