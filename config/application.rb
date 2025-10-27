@@ -35,6 +35,8 @@ module DevelopmentApp
       "X-Content-Type-Options" => "nosniff"
     }
 
+    require "decidim_app/omniauth/configurator"
+
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration can go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded after loading
@@ -47,6 +49,7 @@ module DevelopmentApp
     config.after_initialize do
       require "extends/forms/decidim/initiatives/initiative_form_extends"
       require "extends/controllers/decidim/devise/sessions_controller_extends"
+      require "extends/controllers/decidim/devise/omniauth_registrations_controller_extends"
       require "extends/controllers/decidim/homepage_controller_extends"
       require "extends/forms/decidim/admin/organization_appearance_form_extends"
       require "extends/omniauth/strategies/france_connect_extends"

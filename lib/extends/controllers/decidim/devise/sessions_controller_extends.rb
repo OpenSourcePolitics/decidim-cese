@@ -7,20 +7,30 @@ module SessionControllerExtends
     include Decidim::AfterSignInActionHelper
 
     def destroy
-      after_sign_out_url = after_sign_out_path_for(current_user)
-      current_user.invalidate_all_sessions!
-      if active_france_connect_session?
-        destroy_france_connect_session(session["omniauth.france_connect.end_session_uri"], after_sign_out_url)
-      elsif params[:translation_suffix].present?
-        super { set_flash_message! :notice, params[:translation_suffix], { scope: "decidim.devise.sessions" } }
+      if active_omniauth_session?
+        provider = session.delete("omniauth.provider")
+        omniauth_config = DecidimApp::Omniauth::Configurator.new(provider, request.env)
+        logout_policy = omniauth_config.options(:logout_policy)
+        logout_path = omniauth_config.options(:logout_path)
+      end
+
+      if provider.present? && logout_policy == "session.destroy" && logout_path.present?
+        redirect_to omniauth_logout_path(provider, logout_path)
       else
-        super
+        if current_user
+          current_user.invalidate_all_sessions!
+          request.params[stored_location_key_for(current_user)] = stored_location_for(current_user) if pending_redirect?(current_user)
+        end
+
+        if params[:translation_suffix].present?
+          super { set_flash_message! :notice, params[:translation_suffix], { scope: "decidim.devise.sessions" } }
+        else
+          super
+        end
       end
     end
 
     def after_sign_in_path_for(user)
-      after_sign_in_action_for(user, request.params[:after_action]) if request.params[:after_action].present?
-
       if user.present? && user.blocked?
         check_user_block_status(user)
       elsif !skip_first_login_authorization? && (first_login_and_not_authorized?(user) && !user.admin? && !pending_redirect?(user))
@@ -28,6 +38,10 @@ module SessionControllerExtends
       else
         super
       end
+    end
+
+    def after_sign_out_path_for(user)
+      request.params[stored_location_key_for(user)] || request.referer || super
     end
 
     private
@@ -38,18 +52,14 @@ module SessionControllerExtends
     end
   end
 
-  def destroy_france_connect_session(fc_logout_path, post_logout_redirect_uri)
-    signed_out = (::Devise.sign_out_all_scopes ? sign_out : sign_out(resource_name))
-    if signed_out
-      set_flash_message! :notice, :signed_out
-      session.delete("omniauth.france_connect.end_session_uri")
-    end
-    session["omniauth.france_connect.post_logout_redirect_uri"] = post_logout_redirect_uri
-    redirect_to fc_logout_path
+  def active_omniauth_session?
+    session["omniauth.provider"].present?
   end
 
-  def active_france_connect_session?
-    current_organization.enabled_omniauth_providers.include?(:france_connect) && session["omniauth.france_connect.end_session_uri"].present?
+  def omniauth_logout_path(provider, logout_path)
+    uri = URI.parse(decidim.send("user_#{provider}_omniauth_authorize_path"))
+    uri.path += logout_path
+    uri.to_s
   end
 end
 

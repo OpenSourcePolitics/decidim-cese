@@ -13,7 +13,7 @@ module OmniauthRegistrationFormExtend
     attribute :city, String
     attribute :tos_agreement, ::ActiveModel::Type::Boolean
 
-    validates :email, "valid_email_2/email": { mx: true }
+    # validates :email, "valid_email_2/email": { mx: true }
     validates :postal_code,
               :birth_date,
               :city,
