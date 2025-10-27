@@ -11,11 +11,9 @@
   <% end %>
 </ul>
 
-
 <p>
   <%== t "confirm", scope: "decidim.unconfirmed_votes_clear_mailer.send_resume.body" %>
 </p>
-
 
 <% content_for :note do %>
   <%== t "subject", scope: "decidim.confirmation_reminder_mailer.send_reminder", organization_name: h(@organization.name), link: decidim.notifications_settings_url(host: @organization.host) %>

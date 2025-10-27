@@ -23,7 +23,7 @@ gem "decidim-term_customizer", git: "https://github.com/armandfardeau/decidim-mo
 gem "decidim-transparent_trash", git: "https://github.com/OpenSourcePolitics/decidim-module-transparent_trash.git", branch: "master"
 
 # Omniauth gems
-gem "omniauth-france_connect", git: "https://github.com/OpenSourcePolitics/omniauth-france_connect"
+gem "omniauth_openid_connect"
 
 # Default
 gem "activejob-uniqueness", require: "active_job/uniqueness/sidekiq_patch"
@@ -34,6 +34,7 @@ gem "deface"
 gem "faker", "~> 2.14"
 gem "fog-aws"
 gem "foundation_rails_helper", git: "https://github.com/sgruhier/foundation_rails_helper.git"
+gem "html_tokenizer", "~> 0.0.8"
 gem "letter_opener_web", "~> 2.0"
 gem "omniauth-rails_csrf_protection", "~> 1.0"
 gem "puma", ">= 5.6.2"
