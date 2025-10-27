@@ -7,7 +7,9 @@ module FranceConnectExtends
     private
 
     def redirect_uri
-      "#{omniauth_callback_url}?#{params.slice("redirect_uri", "after_action").to_query}"
+      uri = URI.parse(super)
+      uri.query = [uri.query, "after_action=#{params["after_action"]}"].compact.join("&") if params["after_action"].present?
+      uri.to_s
     end
   end
 end

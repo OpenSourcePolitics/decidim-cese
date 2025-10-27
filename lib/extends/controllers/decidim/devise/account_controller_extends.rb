@@ -1,41 +1,63 @@
 # frozen_string_literal: true
 
-module AccountControllerExtends
-  def destroy
-    enforce_permission_to :delete, :user, current_user: current_user
-    @form = form(Decidim::DeleteAccountForm).from_params(params)
-
-    Decidim::DestroyAccount.call(current_user, @form) do
-      on(:ok) do
-        sign_out(current_user)
-        if active_france_connect_session?
-          destroy_france_connect_session(session["omniauth.france_connect.end_session_uri"])
-        else
-          redirect_to decidim.root_path
+module Decidim
+  module AccountControllerExtends
+    def destroy
+      enforce_permission_to :delete, :user, current_user: current_user
+      @form = form(Decidim::DeleteAccountForm).from_params(params)
+      Decidim::DestroyAccount.call(current_user, @form) do
+        on(:ok) do
+          handle_successful_destruction
         end
-        flash[:notice] = t("account.destroy.success", scope: "decidim")
+        on(:invalid) do
+          handle_invalid_destruction
+        end
       end
+    end
 
-      on(:invalid) do
-        flash[:alert] = t("account.destroy.error", scope: "decidim")
+    private
+
+    def handle_successful_destruction
+      sign_out(current_user)
+      flash[:notice] = t("account.destroy.success", scope: "decidim")
+      if active_omniauth_session?
+        handle_omniauth_logout
+      else
         redirect_to decidim.root_path
       end
     end
-  end
 
-  private
+    def handle_omniauth_logout
+      provider = session.delete("omniauth.provider")
+      omniauth_config = DecidimApp::Omniauth::Configurator.new(provider, request.env)
+      logout_policy = omniauth_config.options(:logout_policy)
+      logout_path = omniauth_config.options(:logout_path)
 
-  def destroy_france_connect_session(fc_logout_path)
-    session.delete("omniauth.france_connect.end_session_uri")
+      if provider.present? && logout_policy == "session.destroy" && logout_path.present?
+        redirect_to omniauth_logout_path(provider, logout_path)
+      else
+        redirect_to decidim.root_path
+      end
+    end
 
-    redirect_to fc_logout_path
-  end
+    def handle_invalid_destruction
+      flash[:alert] = t("account.destroy.error", scope: "decidim")
+      redirect_to decidim.root_path
+    end
 
-  def active_france_connect_session?
-    current_organization.enabled_omniauth_providers.include?(:france_connect) && session["omniauth.france_connect.end_session_uri"].present?
+    def active_omniauth_session?
+      session["omniauth.provider"].present?
+    end
+
+    def omniauth_logout_path(provider, logout_path)
+      uri = URI.parse(decidim.send("user_#{provider}_omniauth_authorize_path"))
+      uri.path += logout_path
+      uri.to_s
+    end
   end
 end
 
 Decidim::AccountController.class_eval do
-  prepend(AccountControllerExtends)
+  prepend(Decidim::AccountControllerExtends)
+  include ApplicationHelper
 end
