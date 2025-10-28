@@ -1,4 +1,4 @@
-FROM ruby:3.2.2-slim as builder
+FROM ruby:3.0.6-slim as builder
 
 ENV RAILS_ENV=production \
     SECRET_KEY_BASE=dummy
@@ -33,7 +33,7 @@ RUN rm -rf node_modules tmp/cache vendor/bundle spec \
     && find /usr/local/bundle/gems/ -type d -name "spec" -prune -exec rm -rf {} \; \
     && rm -rf log/*.log
 
-FROM ruby:3.2.2-slim as runner
+FROM ruby:3.0.6-slim as runner
 
 ENV RAILS_ENV=production \
     SECRET_KEY_BASE=dummy \
@@ -42,6 +42,9 @@ ENV RAILS_ENV=production \
 RUN apt update && \
     apt install -y postgresql-client imagemagick libproj-dev proj-bin libjemalloc2 && \
     gem install bundler:2.4.9
+
+ADD https://letsencrypt.org/certs/isrg-root-x2.pem  /usr/local/share/ca-certificates/isrg-root-x2.pem
+RUN chmod 644 /usr/local/share/ca-certificates/isrg-root-x2.pem && update-ca-certificates
 
 WORKDIR /app
 
