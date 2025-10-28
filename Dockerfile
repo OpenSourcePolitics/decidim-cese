@@ -6,7 +6,7 @@ ENV RAILS_ENV=production \
 WORKDIR /app
 
 RUN apt-get update && \
-    apt-get -y install libpq-dev curl git libicu-dev build-essential && \
+    apt-get install -y libpq-dev curl git libicu-dev build-essential && \
     curl https://deb.nodesource.com/setup_16.x | bash && \
     apt-get install -y nodejs  && \
     npm install --global yarn && \
@@ -43,8 +43,8 @@ RUN apt update && \
     apt install -y postgresql-client imagemagick libproj-dev proj-bin libjemalloc2 && \
     gem install bundler:2.4.9
 
-ADD https://letsencrypt.org/certs/isrg-root-x2.pem  /usr/local/share/ca-certificates/isrg-root-x2.pem
-RUN chmod 644 /usr/local/share/ca-certificates/isrg-root-x2.pem && update-ca-certificates
+ADD https://letsencrypt.org/certs/isrg-root-x2.pem  /etc/ssl/certs/ISRG_ROOT_X2.pem
+RUN chmod 644 /etc/ssl/certs/ISRG_ROOT_X2.pem && update-ca-certificates && c_rehash
 
 WORKDIR /app
 
