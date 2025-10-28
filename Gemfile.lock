@@ -15,6 +15,15 @@ GIT
       decidim-core (~> 0.27)
 
 GIT
+  remote: https://github.com/OpenSourcePolitics/decidim-module-term_customizer.git
+  revision: 27f4f3f805b59571451f4d911620edbac762bb66
+  branch: fix/email_with_precompile
+  specs:
+    decidim-term_customizer (0.27.0)
+      decidim-admin (~> 0.27.0)
+      decidim-core (~> 0.27.0)
+
+GIT
   remote: https://github.com/OpenSourcePolitics/decidim-module-transparent_trash.git
   revision: 6e443678a0aecdc9d852dfa48dc103983c930a5c
   branch: master
@@ -22,18 +31,9 @@ GIT
     decidim-transparent_trash (0.0.2)
 
 GIT
-  remote: https://github.com/armandfardeau/decidim-module-term_customizer.git
-  revision: 41f6c0fa95cc26c7f0dbe317d48e83723cb08b1b
-  branch: fix/precompile-on-docker-0.27
-  specs:
-    decidim-term_customizer (0.27.0)
-      decidim-admin (~> 0.27.0)
-      decidim-core (~> 0.27.0)
-
-GIT
   remote: https://github.com/decidim-ice/decidim-module-decidim_awesome.git
   revision: aa01fdab225ae7a5e7de6fc5d529f7c236376c0c
-  branch: main
+  tag: v0.9.2
   specs:
     decidim-decidim_awesome (0.9.2)
       decidim-admin (>= 0.26.0, < 0.28)
@@ -1007,6 +1007,7 @@ PLATFORMS
   arm64-darwin-22
   x86_64-darwin-20
   x86_64-darwin-21
+  x86_64-darwin-22
   x86_64-linux
 
 DEPENDENCIES
@@ -1057,7 +1058,7 @@ DEPENDENCIES
   web-console (= 4.2)
 
 RUBY VERSION
-   ruby 3.0.2p107
+   ruby 3.0.6p216
 
 BUNDLED WITH
    2.4.9
