@@ -49,7 +49,6 @@ module DevelopmentApp
     config.after_initialize do
       require "extends/forms/decidim/initiatives/initiative_form_extends"
       require "extends/controllers/decidim/devise/sessions_controller_extends"
-      require "extends/controllers/decidim/devise/omniauth_registrations_controller_extends"
       require "extends/controllers/decidim/homepage_controller_extends"
       require "extends/forms/decidim/admin/organization_appearance_form_extends"
       require "extends/omniauth/strategies/france_connect_extends"
