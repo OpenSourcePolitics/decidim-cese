@@ -1,0 +1,2 @@
+<!-- replace "erb[loud]:contains('email_field :email')" -->
+      <%= f.email_field :email, disabled: disable_profile_editing_on_omniauth_connection? || current_user.unconfirmed_email.present?, autocomplete: "email" %>
