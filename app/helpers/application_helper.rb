@@ -25,4 +25,8 @@ module ApplicationHelper
       html_element
     end
   end
+
+  def disable_profile_editing_on_omniauth_connection?
+    current_organization.enabled_omniauth_providers.any? && session["omniauth.provider"].present?
+  end
 end
