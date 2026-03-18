@@ -51,7 +51,6 @@ module DevelopmentApp
       require "extends/controllers/decidim/devise/sessions_controller_extends"
       require "extends/controllers/decidim/homepage_controller_extends"
       require "extends/forms/decidim/admin/organization_appearance_form_extends"
-      require "extends/omniauth/strategies/france_connect_extends"
       require "extends/forms/decidim/omniauth_registration_form_extend"
       require "extends/models/decidim/authorization_extends"
     end
