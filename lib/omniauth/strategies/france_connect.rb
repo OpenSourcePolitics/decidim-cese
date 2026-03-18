@@ -50,7 +50,7 @@ module OmniAuth
 
       def redirect_uri
         uri = URI.parse(super)
-        uri.query = [uri.query, "after_action=#{params["after_action"]}"].compact.join("&") if params["after_action"].present?
+        # uri.query = [uri.query, "after_action=#{params["after_action"]}"].compact.join("&") if params["after_action"].present?
         uri.to_s
       end
     end
