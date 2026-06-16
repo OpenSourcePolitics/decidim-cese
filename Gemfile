@@ -25,6 +25,8 @@ gem "decidim-transparent_trash", git: "https://github.com/OpenSourcePolitics/dec
 # Omniauth gems
 gem "omniauth_openid_connect"
 
+gem "wicked_pdf", "~> 2.8", ">= 2.8.2"
+
 # Default
 gem "activejob-uniqueness", require: "active_job/uniqueness/sidekiq_patch"
 gem "activerecord-session_store"
@@ -48,6 +50,7 @@ group :development do
   gem "spring", "~> 2.0"
   gem "spring-watcher-listen", "~> 2.0"
   gem "web-console", "4.2"
+  gem "wkhtmltopdf-binary"
 end
 
 group :development, :test do
