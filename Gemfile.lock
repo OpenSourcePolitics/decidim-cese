@@ -205,7 +205,7 @@ GEM
     cells-rails (0.1.5)
       actionpack (>= 5.0)
       cells (>= 4.1.6, < 5.0.0)
-    charlock_holmes (0.7.7)
+    charlock_holmes (0.7.9)
     chef-utils (18.2.7)
       concurrent-ruby
     childprocess (4.1.0)
@@ -703,6 +703,7 @@ GEM
     origami (2.1.0)
       colorize (~> 0.7)
     orm_adapter (0.5.0)
+    ostruct (0.6.3)
     paper_trail (12.3.0)
       activerecord (>= 5.2)
       request_store (~> 1.1)
@@ -992,8 +993,9 @@ GEM
     websocket-extensions (0.1.5)
     wicked (1.4.0)
       railties (>= 3.0.7)
-    wicked_pdf (2.6.3)
+    wicked_pdf (2.8.2)
       activesupport
+      ostruct
     wisper (2.0.1)
     wisper-rspec (1.1.0)
     wkhtmltopdf-binary (0.12.6.6)
@@ -1056,6 +1058,8 @@ DEPENDENCIES
   spring-watcher-listen (~> 2.0)
   sys-filesystem
   web-console (= 4.2)
+  wicked_pdf (~> 2.8, >= 2.8.2)
+  wkhtmltopdf-binary
 
 RUBY VERSION
    ruby 3.0.6p216
